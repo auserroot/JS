@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="txt"></div>
+    <input type="text" id="num"> height <br>
+    <input type="button" value="分类" onclick="n_um();">
+    <input type="button" value="奇偶" onclick="num_();"><br>
+    <input type="text" id="num_"> weight<br>
+    <input type="button" value="体重" onclick="app();">
+    <input type="button" value="类型" onclick="l_num();">
+    <input type="button" value="是否为闰年" onclick="year();">
+    <input type="button" value="周几" onclick="week();"><br>
+    <input type="button" value="成绩" onclick="chenji();">
+    <input type="button" value="成绩2" onclick="chenji2();"><br>
+    <input type="button" value="天数" onclick="day_case();">
+    <input type="button" value="天数" onclick="day_();">
+    <script>
+        // 判断一个整数，属于哪个范围：大于0；小于0；等于0
+        function n_um() {
+            var x = document.getElementById("num").value;
+            if (x > 0) {
+                document.getElementById("txt").innerHTML = (x + ">0");
+            } else if (x = 0) {
+                document.getElementById("txt").innerHTML = (x + "=0");
+            } else if (x < 0) {
+                document.getElementById("txt").innerHTML = (x + "<0");
+            }
+        }
+        // 判断一个整数是偶数还是奇数，并输出判断结果
+        function num_() {
+            var x = document.getElementById("num").value;
+            if (x % 2 == 0) {
+                document.getElementById("txt").innerHTML = (x + "为偶数");
+            } else {
+                document.getElementById("txt").innerHTML = (x + "为奇数");
+            }
+        }
+        //根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者
+        function app() {
+            var height = document.getElementById("num").value;
+            var weight = document.getElementById("num_").value;
+            var y = (height - 108) * 2;
+            if (weight - 10 > y || y > weight + 10) {
+                alert("你的身材出BUG了");
+            } else {
+                document.getElementById("txt").innerHTML = ("你的值为：" + y + "你的身材很好");
+            }
+        }
+        // if判断接受的数据类型
+        function l_num() {
+            var x = document.getElementById("num").value;
+            if (x === "true" || x === "false") {
+                alert(x + "是boolean")
+            } else if (isNaN(x) == false) {
+                alert(x + "是number")
+            } else {
+                alert(x + "是string")
+            }
+        }
+        // 输入年份，计算某一年是否是闰年
+        function year() {
+            var years = document.getElementById("num").value;
+            if (years % 4 === 0 && years % 100 !== 0 || years % 400 === 0) {
+                document.getElementById("txt").innerHTML = (years + "是闰年");
+            } else {
+                alert(years + "不是闰年");
+            }
+        }
+        // 输入数字，显示星期几(  假设本月一号是周一 )
+        function week() {
+            var x = document.getElementById("num").value;
+            if (x % 7 == 0) {
+                document.getElementById("txt").innerHTML = (x + "号是星期天");
+            } else if (x % 7 == 1) {
+                document.getElementById("txt").innerHTML = (x + "号是星期一");
+            } else if (x % 7 == 2) {
+                document.getElementById("txt").innerHTML = (x + "号是星期二");
+            } else if (x % 7 == 3) {
+                document.getElementById("txt").innerHTML = (x + "号是星期三");
+            } else if (x % 7 == 4) {
+                document.getElementById("txt").innerHTML = (x + "号是星期四");
+            } else if (x % 7 == 5) {
+                document.getElementById("txt").innerHTML = (x + "号是星期五");
+            } else if (x % 7 == 6) {
+                document.getElementById("txt").innerHTML = (x + "号是星期六");
+            }
+        }
+        // 输入分数，判定成绩等级(if和switch两种写法)
+        function chenji() {
+            var x = document.getElementById("num").value;
+            // if循环
+            if (x >= 90) {
+                document.getElementById("txt").innerHTML = ("成绩优秀");
+            } else if (x > 60 && x < 90) {
+                document.getElementById("txt").innerHTML = ("成绩良好");
+            } else if (x == 60) {
+                document.getElementById("txt").innerHTML = ("及格");
+            } else {
+                document.getElementById("txt").innerHTML = ("不及格");
+            }
+        }
+        function chenji2() {
+            var x = document.getElementById("num").value;
+            if(x>10){
+                var y = parseInt( x / 10);
+            }else{
+                alert("不及格")
+            }
+            // switch循环
+            switch (Number(y)) {//将y转换为number类型
+                case 9:
+                case  10: document.getElementById("txt").innerHTML = ("成绩优秀");
+                    break
+                case 7:
+                case  8:document.getElementById("txt").innerHTML = ("成绩良好");
+                    break
+                case 6:document.getElementById("txt").innerHTML = ("及格");
+                    break
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case  5:document.getElementById("txt").innerHTML = ("不及格");
+                    break
+                default: return;
+            }
+        }
+        // 输入月份，显示当月的天数， 利用case穿透简化代码
+        function day_case() {
+            var x = document.getElementById("num").value;
+            switch(Number(x)){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12: document.getElementById("txt").innerHTML = ("31天");
+                break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:  document.getElementById("txt").innerHTML = ("30天");
+                break;
+                case 2: document.getElementById("txt").innerHTML = ("28天");//平年
+                break;
+                default: return;
+            }
+            // var month = document.getElementById("num").value;//获取月份
+            // var year = document.getElementById("num_").value;//获取年份
+            // //month是字符串类型需要进行类型转换;
+            // switch (Number(month)) {
+            //     case 1:
+            //     case 3:
+            //     case 5:
+            //     case 7:
+            //     case 8:
+            //     case 10:
+            //     case 12:
+            //         alert("31天");
+            //         break;
+            //     case 4:
+            //     case 6:
+            //     case 9:
+            //     case 11:
+            //         alert("30天");
+            //         break;
+            //     case 2:
+            //         //2月要考虑闰年 
+            //         if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+            //             alert("29天");
+            //         } else {
+            //             alert("28天");
+            //      } 
+            }
+           /* 根据一个8位数 数字日期，判断这个日期是这一年的第几天。 (使用switch 穿透编写)
+            例如： 20160211，计算后结果为42*/
+            function day_(){
+                // var date =Number(prompt('请输入一个组成为年月日的八位数','如20160211'))
+                var date = document.getElementById("num").value;
+                var year =parseInt(date/10000);
+                var month =parseInt(date/100)-year*100;
+                var days =date-(year*10000 + month*100);
+                var sum =0;
+                switch(month){
+                case 12:
+                    sum+=30;
+                case 11:
+                    sum+=31;
+                case 10:
+                    sum+=30;
+                case 9:
+                    sum+=31;
+                case 8:
+                    sum+=31;
+                case 7:
+                    sum+=30;
+                case 6:
+                    sum+=31;
+                case 5:
+                    sum+=30;
+                case 4:
+                    sum+=31;
+                case 3:
+                    if(year%4==0 && year%100!=0 || year%400==0){
+                        sum+=29
+                    }else{
+                        sum+=28
+                    }
+                case 2:
+                    sum+=31;
+                case 1:
+                    sum+=days;
+                    break;
+                default:
+                    alert('你输入的日期不符合规范')
+            }
+            // alert(date  + '是' + year +'年第'+ sum +'天')
+            document.getElementById("txt").innerHTML = (date  + '是' + year +'年第'+ sum +'天');
+            }
+    </script>
+</body>
+
+</html>

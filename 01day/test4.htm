@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 300px;
+        height: 300px;
+        background-color: aqua;
+        color: #000;
+    }
+</style>
+<body>
+    <div id="time"></div>
+    <form action="" name="f">
+        <input type="text" id="dome" name="dome">
+        <!-- submit 按钮每次提交到服务器后会刷新页面造成innerhtml传值一闪而过 -->
+        <!-- <input type="submit" onclick="time();" value="提交"> -->
+        <!-- button 按钮作用在本地点击后不会刷新页面 -->
+        <input type="button" onclick="time();" value="提交">
+        <input type="button" onclick="temperature();" value="转换为℃">
+    </form>  
+
+    
+    <script>
+        // alert("hello")//弹出提示框
+        /* var d1 = 20;
+        console.log(typeof d1);//获取数据类型
+        var g1 = 'asd';
+        console.log(typeof g1);*/
+    function time(){
+      var x = document.getElementById("dome").value;//id取值
+    //   var x = document.f.dome.value;//name取值
+      var day = 0;
+      var hour = 0;
+      day = parseInt(x / 24);
+      hour = x % 24;
+        // alert("战士已经连续作战了" +day+"天零"+hour+"小时了");//弹出结果
+       document.getElementById("time").innerHTML = ("战士已经连续作战了" +day+"天零"+hour+"小时了");//在p处显示结果
+    }
+    
+    /*温度转换（华氏度转摄氏度）*/
+    function temperature(){
+     var x = document.getElementById("dome").value;
+     var y;
+     y = 5 / 9 * ( x - 32);
+     alert(+y.toFixed(3)+"℃");
+    }
+    </script>
+</body>
+</html>
