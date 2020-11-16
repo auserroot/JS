@@ -8,21 +8,28 @@
 <style>
     div{
         width: 300px;
+        margin: 0 auto;
+    }
+    #time{
         height: 300px;
         background-color: aqua;
         color: #000;
     }
+    
 </style>
 <body>
     <div id="time"></div>
-    <form action="" name="f">
+    <div>
+        <form action="" name="f">
         <input type="text" id="dome" name="dome">
         <!-- submit 按钮每次提交到服务器后会刷新页面造成innerhtml传值一闪而过 -->
         <!-- <input type="submit" onclick="time();" value="提交"> -->
         <!-- button 按钮作用在本地点击后不会刷新页面 -->
-        <input type="button" onclick="time();" value="提交">
+        <input type="button" onclick="time();" value="时间">
         <input type="button" onclick="temperature();" value="转换为℃">
     </form>  
+    </div>
+    
 
     
     <script>
