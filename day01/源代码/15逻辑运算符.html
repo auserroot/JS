@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            逻辑运算符
+                1 &&
+                    ==>进行与运算
+                    ==>符号左边必须为true，并且右边也是true，才会返回true
+                    ==>只要有一边不是true，那么就会返回false
+                    ==>true&&true  true
+                    ==>true&&false false
+                    ==>false&&true false
+                    ==>false&&false false;
+                2 ||
+                    ==>进行或运算
+                    ==>符号的左边为true或者右边为true，都会返回true
+                    ==>只有两边都是false的时候才会返回false
+                    ==>true||true  true
+                    ==>true||false true
+                    ==>false||true true
+                    ==>false||false false;
+                3 !
+                    ==>进行取反运算
+                    ==>本身是true的，会变成false
+                    ==>本身是false的，会变成true
+                    ==>取反运算的结果一定是布尔值
+                    ==>隐式转布尔值
+        */
+
+        console.log(1==2&&9<=10);//false
+        console.log(2==3&&4>=9);//false
+        console.log(1<=2&&4<6);//true
+
+
+        console.log(1==2||9<=10);//true
+        console.log(2==3||4>=9);//false
+        console.log(1<=2||4<6);//true
+
+        console.log(!10);//false
+        console.log(!"hello");//false
+        console.log(!null);//true
+        console.log(!!10);//true
+
+    </script>
+</body>
+</html>

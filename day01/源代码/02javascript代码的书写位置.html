@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 外链式js代码 -->
+    <script src="./02.js"></script>
+    <link rel="stylesheet" href="./02.css">
+    <style>
+        h1{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 行内css -->
+    <div style="color:red;">hongse</div>
+    <!-- 行内式js代码 -->
+    <!-- a标签的js书写方法 -->
+    <a href="javascript:alert('我是一个弹框');">点击有特效</a>
+    <!-- 其他标签的js书写方法 -->
+    <h1 onclick="alert('我是一个弹框')">点击有特效</h1>
+    <!-- 
+        注：onclick是一个事件（点击事件）当点击元素就会执行后面的js代码
+     -->
+
+
+
+    <!-- 内嵌式js代码  -->
+    <h1>lanse </h1>
+    <script>
+        alert('我是内嵌式js的弹框2');
+    </script>
+
+    <span>lvse</span>
+    <script>
+        /* 
+            javacript代码的书写位置
+                ==>和css一样，js代码可以有多种方式书写在页面上
+                    ==>行内式js代码:
+                        ==>如果是a标签，写在href里面：javascript:alert(1111)
+                        ==>如果是其他标签，加事件 onclick="alert(1111)"
+                    ==>内嵌式
+                        ==>在页面的任意位置
+                        ==>添加script标签，里面书写js代码：alert(1111)
+                    ==>外链式
+                        ==>新建一个.js文件
+                        ==>在html文件中通过script标签引入
+                        ==><script src="js文件路径"><\/script>
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            其他类型转字符串
+                + 变量.toString()
+                    ==>有一些数据类型不能使用toString()方法
+                    ==>比如null和undefined
+                + String(变量)
+                    ==>所有的数据类型都可以
+        */
+
+        // toString()
+        var a = 12;
+        var b = true;
+        
+        console.log(a.toString())
+        console.log(b.toString())
+        
+        // String()
+        console.log(String(12))
+        console.log(String(true))
+        console.log(String(null))
+        console.log(String(undefined))
+    </script>
+</body>
+</html>

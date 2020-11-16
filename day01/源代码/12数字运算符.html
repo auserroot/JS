@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            运算符
+                就是在代码里面进行运算的时候使用的符号，不光是数字运算，我们在js里面还有很多的运算方式
+            数字运算符
+                1 +
+                    ==>只有符号两边都是数值的时候才会进行加法运算
+                    ==>只要符号任意一边是字符串类型，就会进行字符串拼接
+                    ==>注意+可能会隐式转换成字符串类型
+                2 -
+                    ==>会执行减法运算
+                    ==>会自动将两边都转换成数字在进行运算
+                    ==>注意-可能会隐式转换成数值类型
+                3 * 
+                    ==>会执行乘法运算
+                    ==>会自动将两边都转换成数字在进行运算
+                    ==>注意*可能会隐式转换成数值类型
+                4 /
+                    ==>会执行除法运算
+                    ==>会自动将两边都转换成数字在进行运算
+                    ==>注意/可能会隐式转换成数值类型
+                5 %
+                    ==>会执行求余数运算
+                    ==>会自动将两边都转换成数字在进行运算
+                    ==>注意%可能会隐式转换成数值类型
+        */
+        console.log("+++++++++++")
+        var a = "12";
+        var b = 13;
+        console.log(a+b);
+        console.log(""+b);
+        console.log(b+"")
+
+        console.log("------------")
+        console.log(12-"hello")
+        console.log("12"-0)
+        console.log("12"-null);//12
+        console.log("12"+null);//12null
+        console.log(12-undefined);//NaN
+
+        console.log("======*/%====")
+        console.log(12*2)
+        console.log(12*null)
+        console.log(12/undefined)
+        console.log("12"*1);
+        console.log(12%5)
+        console.log(12.5%5)
+
+
+        console.log("====js也有不擅长小数运算====")
+        console.log(0.1+0.2)
+        console.log(0.1+0.7)
+
+    </script>
+</body>
+</html>

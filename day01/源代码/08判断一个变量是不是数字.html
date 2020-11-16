@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            判断一个变量是不是数字
+                ==>这个不是数据类型判断
+                ==>是判断数据的内容
+                ==>window.isNaN(要判断数据)
+                ==>is not a number
+                ==>如果判断结果是：true，就is not a number
+                ==>如果判断结果是:false,就 is a number
+        */
+
+        var a = "12";
+        console.log(isNaN(a));//false
+
+        var b = 12;
+        console.log(isNaN(b));//false
+
+        var c = "hello";
+        console.log(isNaN(c));//true
+
+        var d = "";//0
+        console.log(isNaN(d));//false
+
+        var e = undefined;
+        console.log(isNaN(e));//true
+
+        var f = null;//0
+        console.log(isNaN(f));//false
+
+        var g1 = true;//1
+        console.log(isNaN(g1))
+
+        var g2 = false;//0
+        console.log(isNaN(g2))
+
+
+    </script>
+</body>
+</html>

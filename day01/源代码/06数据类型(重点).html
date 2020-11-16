@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            数据类型（重点）
+                ==>就是我们存储在内存中的数据的类型
+                ==>我们通常分为两大类：基本数据类型和复杂数据类型
+            基本数据类型:
+                ==>数值型Number
+                    ==>一切数字都是数值类型（包括二进制，八进制，十六进制，十进制）
+                    ==>NaN:一个非数字
+                ==>字符串String
+                    ==>被引号包裹的所有内容（可以是单引号也可以是双引号）
+                ==>布尔类型Boolean
+                    ==>只有两个（true或者false）
+                ==>undefined类型
+                    ==>只有一个，就是undefined，表示没有值的意思
+                ==>null类型
+                    ==>只有一个，就是null，表示空的意思
+            复杂数据类型（暂时先不讲）
+                1 对象类型（object）
+                2 函数类型（function）
+                3 数组类型（array）
+                ......
+        */
+
+        // 数值型Number
+        var num1 = 12; //十进制 0-9
+        var num2 = 012; //八进制 0-7
+        var num3 = 0x12; //十六进制 0-9 A B C D E F
+        var num4 = 089; //如果八进制的有一位超出范围，认为是十进制
+        console.log(num1,num2,num3,num4);//打印结果是十进制
+
+
+        // 字符串String
+        var str1 = "12";
+        var str2 = "hello world";
+        var str3 = ""; //空字符串
+        var str4 = "      ";
+
+        console.log(str1,str2)
+        console.log("="+str3+"=");//+在这里表示字符串拼接
+        console.log("="+str4+"=")
+
+        // 布尔类型Boolean
+        var flag = true;
+        console.log(flag)
+        console.log(false)
+
+        // undefined类型
+        var u = undefined;
+        var c; //变量定义了，但是还没有赋值，就是 undefined
+        console.log(u);
+        console.log(c);
+
+        // null类型
+        var n = null;
+        console.log(n)
+
+        
+        // 课堂练习
+        console.log('hello world');//字符串
+        // console.log(hello);//hello没有引号，字变量名，会报错
+        console.log(true);// 布尔值
+        console.log("true");// 字符串
+        console.log(false);// 布尔值
+        console.log('undefined');// 字符串
+        console.log('12');//字符串
+        console.log(NaN);//非数字 
+
+    </script>
+</body>
+</html>

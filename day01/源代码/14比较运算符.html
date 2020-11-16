@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            比较运算符,结果是布尔值
+                1 ==
+                    ==>比较符号两边的值是否相等，不管数据类型
+                2 ===
+                    ==>比较符号两边的值和数据类型是否相等
+                3 !=
+                    ==>比较符号两边的值是否不相等，不管数据类型
+                4 !==
+                    ==>比较符号两边的值和类型是否不相等
+                5 >=
+                    ==>比较符号左边的值是否大于等于符号右边的值
+                6 <=
+                    ==>比较符号左边的值是否小于等于符号右边的值
+                7 >
+                    ==>比较符号左边的值是否大于符号右边的值
+                8 <
+                    ==>比较符号左边的值是否小于符号右边的值
+
+        */
+
+        console.log('12'==12);//true
+        console.log('12'===12);//值相同，数据类型不同，答案是false
+        console.log('12'!=12);//false
+        console.log('12'!==12);//值相同，数据类型不同，答案是true
+
+
+        console.log(1>=2);//false
+        console.log(1>=true);//true
+        console.log(1==true);//true
+        console.log(0==false);//true
+        console.log(1===true);//false
+        console.log(0===false);//false
+        console.log(null==undefined);//true,特别
+        console.log(NaN==NaN);//false,特别    
+        
+    </script>
+</body>
+</html>

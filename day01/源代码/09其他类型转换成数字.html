@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            其他数据类型转数值
+                + Number(变量)  
+                    ==>可以把一个变量强制转换成数值类型
+                    ==>可以转换小数，会保留小数
+                    ==>可以转换布尔值
+                    ==>遇到不可转换的会返回NaN
+                + parseInt(变量)
+                    ==>可以把一个变量强制转换成数值类型
+                    ==>从第一个开始检查，是数字就转换，直到一个不是数字的内容
+                    ==>开头就不是数字，直接返回NaN
+                    ==>不认识小数点
+                + parseFloat(变量)
+                    ==>可以把一个变量强制转换成数值类型
+                    ==>从第一个开始检查，是数字就转换，直到一个不是数字的内容
+                    ==>开头就不是数字，直接返回NaN
+                    ==>认识一个小数点            
+        */
+
+        console.log("=====Number======")
+        var str = "12"
+        console.log(str);
+        console.log(Number(str));
+
+        var str2 = "WORLD";
+        console.log(str2)
+        console.log(Number(str2))
+
+        console.log(Number(12.23));//小数
+        console.log(Number(undefined));//NaN
+        console.log(Number(null));//0
+        console.log(Number(true));//1
+        console.log(Number("true"));//NaN
+        console.log(Number(false));//0
+        console.log(Number(""));//0
+
+
+        console.log("======parseInt========")
+        console.log(parseInt(12.23));//12
+        console.log(parseInt("a12.23"));//NaN
+        console.log(parseInt(undefined));//NaN
+        console.log(parseInt(null));//NaN
+        console.log(parseInt(true));//NaN
+        console.log(parseInt("true"));//NaN
+        console.log(parseInt(false));//NaN
+        console.log(parseInt(""));//NaN
+
+
+
+        console.log("======parseFloat========")
+        console.log(parseFloat(12.23));//12.23
+        console.log(parseFloat("12.23.45.56"));//12.23
+        console.log(parseFloat("a1c2.23.45.56"));//NaN
+        console.log(parseFloat(undefined));//NaN
+        console.log(parseFloat(null));//NaN
+        console.log(parseFloat(true));//NaN
+        console.log(parseFloat("true"));//NaN
+        console.log(parseFloat(false));//NaN
+        console.log(parseFloat(""));//NaN
+    </script>
+</body>
+</html>

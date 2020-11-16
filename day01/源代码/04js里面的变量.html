@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+</head>
+<body>
+    <script>
+        /* 
+            变量（重点）
+                ==>变量指的是程序中保存数据的一个容器
+                ==>容器：
+                    -->杯子（液体）
+                    -->菜篮子（固体）
+                    -->氧气瓶（气体）
+                ==>js是弱类型语言：一种容器可以保存所有类型的数据
+                ==>变量是计算机内存中存储数据的标识符，根据变量名称可以获取到内存中存储的数据
+                ==>也就是说，我们的内存中存储了一个数据，然后给这个数据起一个名字，
+                ==>为了我们在以后再次找到他
+                ==>语法：var 变量名=值
+            ==>注意：
+                1 一个变量只能存储一个值
+                2 当再次给一个变量赋值的时候，前面一次的值就没有了
+                3 变量名区分大小写
+        */
+
+        // 定义变量并赋值
+        var a = 101;
+
+        // 定义变量
+        var b;
+        // 赋值
+        b = 23;
+
+        // 定义一个变量叫num2，并赋值200
+        var num2 = 200;
+        num2 = 300;
+
+        var Num2 = 400;//num2和Num2不是同一个变量
+
+        // 在控制台输出变量值
+        console.log(num2)
+        console.log(Num2)
+        console.error(a);//人为输出错误
+        console.warn(a);//人为输出错误
+    </script>
+</body>
+</html>
