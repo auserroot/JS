@@ -23,7 +23,7 @@
             var height = document.getElementById("num").value;
             var weight = document.getElementById("num_").value;
             var y = (height - 108) * 2;
-            if (weight - 10 > y || y > weight + 10) {
+            if (weight - 10 >= y || y >= weight + 10) {
                 alert("你的身材出BUG了");
             } else {
                 document.getElementById("txt").innerHTML = ("你的值为：" + y + "你的身材很好");
