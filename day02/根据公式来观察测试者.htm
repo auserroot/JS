@@ -23,11 +23,18 @@
             var height = document.getElementById("num").value;
             var weight = document.getElementById("num_").value;
             var y = (height - 108) * 2;
-            if (weight - 10 >= y || y >= weight + 10) {
+            /* if (weight - 5 >= y || y >= weight + 5) {
                 alert("你的身材出BUG了");
             } else {
                 document.getElementById("txt").innerHTML = ("你的值为：" + y + "你的身材很好");
-            }
+            } */
+            if(weight - 5 >= y){
+                document.getElementById("txt").innerHTML = ("你的值为：" + y + "偏瘦");
+            }else if(y >= weight + 5){
+                document.getElementById("txt").innerHTML = ("你的值为：" + y + "偏胖");
+            }else {
+                document.getElementById("txt").innerHTML = ("你的值为：" + y + "你的身材很好");
+            } 
         }
     </script>
 </body>
