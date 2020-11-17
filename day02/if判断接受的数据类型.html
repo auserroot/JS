@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <input type="button" value="类型" onclick="l_num();">
+    <script>
+        // if判断接受的数据类型
+        function l_num() {
+            var x = document.getElementById("num").value;
+            if (x === "true" || x === "false") {
+                alert(x + "是boolean")
+            } else if (isNaN(x) == false || x ==="NaN") {
+                alert(x + "是number")
+            }else if (x ==="null") {
+                alert(x + "是null")
+            }else if (x ==="undefined") {
+                alert(x + "是undefiend")
+            } else {
+                alert(x + "是string")
+            }
+        }
+    </script>
+</body>
+</html>

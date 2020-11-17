@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="txt"></div>
+    <input type="text" id="num">
+    <input type="button" value="奇偶" onclick="num_();">
+    <script>
+        // 判断一个整数是偶数还是奇数，并输出判断结果
+        function num_() {
+            var x = document.getElementById("num").value;
+            if (x % 2 == 0) {
+                document.getElementById("txt").innerHTML = (x + "为偶数");
+            } else {
+                document.getElementById("txt").innerHTML = (x + "为奇数");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        #num_{
+            margin-left: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="txt"></div>
+    <input type="text" id="num" placeholder="输入一个八位数">
+    <input type="button" value="天数" onclick="day_();">
+    <script>
+        /* 根据一个8位数 数字日期，判断这个日期是这一年的第几天。 (使用switch 穿透编写)
+            例如： 20160211，计算后结果为42*/
+            function day_(){
+                var date = document.getElementById("num").value;
+                var year =parseInt(date/10000);
+                var month =parseInt(date/100)-year*100;
+                var days =date%100;
+                var sum =0;
+                switch(month){
+                case 12:
+                    sum+=30;
+                case 11:
+                    sum+=31;
+                case 10:
+                    sum+=30;
+                case 9:
+                    sum+=31;
+                case 8:
+                    sum+=31;
+                case 7:
+                    sum+=30;
+                case 6:
+                    sum+=31;
+                case 5:
+                    sum+=30;
+                case 4:
+                    sum+=31;
+                case 3:
+                    if(year%4==0 && year%100!=0 || year%400==0){
+                        sum+=29
+                    }else{
+                        sum+=28
+                    }
+                case 2:
+                    sum+=31;
+                case 1:
+                    sum+=days;
+                    break;
+                default:
+                document.getElementById("txt").innerHTML = ('你输入的日期不符合规范');
+            }
+            document.getElementById("txt").innerHTML = (date  + '是' + year +'年第'+ sum +'天');
+            }
+    </script>
+</body>
+</html>

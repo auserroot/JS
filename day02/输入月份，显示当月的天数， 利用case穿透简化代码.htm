@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        #num_{
+            margin-left: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="txt"></div>
+    month:<input type="text" id="num"><br>
+    year:<input type="text" id="num_"><br>
+    <input type="button" value="天数" onclick="day_case();">
+    <script>
+        // 输入月份，显示当月的天数， 利用case穿透简化代码
+        function day_case() {
+            var month = document.getElementById("num").value;//获取月份
+            var year = document.getElementById("num_").value;//获取年份
+            //month是字符串类型需要进行类型转换;
+            switch (Number(month)) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    document.getElementById("txt").innerHTML = ("31天");
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    document.getElementById("txt").innerHTML = ("30天");
+                    break;
+                case 2:
+                    //2月要考虑闰年 
+                    if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+                        document.getElementById("txt").innerHTML = ("29天");
+                    } else {
+                        document.getElementById("txt").innerHTML = ("28天");
+                 } 
+            }
+        }
+    </script>
+</body>
+</html>

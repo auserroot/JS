@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="txt"></div>
+    <input type="text" id="num">
+    <input type="button" value="成绩" onclick="chenji();">
+    <script>
+          // 输入分数，判定成绩等级(if和switch两种写法)
+            function chenji() {
+            var x = document.getElementById("num").value;
+            // if循环
+            if (x >= 90 && x<=100) {
+                document.getElementById("txt").innerHTML = ("A");
+            } else if (x >= 80 && x < 90) {
+                document.getElementById("txt").innerHTML = ("B");
+            } else if (x >= 70 && x < 80) {
+                document.getElementById("txt").innerHTML = ("C");
+            }else if (x >=60 && x < 70) {
+                document.getElementById("txt").innerHTML = ("D");
+            }else {
+                document.getElementById("txt").innerHTML = ("E");
+            }
+        }
+    </script>
+</body>
+</html>

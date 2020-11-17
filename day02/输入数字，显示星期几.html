@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="txt"></div>
+    <input type="text" id="num">
+    <input type="button" value="周几" onclick="week();">
+    <script>
+         // 输入数字，显示星期几(  假设本月一号是周一 )
+         function week() {
+            var x = document.getElementById("num").value;
+            if (x % 7 == 0) {
+                document.getElementById("txt").innerHTML = (x + "号是星期天");
+            } else if (x % 7 == 1) {
+                document.getElementById("txt").innerHTML = (x + "号是星期一");
+            } else if (x % 7 == 2) {
+                document.getElementById("txt").innerHTML = (x + "号是星期二");
+            } else if (x % 7 == 3) {
+                document.getElementById("txt").innerHTML = (x + "号是星期三");
+            } else if (x % 7 == 4) {
+                document.getElementById("txt").innerHTML = (x + "号是星期四");
+            } else if (x % 7 == 5) {
+                document.getElementById("txt").innerHTML = (x + "号是星期五");
+            } else if (x % 7 == 6) {
+                document.getElementById("txt").innerHTML = (x + "号是星期六");
+            }
+        }
+    </script>
+</body>
+</html>

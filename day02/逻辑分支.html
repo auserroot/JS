@@ -25,6 +25,7 @@
     <input type="button" value="是否为闰年" onclick="year();">
     <input type="button" value="周几" onclick="week();"><br>
     <input type="button" value="成绩" onclick="chenji();">
+    <input type="button" value="成绩3" onclick="chenji3();">
     <input type="button" value="成绩2" onclick="chenji2();"><br>
     <input type="button" value="天数" onclick="day_case();">
     <input type="button" value="天数" onclick="day_();">
@@ -34,7 +35,7 @@
             var x = document.getElementById("num").value;
             if (x > 0) {
                 document.getElementById("txt").innerHTML = (x + ">0");
-            } else if (x = 0) {
+            } else if (x == 0) {
                 document.getElementById("txt").innerHTML = (x + "=0");
             } else if (x < 0) {
                 document.getElementById("txt").innerHTML = (x + "<0");
@@ -139,6 +140,21 @@
                 default: return;
             }
         }
+            function chenji3() {
+            var x = document.getElementById("num").value;
+            // if循环
+            if (x >= 90) {
+                document.getElementById("txt").innerHTML = ("A");
+            } else if (x >= 80 && x < 90) {
+                document.getElementById("txt").innerHTML = ("B");
+            } else if (x >= 70 && x < 80) {
+                document.getElementById("txt").innerHTML = ("C");
+            }else if (x >=60 && x < 70) {
+                document.getElementById("txt").innerHTML = ("D");
+            }else {
+                document.getElementById("txt").innerHTML = ("E");
+            }
+        }
         // 输入月份，显示当月的天数， 利用case穿透简化代码
         function day_case() {
             var x = document.getElementById("num").value;
@@ -194,7 +210,7 @@
                 var date = document.getElementById("num").value;
                 var year =parseInt(date/10000);
                 var month =parseInt(date/100)-year*100;
-                var days =date-(year*10000 + month*100);
+                var days =date%100;
                 var sum =0;
                 switch(month){
                 case 12:

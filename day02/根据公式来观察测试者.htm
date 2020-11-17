@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="txt"></div>
+    height:<input type="text" id="num"><br>
+    weight:<input type="text" id="num_"><br>
+    <input type="button" value="体重" onclick="app();">
+    <script>
+        //根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者
+        function app() {
+            var height = document.getElementById("num").value;
+            var weight = document.getElementById("num_").value;
+            var y = (height - 108) * 2;
+            if (weight - 10 > y || y > weight + 10) {
+                alert("你的身材出BUG了");
+            } else {
+                document.getElementById("txt").innerHTML = ("你的值为：" + y + "你的身材很好");
+            }
+        }
+    </script>
+</body>
+</html>
