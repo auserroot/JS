@@ -16,12 +16,54 @@
     <div id="txt"></div>
     <input type="text" id="num">
     <input type="button" value="成绩" onclick="chenji();">
+    <input type="button" value="成绩2" onclick="chenji2();">
+    <input type="button" value="成绩3" onclick="chenji3();">
+    <input type="button" value="成绩4" onclick="chenji4();"><br>
     <script>
           // 输入分数，判定成绩等级(if和switch两种写法)
-            function chenji() {
+        function chenji() {
             var x = document.getElementById("num").value;
             // if循环
-            if (x >= 90 && x<=100) {
+            if (x >= 90) {
+                document.getElementById("txt").innerHTML = ("成绩优秀");
+            } else if (x > 60 && x < 90) {
+                document.getElementById("txt").innerHTML = ("成绩良好");
+            } else if (x == 60) {
+                document.getElementById("txt").innerHTML = ("及格");
+            } else {
+                document.getElementById("txt").innerHTML = ("不及格");
+            }
+        }
+        function chenji2() {
+            var x = document.getElementById("num").value;
+            if(x>10){
+                var y = parseInt( x / 10);
+            }else{
+                alert("不及格")
+            }
+            // switch循环
+            switch (Number(y)) {//将y转换为number类型
+                case 9:
+                case  10: document.getElementById("txt").innerHTML = ("成绩优秀");
+                    break
+                case 7:
+                case  8:document.getElementById("txt").innerHTML = ("成绩良好");
+                    break
+                case 6:document.getElementById("txt").innerHTML = ("及格");
+                    break
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case  5:document.getElementById("txt").innerHTML = ("不及格");
+                    break
+                default: return;
+            }
+        }
+            function chenji3() {
+            var x = document.getElementById("num").value;
+            // if循环
+            if (x >= 90 &&x<=100) {
                 document.getElementById("txt").innerHTML = ("A");
             } else if (x >= 80 && x < 90) {
                 document.getElementById("txt").innerHTML = ("B");
@@ -31,6 +73,28 @@
                 document.getElementById("txt").innerHTML = ("D");
             }else {
                 document.getElementById("txt").innerHTML = ("E");
+            }
+        }
+        function chenji4() {
+            var x = document.getElementById("num").value;
+            if(x>10){
+                var y = parseInt( x / 10);
+                // switch循环
+            switch (Number(y)) {//将y转换为number类型
+                case 9:
+                case  10: document.getElementById("txt").innerHTML = ("A");
+                    break
+                case  8:document.getElementById("txt").innerHTML = ("B");
+                    break   
+                case 7:document.getElementById("txt").innerHTML = ("C");
+                break
+                case 6:document.getElementById("txt").innerHTML = ("D");
+                break
+                default:document.getElementById("txt").innerHTML = ("E");
+            }
+            }
+            else{
+                alert("E")
             }
         }
     </script>
