@@ -12,15 +12,15 @@
         // if判断接受的数据类型
         function l_num() {
             var x = document.getElementById("num").value;
-            if (x === "true" || x === "false") {
+            if (typeof x == "boolean") {
                 alert(x + "是boolean")
-            } else if (isNaN(x) == false || x ==="NaN") {
+            } else if (typeof x == "number") {
                 alert(x + "是number")
-            }/* else if (x ==="null") {
-                alert(x + "是null")
-            }else if (x ==="undefined") {
+            }else if (typeof x =="object") {
+                alert(x + "是object")
+            }else if (typeof x =="undefined") {
                 alert(x + "是undefiend")
-            } */ else {
+            } else if(typeof x == "string"){
                 alert(x + "是string")
             }
         }

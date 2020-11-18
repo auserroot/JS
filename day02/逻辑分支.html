@@ -62,7 +62,22 @@
             }
         }
         // if判断接受的数据类型
-        function l_num() {
+         // if判断接受的数据类型
+         function l_num() {
+            var x = document.getElementById("num").value;
+            if (typeof x == "boolean") {
+                alert(x + "是boolean")
+            } else if (typeof x == "number") {
+                alert(x + "是number")
+            }else if (typeof x =="object") {
+                alert(x + "是object")
+            }else if (typeof x =="undefined") {
+                alert(x + "是undefiend")
+            } else if(typeof x == "string"){
+                alert(x + "是string")
+            }
+        }
+       /*  function l_num() {
             var x = document.getElementById("num").value;
             if (x === "true" || x === "false") {
                 alert(x + "是boolean")
@@ -71,7 +86,7 @@
             } else {
                 alert(x + "是string")
             }
-        }
+        } */
         // 输入年份，计算某一年是否是闰年
         function year() {
             var years = document.getElementById("num").value;
