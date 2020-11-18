@@ -8,6 +8,7 @@
 <body>
     
     <script>
+        //倒空心三角形
        /*  for(var i=0;i<=4;i++){
             for(var j=0;j<=i;j++){
                 document.write("&nbsp;");
@@ -21,8 +22,9 @@
         }
             document.write("<br/>")
         } */
+        //正空心三角形
         for(var a=4;a<=4&&a>=0;a--){
-            for(var b=a;b<=a&&b>=0;b--){
+            for(var b=a;b>0;b--){
                 document.write("&nbsp;");
             }
             for(var s=1;s <=7-2*a;s++){

@@ -7,14 +7,31 @@
 </head>
 <body>
     <script>
+        //正三角形
+        /* for(var row=1;row<=6;row++){
+            // console.log('当前是直角三角形的第'+row+'行,本行有'+row+'个星星');
+            var str = "";
+            for(var i=1;i<=row;i++){
+                str+="*\t";
+            }
+            console.log(str)
+        }
         for(var i=1;i<=6;i++){
             for(var str="",j=1;j<=i;j++){
                 str += "* "
             }
             document.write(str)
             document.write("<br>")
+        } */
+        //倒三角形
+        for(var i=6;i<=6&&i>=0;i--){
+            for(var str="",j=i;j>0;j--){
+                 str += "* "
+            }
+            console.log(str)
+            document.write(str)
+            document.write("<br>")
         }
-        
     </script>
 </body>
 </html>
