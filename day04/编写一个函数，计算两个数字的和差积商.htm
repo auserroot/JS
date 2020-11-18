@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+        } 
+        #but{
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="but"  onclick="calculator()">和差积商</button>
+    </div>
+    
+    <script>
+        function calculator() {
+            var num1=parseInt(prompt("输入一个数")) 
+            var sign=prompt("+、-、*、/");
+            var num2=parseInt(prompt("输入一个数")) 
+            switch (sign) {
+                case "+": alert(num1 + num2); break;
+                case "-": alert(num1 - num2); break;
+                case "*": alert(num1 * num2); break;
+                case "/": alert(num1 / num2); break;
+            }
+        }
+
+    </script>
+</body>
+</html>

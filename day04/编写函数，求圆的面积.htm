@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            background-color: rgb(116, 197, 230);
+            margin: 50px auto;
+        }
+        p{
+            width: 100%;
+            height: 100px;
+            border: 1px solid blueviolet;
+        }
+        input{
+            width: 100%;
+            height: 100px;
+            border: 1px solid rgb(226, 12, 12);
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            font-size: 30px;
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="txt"></p>
+        <input type="text" id="num">
+        <button onclick="area()">输入</button>
+    </div>
+    <script>
+        function area() {
+            var radius =document.getElementById("num").value;
+            var area = Math.PI * radius * radius; 
+            document.getElementById("txt").innerHTML = area;
+        }
+
+    </script>
+</body>
+</html>
