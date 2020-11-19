@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <p id="txt"></p>
+    <input type="text" id="num1"><br>
+    <input type="text" id="num2">
+    <input type="button" value="提交" onclick="sum()">
+   <script>
+    //    求m-n之间数字的和
+    function sum(){
+        var m =parseInt(document.getElementById("num1").value) 
+        var n =parseInt(document.getElementById("num2").value) 
+        var a=0
+        if(m>n){
+            for(;n<=m;n++){
+                a+=n
+            }
+            document.getElementById("txt").innerHTML=a
+        }else if(m<n){
+            for(;m<=n;m++){
+                a+=m
+            }
+            document.getElementById("txt").innerHTML=a
+        }else if(m==n){
+            a=n+m
+            document.getElementById("txt").innerHTML=a
+        }
+    }
+   </script> 
+</body>
+</html>
