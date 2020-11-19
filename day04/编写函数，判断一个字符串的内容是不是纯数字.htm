@@ -6,17 +6,47 @@
     <title>Document</title>
 </head>
 <body>
+    <button onclick="isNumber()">isNumber</button>
     <script>
-        var str = "12345a";
-        function isNumber(str){
-        if( str == 0){
-        return true;
+        
+        var str =prompt("enter number");
+        //方法一
+     /*    function isNumber(){
+        if( str%1 == 0){
+            alert(true);
+        }else{
+            alert(false)
         }
-        if( str == ""){
+        return  str =prompt("enter str");
+    } */
+    //方法二
+    /* function isNumber(){
+        if( !isNaN(str)){
+            alert(true);
+        }else{
+            alert(false)
         }
-        return !!Number(str); 
+        return  str =prompt("enter str");
+    } */
+    // 方法三
+   /*  function isNumber(){
+        if( !!Number(str)){
+            alert(true);
+        }else{
+            alert(false)
         }
-        var res = isNumber(str);
+        return  str =prompt("enter str");
+    } */
+    // 方法四
+    function isNumber(){
+        if( typeof Number(str)=="number"&&!isNaN(str)){
+            alert(true);
+        }else{
+            alert(false)
+        }
+        return  str =prompt("enter str");
+    } 
+
 
     </script>
 </body>

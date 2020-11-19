@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <input type="button" value="提交" onclick="print()">
+    <script>
+        function print() {
+          var  n = document.getElementById("num1").value
+          var  m = document.getElementById("num2").value
+          document.write("<table>");   
+                for (var i = 0; i < n; i++) {
+                    document.write("<tr>");
+                    for (var j = 0; j < m; j++) {
+                        document.write("<td>");
+                        document.write(Math.round(Math.random() * 100));
+                        document.write("</td>");
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+            }
+
+    </script>
+</body>
+</html>

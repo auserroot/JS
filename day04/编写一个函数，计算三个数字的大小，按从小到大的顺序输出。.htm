@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="compare()">输入三个数</button>
+    <script>
+        function compare() {
+            var a=prompt("enter number")
+            var b=prompt("enter number")
+            var c=prompt("enter number")
+            if(a > b) {
+                if( b > c) {
+                document.write(a+">"+b+">"+c)
+            }else if(a > c && b < c){
+                document.write(a+">"+c+">"+b)
+            }else if(a < c){
+                document.write(c+">"+a+">"+b)
+            }
+            if(a<b){
+                    if(a > c) {
+                document.write(b+">"+a+">"+c)
+            }else if(a < c && b > c){
+                     document.write(b+">"+c+">"+a)
+            }else if( b < c){
+                         document.write(c+">"+b+">"+a)
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
