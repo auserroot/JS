@@ -7,7 +7,24 @@
 </head>
 <body>
     <script>
-        for (var a = 4; a <= 4 && a > 0; a--) {
+        //正序法
+        for (var a = 1; a <= 3 ; a++) {
+                for (var s = 1; s <= 2 * a - 1; s++) {
+                    document.write("*")
+                }
+                document.write("&nbsp;");
+                // document.write("<br/>")
+            }
+
+            for (var i = 2; i <= 2&&i>=0; i--) {
+                for (var k = 1; k <= 2 * i - 1; k++) {
+                    document.write("*")
+                } 
+                document.write("&nbsp;");
+                // document.write("<br/>")
+            } 
+        //倒序法
+       /*  for (var a = 4; a <= 4 && a > 0; a--) {
                 for (var s = 1; s <= 5 - 2 * a; s++) {
                     document.write("*")
                 }
@@ -21,7 +38,7 @@
                 } 
                 document.write("&nbsp;");
                 // document.write("<br/>")
-            } 
+            }  */
     </script>
 </body>
 </html>
