@@ -7,7 +7,8 @@
 </head>
 <body>
     <script>
-        for(var i=1;i<=4;i++){
+        //1.
+       /*  for(var i=1;i<=4;i++){
             for(var s=1;s<=i;s++){
                 if(i-1==0){
                     document.write(" ") 
@@ -28,7 +29,20 @@
                 break
             }
             document.write(",")
-        }
+        } */
+        //2.
+        for(var str="",num=0,i=0;i<=4;i++){
+            if(i==0){
+                num=""
+                }else{
+                    num=i
+                }
+                str+=num
+                for(var j=0;j<=i;j++){
+                    str+=" * "
+                }
+                  str+=(" i="+i+",");
+        }console.log(str)
     </script>
 </body>
 </html>
