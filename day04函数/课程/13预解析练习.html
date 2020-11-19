@@ -8,12 +8,12 @@
 <body>
     <script>
         // 练习1:
-        console.log( func );//函数体
+        /* console.log( func );//函数体
         var func = 123;
         console.log( func );//123
         function func() {
             console.log( 'Hello js' );
-        }
+        } */
         
         // 练习1分析:
         // 先预解析
@@ -30,36 +30,49 @@
 
 
         // 练习2:
-        // console.log( func );
-        // function func() {
-        //     console.log( 'Hello js' );
-        // }
-        // console.log( func );
-        // var func = 123;
-        // console.log( func );
+      /*   console.log( func );
+        function func() {
+            console.log( 'Hello js' );
+        }
+        console.log( func );
+        var func = 123;
+        console.log( func );
+        */
+ 
 
-        
-        
-        
+        //练习2分析：
+        // 预解析
+        /* function func() {
+             console.log( 'Hello js' );
+         }
+           var func
+        //执行代码
+        第一个：console.log( func );//输出function func(){}
+        第二个：console.log( func );//输出function func(){}
+        第三个：console.log( func );//123
+        */
+
+
+
         // 练习3:
-        // alert(a);
-        // a = 0; 
-       
+        /* alert(a);
+        a = 0;  */
+       //a未定义（undefined）程序报错
 
         // 练习4:
-        // alert(a); 
+        // alert(a); //undefined
         // var a = 0;
-        // alert(a);
+        //  alert(a);//0
         
 
         // 练习5:
-        alert(a); //函数体
+        /* alert(a); //函数体
         var a = '我是变量';
 
         function a() {
             alert('我是函数')
         }
-        alert(a); // 我是变量
+        alert(a); // 我是变量 */
 
         // 练习5分析
         // 预解析
@@ -77,28 +90,35 @@
 
         
         // 练习6:
-        // alert(a);
-        // var a = 1; 
-        // alert(a); 
+       /*  alert(a);//function a() {alert(4);}
+        var a = 1; 
+        alert(a); //1
 
-        // function a() {
-        //     alert(2);
-        // } 
-        // alert(a); 
-        // var a = 3; 
-        // alert(a); 
+        function a() {
+            alert(2);
+        } 
+        alert(a); //1
+        var a = 3; 
+        alert(a); //3
 
-        // function a() {
-        //     alert(4); 
-        // }
-        // alert(a); 
+        function a() {
+            alert(4); 
+        }
+        alert(a); //3 */
         
         // 练习7:
-        // myFun(10, 20);
-        // var myFun = function(a, b) {
-        //     return a + b;
-        // }
-    
+       /*  myFun(10, 20);//赋值式函数调用时要将调用语句写在函数后面，否则报错
+        var myFun = function(a, b) {
+             return a + b;
+        } */
+
+        
+        // 正解
+       /*  var myFun = function(a, b) {
+            // return a + b;
+            console.log(a+b)
+        }
+        myFun(10, 20); */
     </script>
 </body>
 </html>
