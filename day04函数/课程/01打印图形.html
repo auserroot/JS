@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 图形绘制，关键是找规律
+        
+        /* 
+            第一题：
+            * i =0, 1 ** i=1, 2 *** i=2, 3 **** i=3
+            总结规律
+            第i=0次:  不打印数字   i+1个星星 =  i,
+            第i=1次:  打印数字i    i+1个星星 =  i,
+
+            第i=3次:  打印数字i    i+1个星星 =  i, 
+        */
+        // for(var i=0;i<=3;i++){
+        //     var str="";  // 每次打印，都从无开始拼接
+        //     var num = "";// 这是每次输出最前面的数字
+        //     i==0?num="":num=i; //给num赋值，i=0的时候，num为空字符串
+        //     str+= num;
+        //     // 这里拼接星星
+        //     for(var j=1;j<=i+1;j++){
+        //         str+="*"
+        //     }            
+        //     str+=" i ="+i+", ";
+        //     // 拼接完成后直接输出
+        //     document.write(str)
+        // }
+        // 如果想在控制台输出，必须先全部拼接完成再一次性输出
+
+
+
+
+        /* 
+            第二题：
+            @ @@@ @@@@@ @@@@@@@ @@@@@ @@@ @
+            规律：
+                第i=1次：  1个@   2i-1
+                第i=2次：  3个@   2i-1
+                第i=3次：  5个@   2i-1
+                第i=4次：  7个@   2i-1
+
+                第i=3次     5个@  2i-1
+                第i=2次     3个@  2i-1
+                第i=1次     1个@  2i-1
+
+        */ 
+        // var str=""; // 这个字符串就是要拼接的内容
+        // for(var i=1;i<=4;i++){
+        //     var startNum =2*i-1 ;//记录星星数量
+        //     for(var j=1;j<=startNum;j++){
+        //         str+="@"
+        //     }
+        //     str+="\t";
+        // }
+
+
+        // for(var i=3;i>=1;i--){
+        //     var starNum = 2*i-1;//记录星星数量
+        //     for(var j=1;j<=starNum;j++){
+        //         str+="@"
+        //     }
+        //     str+="\t";
+        // }
+
+        // console.log(str)
+
+
+        /* 
+            等腰三角形(实心)
+            规律:
+                第i=1行  3(4-i)个空格1(2i-1)个星星
+                第i=2行  2(4-i)个空格3(2i-1)个星星
+                第i=3行  1(4-i)个空格5(2i-1)个星星
+                第i=4行  0(4-i)个空格7(2i-1)个星星
+        */
+        // for(var i=1;i<=4;i++){
+        //     var str="";//str记录每一行的内容
+        //     // 先拼接空格
+        //     for(var j=1;j<=4-i;j++){
+        //         str+="&nbsp;&nbsp;&nbsp;"
+        //     }
+        //     // 在拼接星星
+        //     for(var j=1;j<=2*i-1;j++){
+        //         str+="@"
+        //     }
+        //     // 再换行，然后输出
+        //     str+="<br>";
+
+        //     document.write(str)
+        // }
+
+        // 等腰三角形(空心)
+        for(var i=1;i<=4;i++){
+            var str="";//str记录每一行的内容
+            // 先拼接空格
+            for(var j=1;j<=4-i;j++){
+                str+="&nbsp;&nbsp;&nbsp;"
+            }
+            // 空心星星
+            // 在拼接星星
+            for(var j=1;j<=2*i-1;j++){
+                // 首尾是星星，中间是空格
+                if((j==1)||(j==2*i-1)){
+                    str+="@"
+                }else{
+                    str+="&nbsp;&nbsp;&nbsp;"
+                }
+            }
+            // 再换行，然后输出
+            str+="<br>";
+
+            document.write(str)
+        }
+        
+    </script>
+</body>
+</html>

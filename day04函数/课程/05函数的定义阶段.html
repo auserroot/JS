@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数的定义阶段
+                ==>就是我们把代码放在盒子里面
+                ==>我们就是要学习怎么放进去，也就是书写一个函数
+                ==>我们有两种定义方式：声明式和赋值式
+            声明式
+                ==>使用function关键字来声明一个函数
+                ==>语法:
+                    function fn(){
+                        // 一段代码
+                    }
+                ==>function:声明函数的关键字，表示接下来是一个函数
+                ==>fn:函数的名字，我们自己定义（遵循变量名的命名规则）
+                ==>():必须写，是用来放置参数的位置（一会再聊）
+                ==>{}:我们用来放一段代码的位置（也就是我们刚才说的“盒子”）
+            赋值式
+                ==>其实和我们使用var关键字是一个道理
+                ==>首先使用var定义一个变量,把一个函数当作值直接赋值给这个变量就可以了
+                ==>语法:
+                    var fn = function(){
+                        // 一段代码
+                    }
+                ==>不需要再function后面书写函数的名字了，因为前面已经有了
+        */
+
+        // 声明式
+        function printStar(){
+            var str = "";
+            for(var i=1;i<=10;i++){
+                str+="*"
+            }
+            str+="<br>"
+            document.write(str)
+        }
+
+        // 赋值式
+        var setStar = function(){
+            var str = "";
+            for(var i=1;i<=10;i++){
+                str+="*"
+            }
+            str+="<br>"
+            document.write(str)
+        }
+    </script>
+</body>
+</html>

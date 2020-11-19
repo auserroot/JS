@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 求1+2!+3!+...+20!的值 
+        // 在求和的过程中
+        // 第一次要计算1的阶乘
+        // 第二次要计算2的阶乘
+        // 第20次要计算20的阶乘
+        // 然后把所有阶乘就和
+
+        function jieCheng(num){
+            // 功能：计算num的阶乘，并打印结果
+            var ji = 1;
+            for(var i=1;i<=num;i++){
+                ji = ji*i
+            }
+            // 不需要打印，而是把阶乘的结果返回出来
+            // console.log(ji)
+            return ji;
+        }
+        var sum = 0;
+        for(var i=1;i<=20;i++){
+            sum = sum + jieCheng(i);
+        }
+        console.log(sum)
+    </script>
+</body>
+</html>

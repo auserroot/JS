@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            循环停止
+                + break:终止循环
+                    ==>在循环没有结束的时候，停止后续代码的执行
+                    ==>我早上要吃6个包子
+                    ==>吃到第3个吃饱了，后面的都不吃了
+                + continue：中止本次循环
+                    ==>中止本次循环
+                    ==>我早上要吃6个包子
+                    ==>吃到第3个吃饱了,第3个包子掉地上了，不吃第三个，后面的继续吃
+        */
+
+        // break:终止循环
+        // for(var i=1;i<=6;i++){
+        //     console.log("这是我吃的第"+i+"个包子");
+        //     if(i==3){
+        //         break;
+        //     }
+        // }
+        // console.log(i)
+
+        // continue:中止本次循环
+        for(var i=1;i<=6;i++){
+            if(i==3){
+                continue;
+            }
+            console.log("这是我吃的第"+i+"个包子");            
+        }
+        console.log(i)
+    </script>
+</body>
+</html>

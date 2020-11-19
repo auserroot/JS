@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正方形和直角三角形就要重复绘制一行星星
+        // 绘制一行星星的代码要频繁使用，以前我们使用for循环来每行执行一次
+        // 今天我们学了函数，我们可以把绘制一行星星的代码放在盒子里面，每行都把盒子里面的代码拿出来执行一次
+        function printStar(starNum){
+            var str="";
+            for(var i=1;i<=starNum;i++){
+                str+="* "
+            }
+            document.write(str+"<br>")
+        }
+        
+        //需求1： 绘制一个10*10的正方形
+        for(var row=1;row<=10;row++){
+            printStar(10);
+        }
+
+        //需求2： 绘制一个10*10的直角三角形
+        for(var row=1;row<=10;row++){
+            // row表示当前是第几行，是第几行，这行就有几个星星
+            printStar(row)
+        }
+    </script>
+</body>
+</html>

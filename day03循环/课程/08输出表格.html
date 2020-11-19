@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        table{
+            width: 500px;
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 输出一个6行5列的table
+
+        // 步骤一：拼接出一行的html代码
+        // var str = "<tr>"
+        // for(var i=1;i<=5;i++){
+        //     str+="<td></td>"
+        // }
+        // str+="</tr>"
+
+        // 步骤二：拼接出6行的html代码
+        var htmlStr = "<table>";
+        for(var row=1;row<=6;row++){
+            htmlStr+="<tr>"
+            for(var i=1;i<=5;i++){
+                if(i==5){
+                    htmlStr+='<td><img src="./img/'+i+'.gif"></td>'
+                }else{
+                    htmlStr+='<td><img src="./img/'+i+'.jpg"></td>'
+                }
+            }    
+            htmlStr+="</tr>"
+        }
+        htmlStr+="</table>";
+        document.write(htmlStr)
+    </script>
+</body>
+</html>

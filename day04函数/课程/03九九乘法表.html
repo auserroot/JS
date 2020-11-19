@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 99乘法表
+        // 第1行： 1*1=1
+        // 第2行： 1*2=2 2*2=4
+        // 第3行： 1*3=3 2*3=6 3*3=9
+
+        for(var row=1;row<=9;row++){
+            var str =""
+            for(var i=1;i<=row;i++){
+                str+= i+"*"+row+"="+(i*row)+"&nbsp;"
+            }
+            str+="<br>";
+            document.write(str)
+        }
+    </script>
+</body>
+</html>

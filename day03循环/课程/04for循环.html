@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            for循环
+                ==>和while,和do...while都不太一样
+                ==>道理和其他循环结构一样，都是循环执行代码
+                ==>语法
+                    for(设置初始值;条件判断;自身的改变){
+                        循环执行的代码
+                    }
+                ==>执行顺序
+                    第一步:设置初始值:var num=1;
+                    第二步:条件判断:num<101
+                    第三步:执行循环代码:console.log(num)
+                    第四部:自身的改变:num++
+                ==>断电调试
+                    ==>打开开发者工具-->sources-->双击要调试的文件
+                    ==>在要调试的代码的开始和结尾单击，这就是给代码打断点
+                    ==>刷新,代码执行到开始断点位置停止
+                    ==>在watch面板添加要观察的变量名
+                    ==>f8直接执行到断点结尾
+                    ==>f10单步调试
+        */
+
+        // 案例1:输出1-100之间的整数
+        // 写法一:
+        // num记录的是要输出的数字
+        // for(var num =1;num<101;num++){
+        //     console.log(num);
+        // }
+
+        // 写法二:
+        // num记录的是要输出的数字
+        // var num = 1;
+        // for(;num<101;){
+        //     console.log(num);
+        //     num++;
+        // }
+
+        // 案例2: 计算1-100之间整数的累计和
+        // add 要累加的数字
+        // sum 记录总和
+        // for(var add=1,sum=0;add<101;add++){
+        //     sum = sum+add;
+        // }
+        // console.log(sum)
+        // console.log(add)
+        // add=1,sum=0  sum = 0+1=1;
+        // add=2  sum = 1+2=3
+        // add=100 sum = sum+100;
+
+        // 案例3:计算1-100之间所有奇数的和
+        // 步骤一：输出1-100之间所有奇数
+        // var num = 1; //num是要输出的数字
+        // for(;num<101;num++){
+        //     // 奇数才打印
+        //     if(num%2==1){
+        //         console.log(num)
+        //     }
+        // }
+        // 步骤二：计算1-100之间所有奇数的和
+        for(var sum=0,num=1;num<101;num++){
+            if(num%2==1){
+                sum = sum+num;
+            }
+        }
+        console.log(sum)
+    </script>
+</body>
+</html>

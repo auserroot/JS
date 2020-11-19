@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 案例：输出直角三角形
+        // 步骤一：输出一行里面的n个星星,一行需要几个星星，i就小于等于几
+        var str = "";
+        for(var i=1;i<=6;i++){
+            str+="*";
+        }
+        console.log(str)
+
+        // 步骤二：输出直角三角形每一行有几个星星
+        for(var row=1;row<=6;row++){
+            // console.log('当前是直角三角形的第'+row+'行,本行有'+row+'个星星');
+            var str = "";
+            for(var i=1;i<=row;i++){
+                str+="*\t";
+            }
+            console.log(str)
+        }
+    </script>
+</body>
+</html>

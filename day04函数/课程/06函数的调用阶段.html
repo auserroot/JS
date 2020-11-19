@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数的调用阶段
+                ==>就是把盒子里面的代码执行一遍
+                ==>让函数执行
+                ==>两种定义方式不同，但是调用函数的方式都是一样的
+            调用一个函数
+                ==>函数调用就是直接写:  函数名()  就可以了
+            注意：
+                ==>定义完一个函数以后，如果没有函数调用，那么写在{}里面的代码没有意义，只有调用以后才会执行
+            调用上的区别
+                ==>虽然两种定义方式的调用都是一样的，但是还是有一定区别
+                ==>声明式函数，调用可以再定义之前或者定义之后    
+                ==>赋值式函数，调用只能再定义之后
+        */
+
+        // 调用函数
+        fn()
+        // 声明式
+        function fn(){
+            console.log("我是fn函数")
+        }
+
+        // 调用函数
+        fn()
+
+        // 赋值式
+        var fn2 = function(){
+            console.log('我是fn2函数')
+        }
+        // 调用函数
+        fn2()
+    </script>
+</body>
+</html>

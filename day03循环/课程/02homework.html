@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1 if判断变量的数据类型
+        // var flag;
+        // 使用typeof可以判断数据类型
+        // if(typeof flag=="string"){
+        //     alert('字符串')
+        // }else if(typeof flag=="number"){
+        //     alert('数值')
+        // }else if(typeof flag=="boolean"){
+        //     alert('布尔')
+        // }else if(typeof flag=="undefined"){
+        //     alert('未定义')
+        // }else if(typeof flag=="object"){
+        //     alert('空')
+        // }
+
+
+
+
+
+        // 2 输入年份，计算某一年是否是闰年
+        // 闰年：
+        // 条件1 ：能被4整除，但不能被100整除的年份 
+        // 条件2 ：能被400整除的年份
+        // var year = 2020;
+        // 方法一
+        // if(year%4==0&&year%100!=0){
+        //     // 能被4整除，但不能被100整除的年份 
+        //     alert(year+'是闰年')
+        // }else if(year%400==0){
+        //     // year%400的结果
+        //     // 0 false
+        //     // 1-399 true
+        //     // 能被400整除的年份
+        //     alert(year+'是闰年')
+        // }else{
+        //     // 上面条件都不符合
+        //     alert(year+'不是闰年')
+        // }
+
+        // 方法二
+        // if(!(year%4)&&year%100){
+        //     // 能被4整除，但不能被100整除的年份 
+        //     alert(year+'是闰年')
+        // }else if(!(year%400)){
+        //     // year%400的结果
+        //     // 0 false
+        //     // 1-399 true
+        //     // 能被400整除的年份
+        //     alert(year+'是闰年')
+        // }else{
+        //     // 上面条件都不符合
+        //     alert(year+'不是闰年')
+        // }
+
+        // 3 输入数字，显示星期几( 假设本月一号是周一 )
+        // var day = 18;
+        // 1 周一
+        // 7 周日
+        // 8 周一
+        // 14 周日
+        // 15 周一
+        // switch(day%7){
+        //     case 1:alert('周一');break;
+        //     case 2:alert('周二');break;
+        //     case 3:alert('周三');break;
+        //     case 4:alert('周四');break;
+        //     case 5:alert('周五');break;
+        //     case 6:alert('周六');break;
+        //     case 0:alert('周日');break;
+        // }
+
+
+
+        // 4 输入月份，显示当月的天数
+        // 2月 闰年29 平年28
+        // 1 3 5 7 8 10 12月 31天
+        // 4 6 9 11月 30天
+        // var year = parseInt(prompt('请输入年份'));
+        // var month = parseInt(prompt('请输入月份'));// 页面获取的内容都是字符串
+        // 有两个变量名不是关键字，但是有特殊含义不要用：name和top
+        // switch(month){
+        //     case 1:
+        //     case 3:
+        //     case 5:
+        //     case 7:
+        //     case 8:
+        //     case 10:
+        //     case 12:
+        //         alert(month+'月是31天');
+        //         break;
+        //     case 2:
+        //         !(year%4)&&year%100||!(year%400)?alert(month+'月是29天'):alert(month+'月是28天');
+        //         break;
+        //     default:
+        //         alert(month+'月是30天');
+        //         break;
+        // }
+
+
+
+        // 5 根据数字日期，判断这个日期是这一年的第几天
+        var year = 2020
+        var month = 12;
+        // 2月 闰年29 平年28
+        // 1 3 5 7 8 10 12月 31天
+        // 4 6 9 11月 30天
+        var day = 31;
+        // 用一个变量记录总天数
+        var sum = 0;
+        // 1 月 ： sum+day
+        // 2 月 ： sum+1月+day
+        // 3 月 ： sum+2月+1月+day
+        switch(month){
+            case 12: // 加11月的总天数
+                sum+=30;
+            case 11: // 加10月的总天数
+                sum+=31;
+            case 10: // 加9月的总天数
+                sum+=30;
+            case 9: // 加8月的总天数
+                sum+=31;
+            case 8: // 加7月的总天数
+                sum+=31;
+            case 7: // 加6月的总天数
+                sum+=30;
+            case 6: // 加5月的总天数
+                sum+=31;
+            case 5: // 加4月的总天数
+                sum+=30;
+            case 4: // 加3月的总天数
+                sum+=31;
+            case 3: // 加2月的总天数
+                !(year%4)&&year%100||!(year%400)?sum+=29:sum+=28;
+            case 2: // 加1月的总天数
+                sum+=31;
+            case 1: // 加当月的天数
+                sum +=day;
+                break;
+        }    
+        alert(year+'年'+month+'月'+day+'日是今年的第'+sum+'天')
+    </script>
+</body>
+</html>

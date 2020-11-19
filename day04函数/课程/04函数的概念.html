@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数的概念
+                ==>对于js来说，函数就是把任意一段代码放在一个盒子里面
+                ==>在我想要让这段代码执行的时候，直接执行这个盒子里面的代码就行
+            函数的两个阶段(重点)
+                ==>按照刚才说法
+                ==>两个阶段就是：放在盒子里面(函数的定义阶段) 和 让盒子里面的代码执行(函数的调用阶段)
+
+        */
+
+        function fn(){
+            // 这就是我们的一段代码，功能是:输出一行10个星星
+            var str = "";
+            for(var i=1;i<=10;i++){
+                str+="*"
+            }
+            str+="<br>"
+            document.write(str)
+        }
+    </script>
+</body>
+</html>

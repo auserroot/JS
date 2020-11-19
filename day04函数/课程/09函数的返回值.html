@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数的return(重点)
+                ==>return就是返回的意思，其实就是给函数一个返回值和终端函数
+            终端函数
+                ==>当我开始执行函数以后，函数内部的代码就会从上到下依次执行
+                ==>必须要等到函数内的代码执行完毕
+                ==>而return关键字就是可以在函数中间的位置暂停，让后面的代码不在继续执行
+                ==>return只能有一个
+            返回值
+                ==>函数本身也是一个表达式，表达式就应该有一个值出现
+                ==>现在的函数执行完毕之后，是不会有结果出现的
+                ==>return关键字就是可以给函数执行完毕一个结果
+                ==>我们可以在函数内部使用return关键字把任何内容当作这个函数运行后的结果
+
+        */
+        // 终端函数
+        function fn(){
+            console.log(1)
+            console.log(2)
+            console.log(3)
+            return;
+            console.log(4)
+            console.log(5)
+            console.log(6)
+        }
+        // fn()
+
+        // 返回值
+        // console.log(1+1);//2
+        // console.log(true&&false);//false
+        // console.log(fn())
+
+        function fn2(){
+            console.log(1)
+            console.log(2)
+            console.log(3)
+            return 1024;
+        }
+        console.log(fn2())
+        console.log(fn2()+fn2());
+    </script>
+</body>
+</html>

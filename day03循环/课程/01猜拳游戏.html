@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            设计一个猜拳游戏
+            假设：1 代表石头  2 代表剪刀  3 代表布
+            计算机每次随机出现1-3中的任意一个数字
+            玩家也有三种状态，用玩家出的数和计算机出的数进行比对，按照游戏规则分成胜负。
+
+            难点：1-3中的任意一个随机整数：parseInt(Math.random()*3+1)
+        */
+
+        // computer
+        var computer = parseInt(Math.random()*3+1);//1-3中的任意一个随机整数
+        // player
+        var player = parseInt(prompt('请输入一个整数:1 代表石头-2 代表剪刀-3 代表布'));//凡是从页面获取到的都是字符串类型
+        // result变量里面存储结果
+        var result = "";
+
+        // 判断输赢
+        switch(computer){
+            case 1: // 石头
+                switch(player){
+                    case 1:
+                       result="平局" ;
+                       break;
+                    case 2:
+                       result="输了" ;
+                       break;
+                    case 3:
+                       result="赢了" ;
+                       break;
+                }
+                break;
+            case 2: // 剪刀
+                switch(player){
+                    case 1:
+                       result="赢了" ;
+                       break;
+                    case 2:
+                       result="平局" ;
+                       break;
+                    case 3:
+                       result="输了" ;
+                       break;
+                }
+                break;
+            case 3: // 布
+                switch(player){
+                    case 1:
+                       result="输了" ;
+                       break;
+                    case 2:
+                       result="赢了" ;
+                       break;
+                    case 3:
+                       result="平局" ;
+                       break;
+                }
+                break;
+        }
+
+        alert('计算机出的是'+computer+'你出的是'+player+",你"+result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 第1题:打印100–200之间所有能被3或者7整除的数
+        // for(var i=100;i<=200;i++){
+        //     if((i%3==0)||(i%7==0)){
+        //         console.log(i)
+        //     }
+        // }
+
+        // 第2题：打印出1000-2000年中所有的闰年，并以每行四个数的形式输出 
+        // 方法一：在页面输出
+        // 定义一个计数器num,记录你当前输出的是第几次
+        // var num = 0;
+        // for(var year=1000;year<=2000;year++){
+        //     if(!(year%4)&&year%100||!(year%400)){
+        //         // 符合条件才是闰年，才算输出一次
+        //         num++;
+        //         if(num%4==0){
+        //             document.write(year+"<br>")
+        //         }else{
+        //             document.write(year+"&nbsp;")
+        //         }
+                
+        //     }
+        // }
+        // num=1 num=2 num=3 num=4 
+        // num=5 num=6 num=7 num=8
+
+        // 方法二：在控制台输出,先拼接好，再一次性输出
+        // var num = 0;
+        // var str = "";//最后要输出的内容拼接再str上
+        // for(var year=1000;year<=2000;year++){
+        //     if(!(year%4)&&year%100||!(year%400)){
+        //         // 符合条件才是闰年，才算输出一次
+        //         num++;
+        //         if(num%4==0){
+        //             str+=year+"\n";
+        //         }else{
+        //             str+=year+"\t";
+        //         }
+                
+        //     }
+        // }
+        // console.log(str)
+
+
+
+        // 第3题：求1+2!+3!+...+20!的值
+        // 步骤1：求任意数的阶乘
+
+        // i<=几，就是几阶乘
+        // var ji = 1;
+        // for(var i=1;i<=20;i++){
+        //     ji = ji*i;
+        // }
+
+        // 步骤2：求和
+        // var sum = 0;
+        // for(var i=1;i<=20;i++){
+        //     // 计算循环到的i的阶乘
+        //     var ji = 1;
+        //     for(var j=1;j<=i;j++){
+        //         ji = ji*j;
+        //     }
+        //     // 然后累加到sum上面
+        //     sum = sum+ji;
+        // }
+        // console.log(sum)
+
+
+        // 第4题：求出1/1-1/2+1/3-1/4…..1/100的和
+        // var sum = 0;
+        // 规律:分母是偶数，就加一个负数，分母是奇数就加一个正数
+        // for(var i=1;i<=100;i++){
+        //     if(i%2==0){
+        //         // 偶数
+        //         sum+=-1/i;
+        //     }else{
+        //         // 奇数
+        //         sum+=1/i;
+        //     }
+        // }
+        // console.log(sum)
+
+        // 第5题：求一个三位数的个位，十位和百位
+        // var num = 256; 
+        // // 百位
+        // var bai = parseInt(num/100);
+        // // 个位
+        // var ge = num%10;
+        // // 十位
+        // var shi = parseInt(num%100/10);
+        // console.log(bai,shi,ge)
+
+        // 第6题:求100-999之间的水仙花数。 算法 : abc = a ³ + b³ + c ³
+        for(var i=100;i<=999;i++){
+            // 百位
+            var bai = parseInt(i/100);
+            // 个位
+            var ge = i%10;
+            // 十位
+            var shi = parseInt(i%100/10);
+            if(i==bai*bai*bai+shi*shi*shi+ge*ge*ge){
+                console.log(i)
+            }
+        }
+    </script>
+</body>
+</html>

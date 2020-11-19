@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            预解析就是聊聊js代码的编译和执行
+                ==>js是一个解释型语言，就是在代码执行之前，先对代码进行通读和解释，然后再执行代码
+                ==>也就是说，我们的js代码在运行的时候，会经历两个环节：解释代码和执行代码
+            解释代码
+                ==>因为是在所有代码执行之前进行解释，所以也叫做预解析（预解释）
+                ==>需要预解析的内容有两个
+                    1 声明式函数
+                        ==>在内存中声明一个变量名是函数名，并且这个名字代码的内容是一个函数
+                    2 var关键字
+                        ==>在内存中声明有一个变量名
+                ==>赋值式函数会按照var关键字的规则进行预解析
+                ==>函数是js里面的一等公民
+
+        */
+        // fn();
+        // console.log(num);
+
+        function fn(){
+            console.log('我是fn函数')
+        }
+        function num(){
+            console.log('我是num函数')
+        }
+        var num = 100;
+        
+
+        
+        // 在执行之前要经过预解析
+        // 第一步 预解析
+        // function fn(){
+        //     console.log('我是fn函数')
+        // }
+        // function num(){
+        //     console.log('我是num函数')
+        // }
+        // var num
+        // 第二步 代码执行
+        // fn();
+        // num = 100;
+    </script>
+</body>
+</html>

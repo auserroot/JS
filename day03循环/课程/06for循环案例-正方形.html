@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            输出一个正方形
+                + 技术点：
+                    ==>在页面输出内容(和书写html一样)
+                    ==>在控制台输出内容(\t表示tab，\n表示换行)
+        */
+        
+        // 在控制台输出内容
+        // console.log('* * * * * *')
+        // console.log('*\t*\t*\t*\t*\t*');//在控制台输出tab使用\t
+        // console.log('*\t*\t*\t*\t*\t*\n*\t*\t*\t*\t*\t*');//在控制台输出换行使用\n
+
+        // 在页面输出内容
+        // 可以拼接好了输出
+        // document.write("<h1>我是h1&nbsp;&nbsp;表情</h1>");//页面输出空格使用&nbsp;
+        // 也可以想到一个输出一个
+        // document.write('<h1>')
+        // document.write("我是h1表情")
+        // document.write("</h1>")
+        // document.write('<span>hello</span><br><span>world</span>');//页面输出换行使用<br>
+        
+        // 步骤一：输出一行星星(比如：一行6个星星)
+        // 输出的" * * * * * * ",是一个字符串，先拼接好6个星星，再一次性输出
+        // var str = "";// str用于拼接星星
+        // for(var i=1;i<=6;i++){
+        //     str +="* "
+        // }
+        // console.log(str);
+
+        // 步骤二：在控制台输出一个正方形（一行6个星星，有6行）
+        // var str="";//用于拼接正方形的星星
+        // row表示当前是第几行,外层循环表示行
+        // for(var row=1;row<=6;row++){           
+        //     for(var i=1;i<=6;i++){
+        //         str+="* "
+        //     }
+        //     str+="\n";
+        // }
+        // console.log(str)
+        // row = 1 第一行 str=“******\n”  
+        // row = 2 第二行 str=“******\n******\n”  输出第二行
+
+        // 步骤三：在页面输出一个正方形（一行6个星星，有6行）
+        // 一行一行星星输出
+        // for(var row=1;row<=6;row++){
+        //     var str="";
+        //     // 内层循环出一行的6个星星
+        //     for(var i=1;i<=6;i++){
+        //         str+="*&nbsp;"
+        //     }
+        //     str+="<br>";
+        //     // 输出当前行的星星
+        //     document.write(str)
+        // }    
+
+        // 拼接好html以后再输出
+        var str=""
+        for(var row=1;row<=6;row++){
+            for(var i=1;i<=6;i++){
+                str+="*&nbsp;"
+            }
+            str+="<br>";
+        }
+        document.write(str)
+        // row=1  str="******<br>"
+        // row=2  str="******<br>******<br>"
+    </script>
+</body>
+</html>
