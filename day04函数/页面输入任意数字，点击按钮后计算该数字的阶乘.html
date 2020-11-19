@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        p{
+            width: 200px;
+            height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="txt"></p>
+        <input type="text" id="num">
+        <input type="button" value="enter" onclick="fn()">
+    </div>
+    
+    <script>
+        function fn(){
+            var num = document.getElementById("num").value
+            for(var j=1,i=1;i<=num;i++){
+                j*=i
+            }document.getElementById("txt").innerHTML=j
+        }
+    </script>
+</body>
+</html>

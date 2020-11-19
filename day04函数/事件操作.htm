@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background-color: slategrey;
+        }
+        .o{
+            overflow: hidden;
+            margin: 30px auto;
+        }
+        #txt1{
+            float: left;
+            width: 300px;
+            height: 200px;
+            font-size: 60px;
+            text-align: center;
+            line-height: 200px;
+            background: skyblue;
+            border-radius: 20px;
+        }
+        #txt,#txt3{
+            margin-left: 30px;
+            float: left;
+            width: 300px;
+            height: 200px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 200px;
+            background:#fff;
+            border-radius: 20px;
+        }
+        #txt2{
+            float: left;
+            width: 300px;
+            height: 200px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="o">
+        <div id="txt1">DIV</div>
+        <div id="txt"></div>
+    </div>
+    
+    <div class="o">
+        <input type="text" id="txt2" onchange="change()">
+        <div id="txt3"></div>
+    </div>
+    <script>
+        //dblclick事件
+        document.addEventListener("dblclick",mouseclick)
+        function mouseclick(){
+            document.getElementById("txt").innerHTML = "您刚刚双击了DIV，触发了dblclick事件"
+        }
+        //onchange事件
+        function change(){
+            document.getElementById("txt3").innerHTML="输入框内容被改变，触发了onchange事件"
+        }
+    </script>
+</body>
+</html>

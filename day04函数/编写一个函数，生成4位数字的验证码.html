@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="checkcode()">验证码</button>
+    <script>
+        // 编写一个函数，生成4位数字的验证码
+        //方法一
+        /* function checkcode() {
+            var num = parseInt(Math.random() * 9000) + 1000;
+            // return num;
+            document.write(num)
+        } */
+        //方法二
+        function checkcode() {
+            var num = 0;
+            do {
+                num = parseInt(Math.random() * 10000);
+            } while (num < 1000);
+            //return num;
+            document.write(num)
+        }
+
+    </script>
+</body>
+</html>
