@@ -8,13 +8,30 @@
 <body>
     <script>
         //创建一个对象，表示一个学生的信息
+       /*  //1.
        var obj={
-           name = "xiaoming",
-           sex = "men",
-           age = 18,
-           height = 180,
-           weight = 65
+            //给对象添加属性并赋值(属性 ：属性值)
+           name :"xiaoming",
+           sex : "men",
+           age : 18,
+           height : 180,
+           weight : 65
        }
+    //    console.log(obj)
+        console.log(obj.name) */
+
+        //2.
+        //构建新对象
+        var obj = new Object()
+        //给对象添加属性并赋值(对象名.属性=属性值)
+        obj.name = "xiaoming"
+        obj.sex = "men"
+        obj.age = 18
+        obj.height = 180
+        obj.weight = 65
+
+        // console.log(obj)
+        // console.log(obj.name)
     </script>
 </body>
 </html>
