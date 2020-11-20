@@ -21,7 +21,8 @@
         function shuijishu(){
             var min = parseInt(document.getElementById("min").value) 
             var max =  parseInt(document.getElementById("max").value) 
-            document.getElementById("txt").innerHTML = parseInt(Math.random()*(max-min+1)+min);
+            //document.getElementById("txt").innerHTML = parseInt(Math.random()*(max-min+1)+min);
+            document.getElementById("txt").innerHTML = document.write(Math.round(Math.random() * (max-min)+min));
         }
     </script>
 </body>
