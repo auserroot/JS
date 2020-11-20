@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            width: 400px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <p id="txt"></p>
+    <input type="text" id="num1" placeholder="输入num1">
+    <input type="text" id="num2" placeholder="输入num2该值大于num1">
+    <input type="button" value="enter" onclick="get()">
+    <script>
+        // 比如：计算0~3之间能组成的奇数是： 01、03、13、21、23、31
+        function get() {
+            var num1 = document.getElementById("num1").value
+            var num2 = document.getElementById("num2").value
+            var count = 0;
+            for (var i = num1; i <= num2; i++) {
+                for (var j = num1; j <= num2; j++) {
+                    if (i == j) continue;
+                    if ((i * 10 + j) % 2 != 0) {
+                        console.log(i * 10 + j);
+                        count++;
+                    }
+                } 
+                document.getElementById("txt").innerHTML = count
+            }
+        }
+    </script>
+</body>
+</html>
