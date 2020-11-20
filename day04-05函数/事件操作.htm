@@ -52,17 +52,18 @@
     </div>
     
     <div class="o">
-        <input type="text" id="txt2" onchange="change()">
+        <input type="text" id="txt2" value="123" onchange="change()">
         <div id="txt3"></div>
     </div>
     <script>
-        //dblclick事件
+        //dblclick事件（双击事件）
         document.addEventListener("dblclick",mouseclick)
         function mouseclick(){
             document.getElementById("txt").innerHTML = "您刚刚双击了DIV，触发了dblclick事件"
         }
         //onchange事件
         function change(){
+            txt2.style.background="red"//改变标签背景颜色
             document.getElementById("txt3").innerHTML="输入框内容被改变，触发了onchange事件"
         }
     </script>
