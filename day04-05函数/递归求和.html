@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //使用函数递归求和
+        //n-5求和
+        /* function sum(n){
+            if(n==5){
+                return 5
+            }else{
+                return n+sum(n+1)
+            }
+        } */
+       // console.log(sum(5))
+
+          //1-n求和
+          function sum(n){
+            if(n==1){
+                return 1
+            }else{
+                return n+sum(n-1)
+            }
+        }
+        console.log(sum(5))
+    </script>
+</body>
+</html>
