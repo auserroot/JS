@@ -22,7 +22,8 @@
             var min = parseInt(document.getElementById("min").value) 
             var max =  parseInt(document.getElementById("max").value) 
             //document.getElementById("txt").innerHTML = parseInt(Math.random()*(max-min+1)+min);
-            document.getElementById("txt").innerHTML = document.write(Math.round(Math.random() * (max-min)+min));
+            // Math.round方法对获取的小数四舍五入取整
+            document.getElementById("txt").innerHTML = (Math.round(Math.random() * (max-min)+min));
         }
     </script>
 </body>
