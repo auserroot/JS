@@ -8,8 +8,8 @@
 <body>
     <button onclick="isNumber()">isNumber</button>
     <script>
-        
-        var str =prompt("enter number");
+        //trim()方法能去除获取字符串前后的空格
+        var str =prompt("enter number").trim();
         //方法一
      /*    function isNumber(){
         if( str%1 == 0){
@@ -21,7 +21,7 @@
     } */
     //方法二
     /* function isNumber(){
-        if( !isNaN(str)){
+        if( !isNaN(str)&&str!=""){
             alert(true);
         }else{
             alert(false)
