@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //通过循环按执行顺序，做一个5×5的二维数组，赋1到25的自然数，然后输出该数组的左下半三角。试编程。
+        //创建二维数组yarr中每5个值存储一次
+            var xarr = []
+            var yarr = []
+            for (var j = 1, i = 0; j <= 25; j++) {
+                //给yarr数组赋值
+                yarr.push(j)
+                if (j % 5 == 0) {
+                    //yarr中每5个值在xarr中存储一次
+                    xarr[i] = yarr
+                    i++
+                    //在xarr中存储后清空yarr原有值
+                    yarr = []
+                }
+            }
+        console.log(xarr)
+        // 输出该数组的左下半三角
+        function san(arr){
+            for(var i=0;i<5;i++){
+                for(var j=0;j<=i;j++){
+                // console.log(arr[i][j])
+                document.write(arr[i][j]+"&nbsp;&nbsp;")
+            }
+            document.write("<br>")
+         }
+         //console.log(arr[i][j])
+    }
+        san(xarr)
+    </script>
+</body>
+</html>

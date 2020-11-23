@@ -9,7 +9,7 @@
     <script>
         //定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
 
-        //定义一个数组
+      /*   //定义一个数组
         var arr = []
         //定义一个数组存储arr1中每5个值存储一次
         var arr2 = []
@@ -34,8 +34,40 @@
         }   
         console.log(arr3)
         console.log(arr2)
-        console.log(arr)
+        console.log(arr) */
            
+
+         //定义一个数组
+         var arr = []
+        //定义一个二维数组存储arr1中每5个值存储一次
+        var arr2 = []
+
+        for (var i = 1,j=0; i <= 30; i++) {
+            arr.push(i * 2)
+            if (i % 5 == 0) {
+                arr2[j]=arr
+                j++
+                arr = []
+            }
+        }   
+        console.log(arr2)
+          //定义一个求平均值得函数
+        function vag(arr){
+            //定义一个数组用来存储还回值
+            var arr3=[]
+            for(var i=0;i<arr.length;i++){
+                for(var j=0,sum=0;j<arr[i].length;j++){
+                     sum += arr[i][j]   
+                } 
+                var sag=0
+                sag = sum/5
+                arr3[i] = sag
+            }
+            
+            console.log(arr3)
+        }
+        vag(arr2)
+        // console.log(arr2)
     </script>
 </body>
 </html>
