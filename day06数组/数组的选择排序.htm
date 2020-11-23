@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组的选择排序（小到大）
+        var arr = [1,3,6,4,8,2,9,7,5]
+        for(var i=0;i<arr.length;i++){
+          //设置假定最小值的下标（索引）
+          var min = i
+          //让数组每次从假定最小索引开始
+          var j = i
+          var temp = 0
+            for(;j<arr.length;j++){
+                //如果出现比arr[min]值小的将其下标赋值给min
+                if(arr[j]<arr[min]){
+                    min = j
+                }
+            }
+            //如果比较结果不相等，就将其值按从小到大互换
+            if(arr[i]!=arr[min]){
+                temp = arr[i]
+                arr[i] = arr[min]
+                arr[min] = temp
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+</html>

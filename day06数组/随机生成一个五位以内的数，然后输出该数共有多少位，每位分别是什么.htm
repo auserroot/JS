@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+        function getnum(){
+            var num = String( parseInt(Math.random()*100000))
+            var arr=[]
+            for(var i=0;i<num.length;i++){
+                arr[i]=num[i]
+                console.log("第"+Number(i+1)+"位是"+arr[i])
+            }
+            console.log(arr)
+        }
+        getnum()
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组的冒泡排序
+        /* var arr=[1,9,5,7,8,6,4,3,2]
+        var temp = 0;
+        for(var i=0;i<arr.length;i++){
+            for(j=0;j<arr.length;j++){
+                //从大到小排
+                if(arr[i]>arr[j]){
+                    temp = arr[i]
+                    arr[i] = arr[j]
+                    arr[j] = temp
+                }
+            }
+        }
+        console.log(arr) */
+        // 算法优化
+        var arr=[1,9,5,7,8,6,4,3,2]
+        var temp = 0;
+        //当数值比较进行到倒数第二次时所有数值都已经确定好位置故最后一次可以省去==>i<arr.length-1即可
+        for(var i=0;i<arr.length-1;i++){
+            //同理，排序完的之后每次排序都不用再次比较故可写为：j<arr.length-j；且最后一次亦不用再比==>j<arr.length-j-1
+            for(j=0;j<arr.length-j-1;j++){
+                //从大到小排
+                if(arr[i]>arr[j]){
+                    temp = arr[i]
+                    arr[i] = arr[j]
+                    arr[j] = temp
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+</html>
