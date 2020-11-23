@@ -12,18 +12,21 @@
         该对象包含学号、身份证、年龄、性别、所学专业等属性信息，
         同时该对象包含一个自我介绍的方法，用来输出该对象的所有信息
         */
-       var student = {
-           studentid:0001,
-           idcard:000000000000000123,
-           age:18,
-           gander:"男",
-           marjorin:"H5",
-           jieshao:function(){
-               for(var key in student){
-                   console.log(key.value)
-               }
-           }
-       }
+        var student = {
+            studentid: "0001",
+            idcard: "000000000000000123",
+            age: 18,
+            gander: "男",
+            marjorin: "H5",
+            func: function showProps(obj) {
+                var result = "";
+                for (var i in obj) {
+                        result +=  i + " = " + obj[i] + "\n";
+                }
+                return result;
+            }
+        }
+            student.func(student)
     </script>
 </body>
 </html>
