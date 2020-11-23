@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+        function norepeat() {
+            //创建新的数组存储返回值
+            var newArr = [];
+            //遍历数组（获取数组中每个值）
+            for (var i = 0; i < arr.length; i++) {
+                //遍历数组（获取数组中arr[i]之后的每个值）
+                for (var j = i + 1; j < arr.length; j++) {
+                    //判断arr[i]与arr[j]的值是否相等
+                    if (arr[i] == arr[j]) {
+                        //arr[i]与arr[j]的值相等则删除后一个相同的值
+                        arr.splice(j, 1);
+                        //删除后数组长度改变用j--让arr[j]与自身下标值比较
+                        j--;
+                    } 
+                } 
+                //存储返回值
+                 newArr[i] = arr[i] ;
+            }
+            console.log(newArr);
+        }
+        var arr = [1, 1, 2, 3, 4, 4, 2, 1, 3, 5];
+        norepeat() ;
+    </script>
+</body>
+</html>
