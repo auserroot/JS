@@ -11,14 +11,15 @@
     <script>
         function onum(){
             var num = document.getElementById("num").value;
+            var sum=0
             if(num%2==0){
-                for(var sum=0,i=1;i<=num;i++){
-                sum += 1/(2*i)
+                for(var i=2;i<=num;i+=2){
+                sum += 1/i
               }
               document.write(sum)
             }else{
-                for(var sum=0,i=1;i<=num;i++){
-                sum += 1/(2*i-1)
+                for(var i=1;i<=num;i+=2){
+                sum += 1/i
               }
               document.write(sum)
             }
