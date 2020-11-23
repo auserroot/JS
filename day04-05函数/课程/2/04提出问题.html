@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var aa = 200;
+        function fn(num){
+            var bb = 100;
+            aa = 300;
+            console.log(bb);
+            console.log(num)
+        }
+        fn(100);//本次调用函数，变量num的值是100
+        // console.log(num);//在函数外部不能访问num
+        // console.log(bb);//在函数外部不能访问num
+        console.log(aa)
+    </script>
+</body>
+</html>

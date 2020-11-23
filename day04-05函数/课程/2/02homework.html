@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 编写一个函数，计算两个数字的和差积商
+        function calc(num1,num2,type){
+            // 一段代码
+            var result;
+            switch(type){
+                case "+":result = num1+num2;break;
+                case "-":result = num1-num2;break;
+                case "*":result = num1*num2;break;
+                case "/":result = num1/num2;break;
+            }
+            return result;
+        }
+
+        console.log(calc(12,34,"+"))
+        console.log(calc(12,24,"/"))
+
+        // 2. 编写函数，求圆的面积
+        function area(r){
+            // js提供了π这个常量:Math.PI
+            return Math.PI*r*r;
+        }
+        console.log(area(100))
+        
+        // 3. 编写函数，判断一个字符串的内容是不是纯数字
+        function isNum(){
+            var str = prompt('请输入需要判断的内容').trim();//凡是页面获取的内容都是字符串,trim()用于去除前后空格
+            if(str==""){
+                alert('你没有输入任何内容')
+            }else if(!isNaN(str)){
+                // !isNaN(str)为真，isNaN(str)是false，表示是数字
+                alert('你输入的是纯数字')
+            }else{
+                alert('你输入的不是纯数字')
+            }
+        } 
+        // isNum()
+
+
+        // isNaN() 方法，可以判断一个数据是不是非数字，如果返回true，就不是数字，如果返回false，就是数字
+        // console.log(isNaN('12'))
+        // console.log(isNaN(null))
+        // console.log(isNaN(undefined))
+        // console.log(isNaN('12a14'))
+        // console.log(isNaN(''))
+        // console.log(isNaN('0'))
+        // console.log(isNaN("null"))
+        // console.log(isNaN("undefined"))
+
+        // trim() 方法，可以返回去除空格以后的字符串
+        // var str = "      hel    lo       "
+        // console.log("==="+str+"====");
+        // str = str.trim()
+        // console.log("==="+str+"====");
+
+        // 4. 编写一个函数，计算三个数字的大小，按从小到大的顺序输出 
+        function bigOrSmall(a,b,c){
+            if(a<b){
+                if(c<a){
+                    // c<a
+                    console.log(c,a,b)
+                }else{
+                    if(c>b){
+                        console.log(a,b,c)
+                    }else{
+                        console.log(a,c,b)
+                    }
+                }
+            }
+            else{
+                //a>=b   b a
+                if(c<b){
+                    console.log(c,b,a)
+                }else{
+                    //c>=b
+                    if(c>a){
+                        console.log(b,a,c)
+                    }else{
+                        console.log(b,c,a)
+                    }
+                }
+            }
+        }
+        bigOrSmall(12,1,3)
+
+        // 5. 编写一个函数,返回m到n之间的随机整数
+        // [0-1)随机小数   Math.random()  
+        // [0-100]随机整数  分析过程： Math.random()*101 = [0-1)*101 = [0,101) = parseInt([0,101)) = [0,100]
+        // [0-100]随机整数  计算： parseInt(Math.random()*101)
+        // [5-105]随机整数  计算： parseInt(Math.random()*101)+5
+        
+        // m到n的随机整数
+        // 5-90  ==> [0,85]+5
+        // 2-89  ==> [0,87]+2
+        // 20-56 ==> [0,36]+20
+        // m-n ==>[0,n-m]+m
+
+        // min到max的随机整数
+        function rand(min,max){            
+            return parseInt(Math.random()*(max-min+1))+min;
+        }
+
+
+        
+    </script>
+</body>
+</html>

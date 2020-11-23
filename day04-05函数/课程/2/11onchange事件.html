@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background:red;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <select id="size">
+            <option value="12">12px</option>
+            <option value="16">16px</option>
+            <option value="18">18px</option>
+            <option value="24">24px</option>
+            <option value="30">30px</option>
+            <option value="60">60px</option>
+        </select>
+    </form>
+    <div id="box">今天也要好好学习</div>
+    <script>
+        /* 
+            需求分析：
+                1 在下拉菜单中选择一个字体大小
+                2 div里面的字体立马变成指定的大小
+            技术的:
+                1 选中要操作的元素
+                    ==>给元素添加id
+                    ==>这个id的名字就是一个变量名，代表这个标签元素
+                2 要能够获取下拉列表选定的内容的值
+                    ==>获取表单元素的值:标签元素.value
+                    ==>给表单元素赋值：标签元素.value = 你要赋的值
+                    ==>获取非表单元素的内容: 标签元素.innerHTML
+                    ==>设置非表单元素的内容: 标签元素.innerHTML = 你要设置的内容
+                3 要在表单元素的值改变的执行某些代码
+                    ==>标签元素.onchange = function(){
+                        // 这个函数定义的时候不执行，只有在表单元素的值发生改变的时候才会触发
+                        // 才会执行这个函数里面的代码
+                    }
+                4 要能够改变div的样式
+                    ==> 标签元素.style.样式名 = 样式值;
+                    ==> 如果样式名里面有中划线变成驼峰命名
+        */
+
+        // 1 选中要操作的元素
+        // console.log(box)
+        // console.log(size)
+        // 2 要能够获取下拉列表选定的内容的值
+        size.onchange = function(){
+            // 获取下拉列表选定的内容的值
+            // console.log(size.value)
+            box.style.fontSize = size.value+"px";
+            box.innerHTML = "今天又没有好好学习"
+        }
+    </script>
+</body>
+</html>

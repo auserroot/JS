@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0px; padding: 0px;}
+        h1{
+            width: 500px;
+            margin:5px auto;
+        }
+        .box{
+            width: 500px;
+            height: 150px;
+            padding:10px;
+            margin:20px auto;
+            display: flex;
+        }
+        .left{
+            flex:1;
+            background:skyblue;
+            border-radius: 8px;
+        }
+        .right{
+            flex:3;
+            border-radius: 8px;
+            border:1px solid #ccc;            
+        }
+        #left2{
+            background:white;
+        }
+    </style>
+</head>
+<body>
+    <h1>请使用鼠标操作div触发事件</h1>
+    <div class="box">
+        <div class="left" id="left1"></div>
+        <div class="right" id="right1"></div>
+    </div>
+
+    <h1>请使用键盘操作输入框触发事件</h1>
+    <div class="box">
+        <input type="text" class="left" id="left2">
+        <div class="right" id='right2'></div>
+    </div>
+
+    <script>
+        // 1 使用鼠标双击div触发事件
+        left1.ondblclick = function(){
+            right1.innerHTML = "您刚刚双击了div"
+        }
+
+        // 2 输入框内容改变触发事件
+        left2.onchange = function(){
+            right2.innerHTML = "您刚刚输入了"+left2.value
+        }
+    </script>
+</body>
+</html>

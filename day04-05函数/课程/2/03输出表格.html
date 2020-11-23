@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 360px;
+            margin:50px auto;
+            border:1px solid olive;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // min到max的随机整数
+        function rand(min,max){            
+            return parseInt(Math.random()*(max-min+1))+min;
+        }
+        // 编写一个函数，在页面上输出一个N行M列的表格，表格内容填充0~100的随机数字
+        function table(n,m){
+            var htmlStr = "<table>";
+            for(var row=1;row<=n;row++){
+                // 这个循环可以输出一行m列
+                htmlStr += "<tr>"
+                for(var i=1;i<=m;i++){
+                    // 生产一个0-100的随机数
+                    var num = rand(0,100);
+                    // 拼接m个td
+                    htmlStr+="<td>"+num+"</td>"
+                }
+                htmlStr += "</tr>";
+            }    
+            htmlStr+="</table>"
+
+            // 全部拼接完成以后输出
+            document.write(htmlStr)
+
+        }
+
+
+        table(12,12)
+    </script>
+</body>
+</html>

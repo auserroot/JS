@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            简单了解对象
+                ==>对象是一种复杂数据类型
+                ==>其实说是复杂，但是也么有很复杂，只不过是存储了一些基本数据类型的一个集合
+                ==>对象就是一个无序的键值对的集合
+                ==>{}的每一个键都是一个成员
+                ==>也就是说，我们可以把一些数据放在一个对象里面，那么他们就互不干扰了
+                ==>键（成员名）加不加引号都是字符串
+            常见一个对象
+                ==>字面量的方式创建一个对象
+                    ==>创建一个空对象
+                    var obj = {}
+                    ==>向对象中添加成员
+                    obj.username = "lisi"
+                    obj.age = 12;
+                ==>内置构造函数的方式创建对象
+                    ==>Object是js内置给我们的构造函数，用于创建一个对象的
+                    ==>创建一个空对象
+                    var obj = new Object()
+                    ==>向对象中添加成员
+                    obj.username = "lisi"
+                    obj.age = 12;
+        */
+
+
+        function fn(n){
+            // fn函数的功能就是，你传入一个学号，返回该学员的信息
+            // var username = "张三";
+            // var age = 12;
+            // var score = 12000;
+            // var gender = 1;
+
+            // 这里的{}和函数里面的{}不一样
+            // 函数里面是写代码的，而对象里面是写一些数据的
+            var obj = {
+                username:"张三",
+                age:12,
+                score:12000,
+                gender:1
+            }
+
+            return obj;
+        }
+
+        // 字面量创建一个对象:熊猫
+        var panda = {};
+        panda.age = "3个月";
+        panda.name = "冰墩墩";
+        panda.love = "竹子";
+        console.log(panda)
+
+        // 字面量创建一个对象:老虎
+        var tiger = {
+            name:"豆豆",
+            age:10,
+            type:"东北虎",
+            love:'肉'
+        }
+        tiger.type = "华南虎"        
+        console.log(tiger)
+
+        // 内置构造函数的方式创建对象:猫
+        var cat = new Object();
+        cat.type="银渐层";
+        cat.price="4000";
+        cat.age = "2个月";
+
+        console.log(cat);
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            选择排序
+                ==> 先假定数组数组中的第0个就是最小的数字的索引
+                ==> 然后遍历数组，只要有一个数字比我小，那么就替换之前记录的的索引
+                ==> 直到数组遍历介绍后，就能找到最小的那个索引，然后让最小的索引换到第0个位置
+                ==> 再来第二趟遍历，假定第1个是最小的数字的索引
+                ==> 再遍历一次数组，找到比我小的那个数字的索引，替换
+                ==> 遍历结束后换个位置
+                ==> 以此类推就可以把数组排序好了
+        */
+
+        // 第一步 准备一个数组
+        var arr = [3,1,5,6,9,7,2,8]
+
+        // 第二步 假定数组的第0个是最小的数字的索引
+        // var minIndex = 0;
+        // 遍历数组，判断，只要数字比我小，那么就替换掉原先记录的索引
+        // for(var i=0;i<arr.length;i++){
+        //     if(arr[i]<arr[minIndex]){
+        //         minIndex = i;
+        //     }
+        // }
+        // 遍历结束以后，找到最小的索引
+        // 让第minIndex个和第0个换位置
+        // var temp = arr[minIndex];
+        // arr[minIndex] = arr[0]
+        // arr[0] = temp;
+        // console.log(arr)
+
+        // 第三步 按照数组的长度重复执行上面的代码
+        for(var j=0;j<arr.length;j++){
+            // 假定数组的第j个是最小的数字的索引
+            var minIndex = j;
+            // 遍历数组，判断，只要数字比我小，那么就替换掉原先记录的索引
+            for(var i=j;i<arr.length;i++){
+                if(arr[i]<arr[minIndex]){
+                    minIndex = i;
+                }
+            }
+            // 遍历结束以后，找到最小的索引
+            // 让第minIndex个和第j个换位置
+            // 第四步 给一些优化，如果假定最小索引j，和最后的minIndex相同，不用换位置
+            if(minIndex!=j){
+                var temp = arr[minIndex];
+                arr[minIndex] = arr[j]
+                arr[j] = temp;
+            }
+            
+        }
+
+        console.log(arr)
+    </script>
+</body>
+</html>

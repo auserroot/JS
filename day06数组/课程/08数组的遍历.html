@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            + 数组的遍历
+                ==> 因为数组的索引就可以获取数组中的内容
+                ==> 数组的索引又是按照0-n顺序排序
+                ==> 我们就可以使用for循环来循环数组，因为for循环我们也可以设置成0-n顺序增加
+                ==> 我们把这个行为叫做遍历
+            + 对象的遍历
+                ==> 因为对象是没有索引的，所以我们没有办法使用for循环来遍历
+                ==> 这里我们使用for in循环来遍历对象
+                ==> for in循环的遍历是按照对象中有多个成员决定的
+                ==> 有多少个成员，就会执行多少次
+                ==> key是我们定义的一个遍历，就和for循环的时候我们定义的i一个道理
+                ==> 在每次循环中，key就代表对象中某个成员的成员名/属性名
+
+
+        */
+        var arr = [1,21,675,44,3,32,3,32,23,2,32,3];
+        // 使用for循环来遍历数组
+        for(var i=0;i<arr.length;i++){
+            console.log(arr[i])
+        }
+        // 使用for in循环来遍历对象
+        var obj = {
+            name:"jack",
+            age:18,
+            love:'rose'
+        }
+        for(var key in obj){
+            console.log("本次遍历到的成员名是:"+key)
+        }   
+    </script>
+</body>
+</html>

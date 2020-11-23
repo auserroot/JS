@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+        // 0、1、1、2、3、5、8、13、21、34、.....
+        // 书写一个函数，计算斐波那契数列的第n项的值
+        // 假设有一个函数feibo(n),可以帮我计算第n项是几
+        // n = 1 feibo(1) = 0
+        // n = 2 feibo(2) = 1
+        // n = 3 feibo(3) = feibo(2) + feibo(1)
+        // n = 4 feibo(4) = feibo(3) + feibo(2)
+        function feibo(n){
+            if(n==1){
+                return 0;
+            }else if(n==2){
+                return 1;
+            }else{
+                return feibo(n-1)+feibo(n-2)
+            }
+        }
+        console.log(feibo(10))
+    </script>
+</body>
+</html>

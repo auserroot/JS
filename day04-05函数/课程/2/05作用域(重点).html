@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            作用域（重点）
+                ==>概念：就是一个变量可以生效的范围
+                ==>变量不是在所有地方都可以使用的，这个变量使用的范围就叫做作用域
+            全局作用域
+                ==>全局作用域是最大的作用域
+                ==>在全局作用域中定义的变量可以再任何地方使用
+                ==>页面打开的时候，浏览器会自动给我们生成一个全局作用域window
+                ==>这个作用域会一直存在，直到页面关闭就销毁了
+            局部作用域（函数作用域）
+                ==>局部作用域就是在全局作用域下面开辟的一个相对小一些的作用域
+                ==>在局部作用域中定义的变量只能在这个局部作用域内部使用
+                ==>在js中只有函数能生成一个局部作用域，别的都不行
+                ==>每一个函数，都是一个局部作用域
+        */
+        // 下面两个变量都是存在全局作用域下面的，都是可以在任意地方使用的
+        var aa = 100;
+        var aa2 = 200;
+        console.log(window)
+
+        // 这个num是全局作用域的变量，在任何位置都能使用
+        var num = 200;
+        function fn(){
+            console.log(num)
+            // 下面这个num2变量是函数fn的局部作用域，只能fn函数内部使用
+            var num2 = 100;
+        }
+        fn()
+        console.log(num2);//报错
+    </script>
+</body>
+</html>

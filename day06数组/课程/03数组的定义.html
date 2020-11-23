@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            什么是数组
+                ==>字面理解:数据的组合
+                ==>准确的来说数组是一个数据的集合
+                ==>也就是说，我们把一些数据放在一个盒子里面，按照顺序排好
+                ==> ['laowang','laocheng','laolv','laojia','laoliu']
+                ==>这个东西就是一个数组，存储着一些数据的集合
+            数据类型分类
+                ==>简单数据类型:number/string/boolean/undefined/null
+                ==>复杂数据类型:object/function/array
+            创建一个数组
+                ==>数组就是一个:  []
+                ==>在[]里面存储着各种各样的数据，按照顺序依次排好
+            字面量创建一个数组
+                ==>直接使用[]的方法创建一个数组
+            内置构造函数创建数组
+                ==>使用js的内置函数Array创建一个数组
+
+            
+        */
+
+        // 1 字面量创建一个数组
+        // 创建一个空数组
+        var arr = [];
+        // 创建一个有内容的数组
+        var arr2 = ['laowang','laocheng','laolv','laojia','laoliu'];
+
+        console.log(arr)
+        console.log(arr2)
+
+        // 2 内置构造函数创建数组
+        // 创建一个空数组
+        var array = new Array();
+        // 创建一个长度为10的数组
+        var array2 = new Array(10);
+        // 创建一个有内容的数组
+        var array3 = new Array('laowang','laocheng','laolv','laojia','laoliu')
+
+        console.log(array)
+        console.log(array2)
+        console.log(array3)
+
+        // 练习1：创建一个数组，数组里面只有一个数据："laozhong"
+        console.log(['laozhong'])
+        console.log(new Array('laozhong'))
+        // 练习2：创建一个数组，数组里面只有一个数据：10
+        console.log([10])
+        console.log(new Array("10"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background:red;
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        /* 
+            需求分析：
+                单击div，背景变粉红色，里面写粉SE是我本命
+                双击div，背景变绿色，里面写绿色是你的天命
+            技能点：
+                单击:onclick
+                双击:ondblclick
+        */
+
+        // 单击div
+        box.onclick = function(){
+            // 背景变粉红色
+            box.style.backgroundColor = "pink";
+            // 里面写粉SE是我本命
+            box.innerHTML = "粉SE是我本命"
+        }
+
+        // 双击div
+        box.ondblclick = function(){
+            // 背景变绿色
+            box.style.backgroundColor = "green";
+            // 里面写绿色是你的天命
+            box.innerHTML = "绿色是你的天命"
+        }
+    </script>
+</body>
+</html>
