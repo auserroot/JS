@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 编写函数，判断一个字符串是否是 “可回文字符串”
+        /* 
+        可回文字符串： 正着和反着一样
+        例如： abcba / 你好世界世好你
+        返回值是布尔值 
+        */
+     var str = 'abcba'
+     //创建空对象存储返回值
+     var obj ={}
+     //遍历字符串
+     for(var i=0;i<str.length;i++){
+         //将i对应的字符赋值给x
+         var x = str.charAt(i)
+         // 判断这个字符的属性值（刚开始都是undefind）
+         if(obj[x]==undefined){
+             //字符出现一次，给对象加键值
+             obj[x]=1
+         }else{
+             obj[x]++
+         }
+     }
+     // 打印对象
+     console.log(obj);
+     // 创建空字符串
+     var str1="";
+     // 遍历对象
+     for (var i in obj) {
+        str1+=i;
+     }
+     // 打印
+     console.log(str1);
+    </script>
+</body>
+</html>

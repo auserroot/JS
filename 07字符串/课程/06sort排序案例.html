@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 一个数组，里面有很多学员对象
+        var arr = [
+            {
+                name:'laoli',
+                score:76,
+                height:188
+            },
+            {
+                name:"xiaozhang",
+                score:59,
+                height:178
+            },
+            {
+                name:"laozeng",
+                score:99,
+                height:198
+            },
+            {
+                name:"xiaozeng",
+                score:19,
+                height:190
+            }
+        ];
+        
+        // 对数组arr按照每个学员的身高升序进行排序
+        // arr.sort(function(a,b){
+        //     // if(a.height>b.height){
+        //     //     return 1
+        //     // }
+        //     // if(a.height==b.height){
+        //     //     return 0
+        //     // }
+        //     // if(a.height<b.height){
+        //     //     return -1
+        //     // }
+        //     return a.height-b.height
+        // })
+
+        // 对数组arr按照每个学员的成绩降序进行排序
+        arr.sort(function(a,b){
+            return b.score-a.score
+        })
+        console.log(arr)
+    </script>
+</body>
+</html>

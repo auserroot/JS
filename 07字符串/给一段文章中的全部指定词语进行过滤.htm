@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 给一段文章中的全部指定词语进行过滤
+        // 比如我要过滤 "SM"
+
+        var str = 'asdasdSMasdasdasdSMsdasdasdSMsadasd'
+        // console.log(str)
+        var newStr=str.split("")
+
+        var result = newStr.map(function(i,j,newStr){
+            if(newStr[j]=="S"){
+                return result[j]="*"
+            }else if(newStr[j]=="M"){
+                return result[j]="*"
+            }else{
+                return result=newStr[j]
+            }
+        })
+
+        // var newResult = String(result)
+        var newResult = result.join("")
+        console.log(newResult)
+        // 需要结果
+        // asdasd**asdasdasd**sdasdasd**
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数参数传递基本数据类型和复杂数据类型的区别
+                ==>存储上的区别：
+                ==>基本数据类型:栈内存，存的是值，赋值也是值
+                ==>复杂数据类型:具体的值在堆内存，变量里面存的是地址，赋值也是赋地址
+            函数的参数
+                ==>形参和实参
+                ==>在函数调用的时候，实参给形参赋值
+                ==>这个赋值和之前的赋值是一样的
+        */
+        // 函数传递基本数据类型
+        function fn(n){
+            // var n =100;
+            n = 200;
+            console.log(n);//200
+        }
+        var num = 100;
+        fn(num);
+        console.log(num);//100
+
+        // 函数传递引用（复杂）数据类型
+        function fn2(n){
+            // var n = obj;
+            n.name ="rose";
+            console.log(n.name);//rose
+        }
+        var obj = {
+            name:'jack'
+        }
+        fn2(obj)
+        console.log(obj.name);//rose
+    </script>
+</body>
+</html>

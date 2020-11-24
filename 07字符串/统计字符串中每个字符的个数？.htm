@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 统计字符串中每个字符的个数？
+    // 结果
+    // { a: 出现次数， b: 出现次数, ...}
+    var str = 'abcdacbabcbababcbabcabd'
+    //创建空对象存储结果
+    var obj ={}
+    //遍历字符串
+    for(var i=0;i<str.length;i++){
+        // 将i对应的字符赋值给j
+        var j = str.charAt(i)
+        //确定obj键值
+        if(obj[j]==undefined){
+            obj[j]=1
+        }else{
+            obj[j]++
+        }
+    }
+    //打印对象
+    console.log(obj)   
+    </script>
+</body>
+</html>

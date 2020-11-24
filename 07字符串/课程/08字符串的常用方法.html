@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./public.js"></script>
+    <script>
+        /* 
+            字符串的常用方法
+                + charAt(索引)
+                    ==> 是找到字符串中指定索引位置的内容返回
+                    ==> 如果没有找到返回空字符串
+                    ==> 索引也是从0开始
+                + charCodeAt(索引)   
+                    ==> 是找到字符串中指定索引位置的内容的编码返回
+                    ==> 如果没有找到返回NaN
+                    ==> 索引也是从0开始
+                + indexOf
+                    ==> 就是按照字符串找到对应的索引
+                    ==> 如果没有找到，返回-1
+                + lastIndexOf
+                    ==> 就是按照字符串找到对应的索引
+                    ==> 如果没有找到，返回-1
+                + String.fromCharCode()
+                    ==> 传入编码，返回编码对应的字符串                    
+                + substring
+                    ==> 截取字符串
+                    ==> 语法：str.substring(从哪个索引开始,到哪个索引为止)
+                    ==> 包含开始索引，不包含结束索引
+                    ==> 不写第二个参数，表示截取到末尾
+                + substr
+                    ==> 截取字符串
+                    ==> 语法：str.substring(从哪个索引开始,截取多少个)
+                    ==> 不写第二个参数，表示截取到末尾
+                + toString
+                    ==> 转字符串
+                + toLowerCase
+                    ==> 返回字符串的小写
+                + toUpperCase
+                    ==> 返回字符串的大写
+                + split
+                    ==> str.split("分隔符")
+                    ==> 字符串转数组
+                    ==> 如果不写"分隔符"，则该字符串变成数组里面的为一个元素
+        */
+        var str = "hello 1000 phone";
+        // 查看一个字符串里面有多少个字符
+        console.log(str.length)
+
+        // charAt
+        console.log(str.charAt(2));//找到返回字符串
+        console.log(str.charAt(200));//如果没有找到返回空字符串
+
+        // charCodeAt
+        console.log(str.charCodeAt(4));//找到返回编码，number
+        console.log(str.charCodeAt(40));//如果没有找到，返回NaN
+
+        // indexOf
+        console.log(str.indexOf('o'));//4
+        console.log(str.indexOf('a'));//如果没有找到，返回-1
+
+        // lastIndexOf
+        console.log(str.lastIndexOf('o'));//13
+        console.log(str.lastIndexOf('a'));//-1
+
+        // String.fromCharCode()
+        console.log(String.fromCharCode(65));
+
+        // substring
+        console.log(str.substring(1,3));//只记这一个就可以
+        console.log(str.substring(3,1));//可以只能调换顺序
+        console.log(str.substring(3));//lo 1000 phone
+        console.log(str.substring(1,-2));//不支持负数
+
+        // substr
+        console.log(str.substr(1,3));//ell
+        console.log(str.substr(1));//不写第二个参数，表示截取到末尾
+        console.log(str.substr(-5));//支持负数
+
+        // toString
+        console.log(str.toString());//转字符串
+
+        var string = "Hello World";
+        // toLowerCase
+        console.log(string.toLowerCase())
+        // toUpperCase
+        console.log(string.toUpperCase())
+
+        // split
+        var str2 = "my-name-is-lisi";
+        var arr = str2.split();
+        console.log(arr)
+
+        var arr2 = str2.split("-");//-就是分隔符，不会被变成数组里面的元素
+        console.log(arr2)
+
+        // 作业
+        // str.slice
+        // arr.slice
+        console.log("==========split案例================")
+        // split案例
+        // 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+        var num = rand(0,99999);
+        var str = num.toString();
+        var result = str.split("")
+        console.log(num)
+        console.log(result)
+    </script>
+</body>
+</html>

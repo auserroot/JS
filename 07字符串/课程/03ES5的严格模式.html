@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // can i use  测试html，css，js的兼容性网站
+        /* 
+        
+            严格模式(了解)
+                ==>js:不是很严谨的一门语言
+                ==>开发的时候，代码也不是很严格要求
+                ==>严格模式就是对开发时候写的一些内容作了要求
+            开启严格模式
+                ==>直接在代码最开始位置写上"use strict";
+            严格模式的规则
+                1 声明变量必须加var关键字
+                2 函数的形参不可以重复
+                3 声明式函数调用的时候函数内部没有this
+
+        */
+        "use strict";
+        // 1 声明变量必须加var关键字
+        // a = 12;// 严格模式会报错
+
+        // 2 函数的形参不可以重复
+        // function fn(a,a){
+        //     // 严格模式会报错
+        //     console.log(a)
+        // }
+        // fn(1,2)
+
+        // 3 声明式函数
+        // function fun(){
+        //     // this是window，严格模式下this是undefined
+        //     console.log(this)
+        // }
+        // fun()
+    </script>
+</body>
+</html>

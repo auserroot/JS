@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            + ES5中常见的数组方法
+                ==> 前面讲的数组常用方法是es3的
+                ==> 今天讲的都是es5
+            + indexOf
+                ==> 用来找到数组中某一项的索引
+                ==> 语法: arr.indexOf("字符串")
+                ==> 如果找到了，返回索引，number类型
+                ==> 如果没有找到，返回-1
+            + forEach
+                ==> 和for循环一样，就是用来遍历数组的
+                ==> 语法: arr.forEach(function(item,index,array){
+                    // 数组里面有多少个元素，函数就执行多少次
+                    // 参数
+                        //第一个形参：item表示，本次循环到的数组元素的值
+                        //第二个形参: index表示，本次循环到是第几个数组元素
+                        //第三个形参: array表示当前正在循环的数组
+                })
+            + map
+                ==> 和forEach类似，只不过可以堆数组中的每一项进行操作，返回一个新的数组
+                ==> 语法：
+                    arr.map(function(item,index,array){
+                        // 数组里面有多少个元素，函数就执行多少次
+                        // 参数同forEach
+                        // 返回值：一个新的数组
+                    })
+            + filter
+                ==> 和map使用方式类似，按照我们的条件进行筛选数组
+                ==> 把原始数组中符合条件的筛选出来，组成一个新的数组返回
+                ==> 语法：
+                    arr.filter(function(item,index,array){
+                        // 数组里面有多少个元素，函数就执行多少次
+                        // 参数同forEach
+                        // 返回值：一个新的数组，里面都是符合条件的数组元素
+
+                        // 当遍历到一个元素item，如果本次return true说明符合条件
+                        // 当遍历到一个元素item，如果本次return false说明符合条件
+                    })
+        */
+
+        var arr = ['hello','world','xiaoli',123,'xiaowang',56]
+        // 1 indexOf
+        // var index = arr.indexOf(123);//index是number类型
+        // console.log(index)
+        // var index2 = arr.indexOf('laowang');
+        // console.log(index2)
+
+        // 2 forEach
+        // arr.forEach(function(value,i,array){
+        //     console.log('=========================')
+        //     console.log('本次循环到的是第'+i+'个数组元素')
+        //     console.log('本次循环到的数组元素是'+value)
+            
+        // })
+        // console.log(result)
+
+        // 3 map
+        // var arr1 = [1,2,3,3,4,5,6]
+        // var result = arr1.map(function(v,i,array){
+        //     // 在这个函数里面可以对原数组的每一项进行操作
+        //     // 这个函数的返回值就是新数组里面的其中一个元素
+        //     var num = v*3;
+        //     return num;
+        // })
+        // console.log(result)
+
+        // 4 filter
+        var arr2 = [2000,3000,4000,5000,7000,10000,20000]
+        var result = arr2.filter(function(item){
+            if(item>5000){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        console.log(result)
+    </script>
+</body>
+</html>

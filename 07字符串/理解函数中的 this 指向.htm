@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 理解函数中的 this 指向
+        //this 在全局作用域中指向window
+        console.log(this)
+        //this 在对象中指向对象本身
+            var obj = {
+            name:"张三",
+            age:18,
+            height:180,
+            func:function(){
+                console.log(this)
+            }
+        }
+        obj.func()
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // aabccd统计每个字符出现的次数，去掉重复的字符，使结果显示 abcd
+        var str="aabccd"
+        //创建空对象存储结果
+        var obj = {}
+        //遍历字符串
+        for(var i=0;i<str.length;i++){
+            //将遍历所得i对应的字符赋值给j
+            var j = str.charAt(i)
+            if(obj[j]==undefined){
+                obj[j]=1
+            }else{
+                obj[j]++
+            }
+        }
+        //打印对象显示每个字符出现次数
+        console.log(obj)
+        //创建空字符串存储去重后的字符串
+        var newStr=""
+        //遍历对象获取字符
+        for(var i in obj){
+            newStr+=i
+        }
+        // 打印字符串
+        console.log(newStr)
+    </script>
+</body>
+</html>

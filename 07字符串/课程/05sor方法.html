@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        /* 
+            arr.sort([排序函数])
+                ==> 元素默认按照转换为的字符串的各个字符的Unicode编码进行排序
+                ==> 排序函数可以执行排序规则
+                ==> 语法：
+                arr.sort(function(a,b){
+                    // 参数
+                    // a:第一个比较的元素
+                    // b:第二个比较的元素
+                    // 如果返回值< 0 ,那么 a 会被排列到 b 之前
+                    // 如果返回值== 0,a 和 b 的相对位置不变
+                    // 如果返回值> 0 ,b 会被排列到 a 之前
+                })
+
+        */
+
+        var arr = [12000,3000,14000,5000,17000,10000,20000];//从小到大排序
+        // 从小到大
+        arr.sort(function(a,b){
+            // if(a>b){
+            //    return 1; // return a-b
+            // }
+            // if(a==b){
+            //     return 0; // return a-b
+            // }
+            // if(a<b){
+            //     return -1; // return a-b
+            // }
+            // 可以简化成
+            return a-b
+        })
+        // 从大到小
+        // arr.sort(function(a,b){
+        //     // if(a>b){
+        //     //    return -1; //return b-a
+        //     // }
+        //     // if(a==b){
+        //     //     return 0; //return b-a
+        //     // }
+        //     // if(a<b){
+        //     //     return 1; //return b-a
+        //     // }
+        //     // 可以简化成
+        //     return b-a;
+        // })
+        console.log(arr)
+    </script>
+</body>
+</html>
