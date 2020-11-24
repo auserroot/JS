@@ -7,8 +7,10 @@
 </head>
 <body>
     <script>
+
         // 编写函数map(arr) 把数组中的每一位数字都增加30%，并返回一个新数组
-        function map(arr){
+        //方法1：
+       /*  function map(arr){
             //新数组,存储返回值
             var newArr =[]
             //把数组中的每一位数字都增加30%并赋值给新数组
@@ -22,10 +24,22 @@
             }
             // 返回一个新数组
             return newArr
-        }
+        } 
         console.log(map([1,2,3,4,5,6,7,8,9])) 
         console.log(map([3,6,9])) 
         console.log(map([1,2,4,5,7,8])) 
+        */
+
+        //方法2： 
+        var arr = [1,2,3,4,5,6,7,8,9]
+        // 使用 map 遍历数组
+        var newArr = arr.map(function (item, index, arr) {
+        // item 就是数组中的每一项
+        // index 就是数组的索引
+        // arr 就是原始数组
+        return (item + item*0.3)
+        })
+        console.log(newArr)
     </script>
 </body>
 </html>
