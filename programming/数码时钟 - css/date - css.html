@@ -3,25 +3,63 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
-<script type="text/javascript">
-	
-</script>
 </head>
 
 <body>
 	<div id="div">
-		<img src="img/0.png" />
-		<img src="img/8.png" />
+		<img src="img/0.png"/>
+		<img src="img/8.png"/>
 		时
-		<img src="img/1.png" />
-		<img src="img/5.png" />
+		<img src="img/1.png"/>
+		<img src="img/5.png"/>
 		分
-		<img src="img/0.png" />
-		<img src="img/9.png" />
+		<img src="img/0.png"/>
+		<img src="img/9.png"/>
 		秒
 	</div>
+
+	<script>
+		function getTime(){
+		//获取元素（监听img标签）
+		var getImg = document.getElementsByTagName("img")
+
+		//获取当前时间
+		var time = new Date()
+		//获取小时
+		var hour = time.getHours()
+		// 获取分钟
+		var minutes = time.getMinutes()
+		// 获取秒
+		var seconds = time.getSeconds()
+
+		//将获取的时间存储到字符串中
+		var newTime = getnum(hour).toString()+getnum(minutes).toString()+getnum(seconds).toString()
+		//匹配图片
+		for(var i=0;i<getImg.length;i++){
+			//当newTime取值时将值拼接成图片链接返回给getImg（当秒钟跳转60次后分钟跳转，分钟跳转60次后时钟跳转故可直接将获取的时间转为图片前缀
+			getImg[i].src="img/"+newTime[i]+".png"
+		}
+		}
+		//函数调用并设置执行函数的时间（每隔1s执行一次）
+		window.onload=function(){
+			//初始化时间为打开页面时的时间
+			getTime()
+			//设置延迟时间每隔1s执行一次
+			setInterval(function(){
+				getTime()
+			},1000)
+		}
+		//判断是否为两位数
+        function getnum(num){
+			if(num<10){
+				//不是两位数则在该数前补0
+				return "0"+num
+			}else{
+				//是两位数则返回该数
+				return num
+			}
+		}
+ 
+	</script>
 </body>
 </html>
-<script>
-	 
-</script>
