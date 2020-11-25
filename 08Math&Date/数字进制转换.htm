@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数字进制转换
+        //toString()可以数字转换成字符串时给定进制数-->num.toString(要转换的进制数)
+        var num = 10
+        // 转换为2进制数
+        console.log(num.toString(2))//1010
+        //转换为8进制数
+        console.log(num.toString(8))//012
+        //转换为16进制数
+        console.log(num.toString(16))//a
+
+
+        //parseInt()可以在字符串转成数字时将其值按本身进制数转换成10进制-->parseInt(str,本身进制数)
+
+        console.log(parseInt("10",2))//2
+        console.log(parseInt("10",8))//8
+        console.log(parseInt("10",10))//10
+        console.log(parseInt("10",16))//16
+        console.log(parseInt("23",8))//19
+    </script>
+</body>
+</html>

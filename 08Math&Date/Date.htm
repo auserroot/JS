@@ -7,8 +7,45 @@
 </head>
 <body>
     <script>
+        //Date是一个内置对象
+        //new Date()//无参数时返回当前时间;传参时，获取的是传入时间
+        // new Date()参数传递的多种情况
+        //         ==> 传递两个数字，第一个表示年，第二个表示月，月份从0开始计算表示1月,11表示12月
+        //         ==> 传递三个数字，第一个表示年，第二个表示月，第三个表示日期
+        //         ==> 传递四个数字，第一个表示年，第二个表示月，第三个表示日期，第四个表示小时
+        //         ==> 传递五个数字，第一个表示年，第二个表示月，第三个表示日期，第四个表示小时，第五个表示分钟
+        //         ==> 传递六个数字，第一个表示年，第二个表示月，第三个表示日期，第四个表示小时，第五个表示分钟，第六个表示秒
         var time = new Date()
         console.log(time)
+
+        
+        // new Date()在传入字符串参数的时候，可以获取到一个你传递进去的时间
+        var time1 = new Date('2020.11.11')
+        var time2 = new Date('2020-11-11')
+        var time3 = new Date('2020/11/11')
+        var time4 = new Date('2020.11.11 14:41:56')
+        console.log(time1)
+        console.log(time2)
+        console.log(time3)
+        console.log(time4)
+
+        // new Date()参数传递的多种情况
+        // 传递两个数字
+        console.log(new Date(2020,11));//2020年12月：月份从0开始计算表示1月,11表示12月
+        console.log(new Date(2020,14));//2021年3月
+        
+        // 传递三个数字
+        console.log(new Date(2020,4,6));//2020年5月6日
+        console.log(new Date(2020,4,36));//2020年6月5日
+
+        // 传递四个数字
+        console.log(new Date(2020,5,1,8))
+
+        // 传递五个数字
+        console.log(new Date(2020,5,1,8,30) )
+
+        // 传递六个数字
+        console.log(new Date(2020,5,1,8,30,45) )
     </script>
 </body>
 </html>

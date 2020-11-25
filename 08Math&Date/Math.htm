@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Math: 是一个内置对象 
+         // Math.random()//用于生成0-1之间的随机数且包括0，不含1 
+         console.log("*************Math.random()***************")
+         console.log(Math.random())//每次生成不同随机数
+         console.log(Math.random())
+         console.log(Math.random())
+         console.log(Math.random())
+
+
+        // Math.round()//用于将小数转成整数（四舍五入，参数为负数时-x.5转为-x）
+        console.log("*************Math.round()***************")
+         //参数为正
+         console.log(Math.round(1.2))//1
+         console.log(Math.round(1.6))//2
+         //参数为负
+         console.log(Math.round(-2.4))//-2
+         console.log(Math.round(-2.5))//-2
+         console.log(Math.round(-2.6))//-3
+
+         //Math.abs()//返回一个数的绝对值
+         console.log("*************Math.abs()***************")
+         console.log(Math.abs(5))//5
+         console.log(Math.abs(-5))//5
+
+         //Math.ceil()//将小数向上取整(取大于本身且最接近的整数)
+         console.log("*************Math.ceil()***************")
+        //  参数为正
+         console.log(Math.ceil(1.2))//2
+         console.log(Math.ceil(1.5))//2
+         console.log(Math.ceil(1.8))//2
+        //  参数为负
+        console.log(Math.ceil(-1.2))//-1
+        console.log(Math.ceil(-1.8))//-1
+
+        //Math.floor()//将小数向下取整（取小于本身且最接近的整数）
+         console.log("*************Math.floor()***************")
+        //  参数为正
+         console.log(Math.floor(1.2))//1
+         console.log(Math.floor(1.9))//1
+        //  参数为负
+        console.log(Math.floor(-1.2))//-2
+        console.log(Math.floor(-1.9))//-2
+
+        //Math.max()//获取传入数值中最大的数值
+         console.log("*************Math.max()***************")
+         console.log(Math.max(1,3,5,6,74,9))//74
+
+        //Math.min()//获取传入数值中最小的数值
+        console.log("*************Math.min()***************")
+        console.log(Math.min(1,3,5,-9,5,87,6))//-5
+
+        //Math.pow(x,y)//幂运算(x的y次幂或记作y次x相乘)
+         console.log("*************Math.pow()***************")
+         console.log(Math.pow(2,3))//8(2^3)
+
+         //Math.PI//圆周率(π)
+         console.log(Math.PI)//精度为15
+    </script>
+</body>
+</html>
