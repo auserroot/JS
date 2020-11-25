@@ -103,5 +103,79 @@
 		</tr>
 	</table>
 </form>
+
+<script>
+	// 获取元素
+	var yz = document.getElementById("yz")
+	var btn = document.getElementById("btn")
+	//构造函数获取随机字符（6位）
+	/* 
+	   ASCII 值
+	   a-z 97-122
+	   A-Z 65-90
+	   0-9 45-57
+	*/
+	function getCode(n) {
+		//定义一个字符串来接收生成的随机验证码 
+		var str ="" 
+		for (var i = 0; i < n; i++) {
+			//生成随机数
+			var num = Math.round(Math.random() * 122)
+			if (num >= 0 && num <= 9) {
+				//0~9直接添加给arr即可   
+				str += num.toString()
+			} else if (num >= 65 && num <= 90 || num >= 97 && num <= 122) {
+				//使用String.fromCharCode（）方法将接收到的num也就是字母所对应的ASCII码值转换成对应字母 
+				str += (String.fromCharCode(num)).toString()
+			} else {
+				//控制循环次数，如果遇到了不是需要的范围对应的ASCII码值，则i--来控制循环次数
+				i--;              
+			}
+		}
+		//返回（验证码）
+		return str;          
+	}
+
+
+	//创建btn点击事件，调用函数
+	btn.onclick = function () {
+		// 将获取的6位验证码输出到页面
+		yz.innerHTML = getCode()
+	}
+
+/* 
+	function getCode2(n) {
+		//定义一个空数组来接收生成的随机验证码
+		var arr = []
+		for (var i = 0; i < n; i++) {
+			//生成随机数
+			var num = Math.round(Math.random() * 122)
+			if (num >= 0 && num <= 9) {
+				//0~9直接添加给arr即可
+				arr.push(num)
+			} else if (num >= 65 && num <= 90 || num >= 97 && num <= 122) {
+				//使用String.fromCharCode（）方法将接收到的num也就是字母所对应的ASCII码值转换成对应字母
+				arr.push(String.fromCharCode(num))  
+			} else {
+				//控制循环次数，如果遇到了不是需要的范围对应的ASCII码值，则i--来控制循环次数
+				i--;              
+			}
+		}
+		//使用n接收arr数组生成的字符串
+		n = arr.join("")　
+		// alert(n);　　　　//来检验是否成功生成随机数
+		//返回（验证码）
+		return n         
+	}
+
+
+	//创建btn点击事件，调用函数
+	btn.onclick = function () {
+		// 将获取的6位验证码输出到页面
+		yz.innerHTML = getCode2(6)
+	} */
+</script>
 </body>
 </html>
+
+
