@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        // 1 实现向数组末尾追加一个元素有多少种方式
+        // var arr = [1,2,3];
+        // 方法一:push
+        // arr.push(4)
+        // 方法二:
+        // arr[arr.length] = 4;
+        // 方法三:splice
+        // arr.splice(arr.length,0,4)
+        
+        // 2 理解函数中的 this 指向
+        // // 作为全局函数调用:this = window
+        // function fn(){
+        //     console.log(this)
+        // }
+        // fn()
+        // // 作为对象的方法调用:this = 方法的调用者（就是调用方法的那个对象）
+        // var obj = {
+        //     name:"doudou",
+        //     fn:function(){
+        //         console.log(this)
+        //     }
+        // }
+        // obj.fn()
+        // // 作为事件处理函数:this = 事件源
+        // box.onclick = function(){
+        //     console.log(this)
+        // }
+
+        // 3 给一段文章中的全部指定词语进行过滤
+        // var arr = ['tmd','tnnd','sb'];
+        // var str = "flstmddjfoiwqtnndursblhdtmdsfjsdtnndhfowehtmdfndsbslktmdfesdf";
+        // arr.forEach(function(item){
+        //     // arr里面有几个元素，函数就要执行几次
+        //     str = str.split(item).join("");            
+        // })
+        // console.log(str)
+
+        // 4 反转字符串
+        // var str = "123456";
+        // // 因为想到数组有反转的方法，先把字符串转数组
+        // str = str.split("").reverse().join("")
+        // console.log(str)
+
+        // 5 统计字符串中每个字符的个数
+        var str = "aabccd";
+        // 思路:把字符串变成对象:{a:2,b:1,c:2,d:1}
+
+        // 第一步：回忆对象,对象里面的成员名是唯一的,如果输出对象已有的成员值，可以输出结果，如果输出对象没有的成员值，返回undefined
+        // var obj = {
+        //     name:"jack",
+        //     age:12,
+        // }
+        // console.log(obj.name);//jack
+        // console.log(obj.a);//undefined
+
+        // 第二步:
+        // var obj = {
+        //     // 对象的成员名默认加不加引号都是字符串
+        //     age:12,
+        //     char:23
+        // }
+        // // 对象.成员名，成员名都是字符串
+        // console.log(obj.age);//12
+        // console.log(obj.char);//23
+        // // 对象[成员们]，成员们加引号是字符串，不加引号是变量名
+        // var char = "age";
+        // console.log(obj[char]);//12
+
+
+        // 第三步: 遍历字符串里面的每个字符串
+        // var result = {};//result里面记录：成员名就是出现的字符，成员值就是字符出现的次数
+        // for(var i=0;i<str.length;i++){
+        //     // 当i=0
+        //     var char = str[i];// a
+        //     if(!result[char]){
+        //         // 进入此处说明result[char]是undefined
+        //         result[char] = 1;
+        //     }else{
+        //         result[char] = result[char]+1
+        //     }
+
+        // }
+        // var string = ""
+        // 第四步 去掉重复的字符，使结果显示 abcd
+        // 遍历对象result，输出文字次数
+        // for(var key in result){
+        //     // result里面有几个键值对就会执行几次，key就是遍历到的成员名
+        //     console.log(key+"出现了"+result[key]+'次')
+        //     string+=key;
+        // }
+        // console.log(string)
+
+        // 6 编写函数，判断一个字符串是否是 “可回文字符串”
+        // 可回文字符串： 正着和反着一样
+        // 例如： abcba / 你好世界世好你
+        // 返回值是布尔值
+        function isHuiWen(str){
+            return str.split("").reverse().join('')==str;
+        }
+        console.log(isHuiWen('你好世界世好你1'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            获取时间差
+                ==> 是指获取两个时间点之间相差的时间
+                ==> 在编程世界中，有个特殊的时间:1970.1.1.00:00:00
+                ==> 这个时间我们叫做格林威治时间
+                ==> 我们把一个时间到格林威治时间的毫秒数，叫做时间戳
+                ==> 如果要计算时间a到时间b的毫秒数
+                ==> 可以用b的时间戳-a的时间戳
+
+        */
+
+        // 计算今天到过年的时间差
+        // 第一步：获取两个时间点到格林威治时间的毫秒数
+        var time1 = new Date().getTime();//当前时间戳
+        var time2 = new Date(2021,1,12);//过年的时间戳
+        // 第二步: 两个时间戳相减，得到两个时间相差的毫秒数
+        var difference = parseInt((time2 - time1)/1000);//单位是秒
+        // var difference = new Date(2021,1,12) - new Date();
+
+        // 第三步: 把毫秒数换算成时间
+        
+        // 先计算出有多少天
+        // 一天有 24*60*60 秒
+        var day = parseInt(difference/(24*60*60));
+
+        // 用不够一天的秒计算有多少小时
+        // 一小时有60*60
+        difference = difference - 24*60*60*day;
+        var hour = parseInt(difference/3600);
+
+
+        // 用不够一小时的秒计算有多少分钟
+        // 一分钟有60秒
+        difference = difference - hour*3600;
+        var minute = parseInt(difference/60) 
+
+        // 不够一分钟的直接变成秒
+        var second = difference - minute*60
+
+        console.log('今天离过年还有:'+day+'天'+hour+'小时'+minute+'分钟'+second+'秒')
+
+
+    </script>
+</body>
+</html>

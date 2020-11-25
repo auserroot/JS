@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            将日期格式转换成指定内容    
+                ==> 比如我们得到的时间字符串是:Wed Nov 25 2020 15:08:53 GMT+0800 (中国标准时间)
+                ==> 我可以通过字符串截取可以获得日期中的年
+                ==> 但是js为我们提供了一系列方法来得到里面的指定内容
+            + getFullYear
+                ==> 得到指定时间中的哪一年
+            + getMonth
+                ==> 得到指定时间中的哪一月
+                ==> 月份从0开始计算表示1月,11表示12月
+            + getDate
+                ==> 得到指定时间中的哪一日
+            + getDay
+                ==> 得到指定时间中的星期几
+                ==> 0表示星期日，1-6表示星期一到星期六
+            + getHours
+                ==> 得到指定时间中的哪一小时
+            + getMinutes
+                ==> 得到指定时间中的哪一分钟
+            + getSeconds
+                ==> 得到指定时间中的哪一秒
+            + getTime
+                ==> 得到执行时间到1970年1月1日凌晨的毫秒数
+
+        */
+        var date = new Date();
+        
+        // getFullYear
+        console.log(date.getFullYear())
+        // getMonth
+        console.log(date.getMonth());//月份从0开始计算表示1月,11表示12月
+        // getDate
+        console.log(date.getDate())
+        // getDay
+        console.log(date.getDay())
+        // getHours
+        console.log(date.getHours())
+        // getMinutes
+        console.log(date.getMinutes())
+        // getSeconds
+        console.log(date.getSeconds())
+        // getTime
+        console.log(date.getTime())
+    </script>
+</body>
+</html>

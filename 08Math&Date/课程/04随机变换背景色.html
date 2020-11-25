@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击切换背景色</button> 
+    <script src="./public.js"></script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            // 直接使用doument.body就可以表示body标签
+            // console.log(document.body)
+            // var color = "#"
+            // 先随机生成一个颜色
+            // for(var i=0;i<6;i++){
+                // console.log(rand(0,15).toString(16))
+                // color+=rand(0,15).toString(16)
+            // }            
+            // 然后把这个颜色作为body的背景色
+            document.body.style.background = getColor();
+        }
+
+        // 封装一个生成随机颜色的函数
+        function getColor(){
+            var color = "#"
+            for(var i=0;i<6;i++){
+                color+=rand(0,15).toString(16)
+            };
+            return color;
+        }
+    </script>
+</body>
+</html>
