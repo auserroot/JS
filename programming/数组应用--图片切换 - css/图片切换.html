@@ -86,39 +86,81 @@
 
 	<script>
 		window.onload=function(){
-			var round=document.getElementById("round")
-			var single=document.getElementById("single")
-			var prev = document.getElementById("prev")
-			var next = document.getElementById("next")
-			var order = document.getElementById("order")
-			var info = document.getElementById("info")
-			var picture = document.getElementById("picture")
+			//获取元素
+			var round=document.getElementById("round")//循环播放
+			var single=document.getElementById("single")//顺序播放
+			var prev = document.getElementById("prev")//上一张
+			var next = document.getElementById("next")//下一张
+			var order = document.getElementById("order")//播放进度
+			var info = document.getElementById("info")//文字下标
+			var picture = document.getElementById("picture")//图片
+			var falg = true //设置顺序播放为true（记录播放类型）
+			var index = 0;//初始化图片索引
 
+			
+			//用数组存储文字下标，便于与自变量i绑定
+			var infoArr = ['第一张','第二张','第三张','第四张']
+			//用数组存储图片，便于与自变量i绑定
+			var imgArr = ['6.jpg','7.jpg','8.jpg','9.jpg']
+
+			//图片初始化（调用图片更换函数,传入索引）
+			show(index)
+			//图片更换(实现展示图片，进度，文字效果)
+			function show(i){
+				picture.src=imgArr[i]
+				info.innerHTML=infoArr[i]
+				order.innerHTML=(i+1)+"/"+imgArr.length
+			}
+
+			//循环播放
 			round.onclick=function(){
-				picture.src=("6.jpg")
-				order.innerHTML="1"
-				info.innerHTML="第一张"
-			}
-			single.onclick=function(){
-				picture.src=("6.jpg")
-				order.innerHTML="1"
-				info.innerHTML="第一张"
+				falg = false
+				alert("现在是循环播放")
 			}
 
-			prev.onclick=function(){
-				for(var i=6;i<10;i++){
-					picture.src=(i+".jpg")
-				    order.innerHTML=i-5
-					info.innerHTML="第"+(i-5)+"张"
-				}
+			//顺序播放
+			single.onclick=function(){
+				falg = true
+				alert("现在是顺序播放")
 			}
-			next.onclick=function(){
-				for(var i=6;i<10;i++){
-					picture.src=(i+".jpg")
-				    order.innerHTML=i-5
-					info.innerHTML="第"+(i-5)+"张"
+
+			//上一张
+			prev.onclick=function(){
+				//让图片索引自减(点击一次索引-1)
+				index--
+				//当index值小于0时判断播放类型
+				if(index<0){
+					//判断播放类型
+					if(falg==true){
+						// 顺序播放
+						index=0
+						alert("前面没有了")
+						return
+					}else{
+						// 循环播放
+						index=imgArr.length-1
+					}
 				}
-				
+				show(index)
+			}
+
+			//下一张
+			next.onclick=function(){
+				//让图片索引自增(点击一次索引+1)
+				index++
+				//当index值小于0时判断播放类型
+				if(index>imgArr.length-1){
+					if(falg==true){
+						// 顺序播放
+						index=0
+						alert("后面没有了")
+						return
+					}else{
+						// 循环播放
+						index=0
+					}
+				}
+				show(index)
 			}
 		}
 	</script>
