@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="time" style="width: 400px;height: 200px;"></p>
+    <script>
+        // 在页面上出现一个倒计时，显示现在到某一时间点的倒计时（以汉字的形式出现倒计时）
+        function fn() {
+            //获取两时间戳差化单位为秒
+            var time1 = new Date().getTime()
+            var time2 = new Date('2021-1-1').getTime()
+            var time = parseInt((time2 - time1)/1000)
+            //用该时间差除一天所含的秒数，得出天
+            var day = parseInt(time/(24*3600))
+            // 用时间戳差减去对应天数所含的秒数得到剩余不足一天的秒数
+            time = time - (24*3600*day)
+            //不足一天的秒数除以一小时所含秒数得到hour
+            var hour = parseInt(time/3600)
+            // 不足一天的秒数减去对应小时数所含的秒数得到剩余不足一小时的秒数
+            time = time - (3600*hour)
+            //不足一小时的秒数除以一分钟所对应的秒数得到minutes
+            var minutes = parseInt(time/60)
+            // 不足一小时的秒数减去对应分钟所含的秒数得到剩余不足一分钟的秒数
+            time = time - (60*minutes)
+            // 不足一分钟的秒数得到剩余秒数
+            var seconds = time
+            // console.log(day+"天"+hour+"小时"+minutes+"分钟"+seconds+"秒")
+            document.getElementById("time").innerHTML=("倒计时："+day+"天"+hour+"小时"+minutes+"分钟"+seconds+"秒")
+        }
+        window.onload=function(){
+            fn()
+            setInterval(function (){
+                fn()
+            },1000)
+        }
+    </script>
+</body>
+</html>
