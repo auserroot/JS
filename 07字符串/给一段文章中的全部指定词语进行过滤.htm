@@ -12,7 +12,12 @@
 
         var str = 'asdasdSMasdasdasdSMsdasdasdSMsadasd'
         // console.log(str)
-        var newStr=str.split("")
+
+        var arr=str.split("SM")
+        var newStr=arr.join("**")
+        console.log(newStr)
+
+       /*  var newStr=str.split("")
 
         var result = newStr.map(function(i,j,newStr){
             if(newStr[j]=="S"){
@@ -23,10 +28,11 @@
                 return result=newStr[j]
             }
         })
-
+         
         // var newResult = String(result)
         var newResult = result.join("")
         console.log(newResult)
+        */
         // 需要结果
         // asdasd**asdasdasd**sdasdasd**
     </script>
