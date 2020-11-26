@@ -23,5 +23,27 @@
 		<div id="box"></div>
 		<img src="image/1.jpg" alt="" id="m1"/><br/><br/><br/><br/><br/><br/><br/><br/><br/>		
 	</body>
-	
+	<script>
+		//监听元素
+		var btn = document.getElementById("btn")
+		var box = document.getElementById("box")
+		var img = document.getElementById("m1")
+		//初始化学生数组
+		var students = ["张三","李四","王二","小明","小丽","小李","张三","李四","王二","小明","小丽","小李"]
+		// 初始化页面
+		var t=setInterval(function(){
+			var num = Math.round(Math.random()*11)
+			box.innerHTML = students[num]
+			img.src = "image/"+(num+1)+".jpg"
+		})
+		// location.href = location.href
+		btn.onclick = function(){
+			while(1){
+				clearInterval(t)
+		}
+		}
+		
+		
+		
+	</script>
 </html>
