@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .aa{
+            background:red;
+            font-size:100px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div index="1" id="box">
+        <h1>hello world</h1>
+    </div>
+    <script>
+        /* 
+            操作属性
+                ==> 通过各种获取元素的方式获取了dom元素以后
+                ==> 就可以操作dom元素的属性
+            + innerHTML:获取元素内部的html结构,也可以赋值
+            + innerText：获取元素内部的文本，也可以赋值
+            + style:专门用来添加元素css样式的：元素.style.样式名 = 样式值
+            + className：专门用来操作元素的类名的,也可以设置类名
+
+            + getAttribute
+                ==>获取元素的某个属性(包括标签上的自定义属性)
+            + setAttribute
+                ==>设置元素的某个属性(包括标签上的自定义属性)
+                ==>语法：dom元素.setAttribute(属性名,属性值)
+            + removeAttribute
+                ==>设置元素的某个属性(包括标签上的自定义属性)
+                ==>语法：dom元素.removeAttribute(属性名)
+
+        */
+
+        var div = document.querySelector('div');
+        // 1 操作元素内容
+        console.log(div.innerHTML)
+        console.log(div.innerText)
+
+        // div.innerHTML = "<i>llllll</i>"
+        // div.innerText = "<i>llllll</i>"
+
+        // 2 操作元素类名
+        console.log(div.className)
+        div.className = "aa"
+
+        // 3 操作元素标签上的属性
+        // 获取元素的某个属性
+        console.log(div.getAttribute('index'))
+        console.log(div.getAttribute('id'))
+
+        // 设置元素的某个属性
+        div.setAttribute('ccc','hello')
+
+        // 移除元素的某个属性
+        div.removeAttribute('id')
+        div.removeAttribute('ccc')
+        div.removeAttribute('class')
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <ul id="one">
+        <li class="aa">hello</li>
+        <li class="aa">hello</li>
+        <li class="aa">hello</li>
+        <li class="bb">hello</li>
+        <li class="bb">hello</li>
+        <li class="cc">hello</li>
+    </ul>
+    <ul id="two">
+        <li class="aa">hello</li>
+        <li class="aa">hello</li>
+        <li class="aa">hello</li>
+        <li class="bb">hello</li>
+        <li class="bb">hello</li>
+        <li class="cc">hello</li>
+    </ul>
+
+    <form>
+        <input type="text" name="username">
+    </form>
+    <script>
+        /* 
+            DOM
+                ==> Document Obejct Model:文档对象模型
+                ==> 就是操作html中的标签的一些能力
+                ==> 我们可以操作那些内容
+                    ==> 获取一个元素
+                    ==> 移除一个元素
+                    ==> 创建一个元素
+                    ==> 向页面里面添加一个元素
+                    ==> 给元素绑定一些事件：onclick,ondblclick,onchange,onhashchange,onload,onscroll
+                    ==> 获取元素的属性
+                    ==> 给元素添加一些css样式
+                ==> DOM的核心对象document对象
+                ==> document对象是浏览器内置的一个对象，里面存储着专门用来操作元素的各种方法
+                ==> DOM:页面中的标签，我们通过js获取以后，就把这个对象叫做DOM对象
+
+            获取一个元素
+                ==> 通过js代码来海阔去页面中的标签
+                ==> 获取到以后我们就可以操作这些标签了
+            getElementById
+                ==> 通过标签的id获取标签的
+                ==> id是唯一的，所以获取到的就是一个元素
+                ==> 只能用document调用
+            getElementsByClassName
+                ==> 通过标签的类名来获取标签的
+                ==> 因为页面中可能有多个元素的类名一样，所以获取到的是一组元素
+                ==> 哪怕你获取的类名只有一个元素，也是获取一组元素，只不过这一组中只有一个DOM元素而已
+                ==> 通过索引可以获取集合中的某一个dom元素
+                ==> 既可以用document调用，也可以用dom元素调用
+            getElementsByTagName
+                ==> 通过标签名来获取标签的
+                ==> 因为页面中可能有多个元素的标签名一样，所以获取到的是一组元素
+                ==> 哪怕你获取的标签名只有一个元素，也是获取一组元素，只不过这一组中只有一个DOM元素而已
+                ==> 通过索引可以获取集合中的某一个dom元素
+                ==> 既可以用document调用，也可以用dom元素调用
+            querySelector
+                ==> 通过css选择器来获取元素
+                ==> 语法：document.querySelector('css选择器')
+                ==> 获取的是符合条件的第一个dom元素
+            querySelectorAll
+                ==> 通过css选择器来获取元素
+                ==> 语法：document.querySelectorAll('css选择器')
+                ==> 获取的是符合条件所有dom元素集合
+                ==> 哪怕你获取的标签名只有一个元素，也是获取一组元素，只不过这一组中只有一个DOM元素而已
+
+        */
+        // 1 getElementById
+        var ul = document.getElementById('one');
+        console.log(ul)
+
+        // 2 getElementsByClassName
+        // 使用document调用方法，则在整个document范围查找
+        var arr = document.getElementsByClassName('aa');
+        console.log(arr)
+        // 通过索引可以获取集合中的某一个dom元素
+        console.log(arr[0])
+
+        // 使用dom元素调用方法，则在这个dom元素里面查找
+        console.log(ul.getElementsByClassName('aa'))
+
+        // 3 getElementsByTagName
+        var liArr = document.getElementsByTagName('li');
+        console.log(liArr)
+        console.log(ul.getElementsByTagName('li'))
+
+
+        // 4 querySelector
+        console.log(document.querySelector("#one>li:nth-child(2)"))
+        console.log(document.querySelector("ul>li:nth-child(2)"))
+
+        // 5 querySelectorAll
+        console.log(document.querySelectorAll("#one>li:nth-child(2)"))
+        console.log(document.querySelectorAll("ul>li:nth-child(2)"))
+
+        // 扩展
+        console.log(document.getElementsByName('username'))
+
+
+    </script>
+</body>
+</html>

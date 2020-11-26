@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1111111</title>
+    <style>
+        body{
+            height: 10000px;
+        }
+        div{
+            height: 200px;
+            width: 300px;
+            overflow: auto;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+        <p>2133123</p>
+    </div>
+    <script>
+        /* 
+            浏览器的onscroll事件
+                ==> 这个scroll事件是当浏览器的滚动条滚动的时候触发
+                ==> 或者是鼠标滚轮滚动的时候触发
+            浏览器滚动的距离
+                ==> 浏览器的内容既然可以滚动，那么我们就可以获取到浏览器滚动的距离
+                ==> 思考一个问题?
+                    ==> 浏览器真的滚动了吗?
+                    ==> 其实，我们浏览器是没有滚动的，是一个在那里
+                    ==> 滚动的是什么？是我们的页面
+                    ==> 所以说，浏览器没有滚动，只不过页面向上走了
+                ==> 所以，这个已经不能单纯的算浏览器的内容了，而是我们页面的内容
+                ==> 所以，不再是用window对象，而是使用document对象
+            scrollTop
+                ==> 获取向上滚动的距离
+                ==> 一共有两种获取方式
+                    --> document.bdoy.scrollTop
+                    --> document.documentElement.scrollTop
+                ==> 两个方法都是获取向上滚动的距离
+                    -->区别
+                        + IE浏览器
+                            ==> 没有DOCTYPE声明的时候，用这两个都行
+                            ==> 有DOCTYPE声明的时候，只能用document.documentElement.scrollTop
+                        + Chrome和FireFox
+                            ==> 没有DOCTYPE声明的时候,用document.bdoy.scrollTop
+                            ==> 有DOCTYPE声明的时候，用document.documentElement.scrollTop
+                        + Safari
+                            ==> 两个都不用，使用一个单纯的方法：window.pageYOffset
+            scrollLeft
+                ==> 获取页面向左滚动的距离
+                ==> 也是两个方法
+                    --> document.bdoy.scrollLeft
+                    --> document.documentElement.scrollLeft
+                ==> 两个之间的区别和之前的scrollTop一样
+
+
+        */
+        // 一些特殊标签的获取方法
+        // console.log(document.body);//body
+        // console.log(document.documentElement);//html
+        // console.log(document.title);//title里面的内容，是可读写的
+        // console.log(document.head);//head标签
+       
+        // 监听页面滚动事件
+        window.onscroll = function(){
+            console.log('====页面滚动了====')
+            // console.log(document.body.scrollTop)
+            // console.log(document.documentElement.scrollTop)
+            // console.log(window.pageYOffset)
+            console.log(getScroll())
+        }
+
+        // 封装一个方法用来获取页面滚动的距离
+        function getScroll(){
+            if(window.pageYOffset){
+                return {
+                    top:window.pageYOffset,
+                    left:window.pageXOffset
+                }
+            }else if(document.documentElement.scrollTop){
+                return {
+                    top:document.documentElement.scrollTop,
+                    left:document.documentElement.scrollLeft
+                }
+            }else{
+                return {
+                    top:document.body.scrollTop,
+                    left:document.body.scrollLeft
+                }
+            }
+        }
+        
+
+        // 小扩展
+        box.onscroll = function(){
+            console.log('div里面的内容滚动了')
+            // 在事件函数里面，this就是事件源
+            console.log(this.scrollTop)
+        }
+    </script>
+</body>
+</html>

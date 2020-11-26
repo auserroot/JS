@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 在页面上根据数据，动态创建表格
+        /*
+        var arr = [
+        {
+          name: 'Jack',
+          age: 18,
+          gender: '男'
+        },{
+          name: 'Rose',
+          age: 20,
+          gender: '女'
+        },{
+          name: 'Top',
+          age: 22,
+          gender: '男'
+        }
+        
+        建一个表格，展示上面数组中的信息
+        */
+       //打印表格
+      // 
+        var arr = [
+        {
+          name: 'Jack',
+          age: 18,
+          gender: '男'
+        },{
+          name: 'Rose',
+          age: 20,
+          gender: '女'
+        },{
+          name: 'Top',
+          age: 22,
+          gender: '男'
+        }]
+
+        
+        // 打印表格
+        function getTab(){
+         document.write("<table>")
+            // 打印表头
+            document.write("<theader>")
+                document.write("<tr>")
+                    // 输出列名
+                    for(var j in arr[0]){
+                        document.write("<td>")
+                        document.write(j)
+                        document.write("</td>")
+                    } 
+                document.write("</tr>")
+            document.write("</theader>")
+            // 打印内容
+           for(var i=0;i<arr.length;i++){
+               document.write("<tr>")
+                // 打印值
+                for(var k in arr[i]){
+                    document.write("<td>")
+                    document.write(arr[i][k])
+                    document.write("</td>")   
+                }
+                document.write("</tr>")
+           }
+           document.write("</table>")
+       }
+       getTab()
+    </script>
+</body>
+</html>

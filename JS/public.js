@@ -12,6 +12,30 @@ function getColor(){
     return color;
 }
 
+// 根据id返回给id对应的元素标签
+function $id(id){
+    return document.getElementById(id);
+}
+
+// 封装一个方法用来获取页面滚动的距离
+function getScroll(){
+    if(window.pageYOffset){
+        return {
+            top:window.pageYOffset,
+            left:window.pageXOffset
+        }
+    }else if(document.documentElement.scrollTop){
+        return {
+            top:document.documentElement.scrollTop,
+            left:document.documentElement.scrollLeft
+        }
+    }else{
+        return {
+            top:document.body.scrollTop,
+            left:document.body.scrollLeft
+        }
+    }
+}
 // 判断arr里面是否含有num
 function has(arr,num){
     for(var i=0;i<arr.length;i++){
@@ -20,4 +44,22 @@ function has(arr,num){
         }
     }
     return false;
+}
+
+// 随机产生一个包含n个字母或数字的字符串
+function randChar(n){
+    var str = "";//用来记录随机字符串集合
+    for(var i=0;i<n;i++){	
+        // 所以先随机产生一个48-122之间的随机整数
+        var code = rand(48,122)
+        if((code>57&&code<65)||(code>90&&code<97)){
+            // 如果产生的编码不是数字或字符，本次作废
+            i--; 
+        }else{
+            // 如果产生的编码是数字或字符，可以
+            var char = String.fromCharCode(code);
+            str+=char;
+        }
+    }
+    return str;
 }

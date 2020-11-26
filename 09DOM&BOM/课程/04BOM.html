@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 10090px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* 
+            BOM
+                ==>Browser Object Model：浏览器对象模型
+                ==>操作浏览器的一些能力
+                ==>具体可以操作那些内容
+                    ==> 可以获取浏览器的相关信息(窗口大小)
+                    ==> 操作浏览器进行页面跳转
+                    ==> 获取浏览器地址栏的信息
+                    ==> 操作浏览器的滚动条
+                    ==> 浏览器的信息
+                    ==> 让浏览器出现一个弹框(alert/confirm/prompt)
+                ==> BOM的核心就是window对象
+                ==> window是浏览器内置的一个对象，里面包含着操作浏览器的方法
+            
+            获取浏览器窗口的尺寸(兼容性问题)
+                ==> innerWidth和innerHeight
+                ==> 这两个方法分别是用来获取浏览器窗口的宽度和高度的（包括滚动条的）
+            让浏览器出现一个弹框
+                ==> alert:在浏览器弹出一个对话框,弹出的内容是字符串格式，只有一个确定按钮，点击按钮，提示框消失
+                ==> confirm:在浏览器弹出一个询问框,有两个按钮，点击确定返回true，点击取消，返回false
+                ==> prompt:在浏览器弹出一个输入框，有一个输入框和两个按钮，点击取消，返回null，点击确定返回你输入的内容
+
+        */
+
+        // 获取浏览器窗口的尺寸(兼容性问题)
+        console.log(window.innerWidth)
+        console.log(window.innerHeight)
+
+        // 让浏览器出现一个弹框
+        // alert:实在浏览器弹出一个对话框,弹出的内容是字符串格式
+        // window.alert('我是一个弹框')
+        // window.alert([1,2,3,4,5])
+        // window.alert({
+        //     name:"zhangsan",
+        //     age:18
+        // })
+
+        // confirm:在浏览器弹出一个询问框
+        // var result = window.confirm('我是一个询问框');
+        // console.log(result)
+
+
+        // prompt:在浏览器弹出一个输入框
+        // var result = window.prompt('请输入你的身高','比如：150');
+        // console.log(result)
+    </script>
+</body>
+</html>

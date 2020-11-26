@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+        }
+        div{
+            width: 100%;
+            height: 10000px;
+        }
+        button{
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+            position: fixed;
+            bottom: 100px;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button id="btn">
+            回到顶部
+        </button>
+    </div>
+    <script>
+        // 回到顶部功能
+        var btn = document.getElementById("btn")
+        btn.onclick = function(){
+            document.body.scrollTop=0
+            document.documentElement.scrollTop=0
+            window.pageYOffset.scrollTop=0
+        }
+    </script>
+</body>
+</html>

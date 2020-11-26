@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1 编写函数，把当前时间格式化成 YYYY-MM-DD HH:mm:ss
+        function showDate(){
+            var time = new Date();
+            // 准备一个字符串，用于存储时间的字符串格式
+            var str = "";
+            // 年
+            str+= time.getFullYear()
+            // 月
+            var month = time.getMonth()+1;
+            month = month<10?"0"+month:month;
+            str+="-"+month;
+            // 日期
+            var date = time.getDate();
+            date = date<10?"0"+date:date;
+            str+="-"+date;
+            // 小时
+            var hours = time.getHours();
+            hours = hours<10?"0"+hours:hours;
+            str+=" "+hours;
+            // 分钟
+            var minutes = time.getMinutes()
+            minutes = minutes<10?"0"+minutes:minutes;
+            str+=":"+minutes;
+            // 秒
+            var seconds = time.getSeconds();
+            seconds = seconds<10?"0"+seconds:seconds;
+            str+=":"+seconds;
+
+            return str;
+        }
+        
+        // 2 在页面上出现一个倒计时，显示现在到某一时间点的倒计时（以汉字的形式出现倒计时）
+        var arr = ['零','一','二','三','四','五','六','七','八','九'];
+        var time1 = new Date();//现在
+        var newYear = new Date('2021-2-12');//春节
+        var difference = parseInt((newYear - time1)/1000); //单位换算成秒
+        var str = "";//这是汉字形式的倒计时的字符串
+
+        // 天
+        var day = parseInt(difference/(24*60*60));
+        // 十位：parseInt(day/10) 
+        // 个位：day%10
+        if(day<10){
+            str+=arr[day]+"天"
+        }else{
+            str+=arr[parseInt(day/10)]+"十"+arr[day%10]+"天"
+        }
+
+
+        // 小时         
+        difference = difference - 24*60*60*day;
+        var hours = parseInt(difference/3600)
+        if(hours<10){
+            str+=arr[hours]+"小时"
+        }else{
+            str+=arr[parseInt(hours/10)]+"十"+arr[hours%10]+"小时"
+        }
+
+
+
+        // 分钟
+        difference = difference - 3600*hours;
+        var minutes = parseInt(difference/60)
+        if(minutes<10){
+            str+=arr[minutes]+"分"
+        }else{
+            str+=arr[parseInt(minutes/10)]+"十"+arr[minutes%10]+"分"
+        }
+
+
+        
+        // 秒
+        var seconds = difference - 60*minutes;
+        if(seconds<10){
+            str+=arr[seconds]+"秒"
+        }else{
+            str+=arr[parseInt(seconds/10)]+"十"+arr[seconds%10]+"秒"
+        }
+
+        document.write(str)
+        
+    </script>
+</body>
+</html>

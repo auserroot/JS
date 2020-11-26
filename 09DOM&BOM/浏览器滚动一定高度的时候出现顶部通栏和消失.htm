@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+        }
+        div{
+            height: 10000px;
+        }
+        p{
+            height: 2000px;
+            width: 200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div><p id="box"></p></div>
+    
+    <script>
+        // 根据浏览器的滚动条，让顶部通栏出现和消失
+        window.onscroll = function fn(){
+            var box = document.getElementById("box")
+            var a = document.documentElement.scrollTop
+            if(a>=500){
+                // 一定高度的时候出现顶部通栏
+               box.style.width = "100%"
+            }else{
+                //一定高度的时候顶部通栏消失
+                box.style.width = "200px"
+            }
+            // console.log(a)
+        }
+        
+    </script>
+</body>
+</html>

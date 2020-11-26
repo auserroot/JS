@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  location.href -->
+    <button id="jump">点击跳转百度</button>
+    <!-- location.hash -->
+    <a href="#red">one</a>
+    <a href="#black">two</a>
+    <a href="#green">three</a>
+    <script>
+        /* 
+            浏览器的地址信息
+                ==> 在window中有一个对象叫做location
+                ==> 专门存储浏览器的地址栏内的信息
+            location.href:浏览器里面完整的url地址，会把中文编程url编码的格式，也可以赋值
+            location.hash:浏览器里面url地址里面#后面的部分
+            location.reload():重新加载一遍页面，就相当于刷新,不能再全局调用
+            location.assign():加载指定页面，加载当前页面就相当于刷新
+            location.replace():指定页面替换掉当前的页面
+
+        */
+        // location.href:可读写
+        console.log(window.location.href);//可读
+        // 点击按钮,地址栏变成百度
+        jump.onclick = function(){
+            location.href = "https://www.baidu.com";//可以赋值
+        }
+        
+
+        // location.hash
+        window.onhashchange = function(){
+            //  onhashchange:监听地址栏hash的变化的事件
+            //  console.log('hash发生了变化，现在的hash是：'+location.hash)
+            document.body.style.background = location.hash.substr(1);
+        }
+
+    </script>
+</body>
+</html>

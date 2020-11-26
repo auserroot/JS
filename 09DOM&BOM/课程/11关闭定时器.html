@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+        /* 
+            关闭定时器
+                ==> 两个方法可以关闭定时器
+                ==> 原则上是：
+                    ==> 如果是通过setTimeout定义的定时器，要用clearTimeout来关闭
+                        ==> 语法：clearTimeout(timeId)
+                    ==> 如果是通过setInterval定义的定时器，要用clearInterval来关闭
+                        ==> 语法：clearInterval(timeId)
+                ==> 但是其实是可以通用的，他们可以混着使用
+        */
+
+        var timer = setTimeout(function(){
+            location.href = "http://www.1000phone.com/";
+        },5000);
+
+        // 关闭定时器
+        clearTimeout(timer)
+        // clearInterval(timer)
+    </script>
+</body>
+</html>
