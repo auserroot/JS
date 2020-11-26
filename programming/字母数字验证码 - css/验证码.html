@@ -115,10 +115,10 @@
 	   A-Z 65-90
 	   0-9 45-57
 	*/
-	function getCode(n) {
+	function getCode() {
 		//定义一个字符串来接收生成的随机验证码 
 		var str ="" 
-		for (var i = 0; i < n; i++) {
+		for (var i = 0; i < 6; i++) {
 			//生成随机数
 			var num = Math.round(Math.random() * 122)
 			if (num >= 0 && num <= 9) {

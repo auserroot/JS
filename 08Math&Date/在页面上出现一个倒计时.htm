@@ -29,7 +29,53 @@
             // 不足一分钟的秒数得到剩余秒数
             var seconds = time
             // console.log(day+"天"+hour+"小时"+minutes+"分钟"+seconds+"秒")
-            document.getElementById("time").innerHTML=("倒计时："+day+"天"+hour+"小时"+minutes+"分钟"+seconds+"秒")
+            var arr=['零','一','二','三','四','五','六','七','八','九']
+            var str = "" 
+            var d=""
+            var h=""
+            var m=""
+            var s=""
+            if(day>10){
+                d=day.toString().split("")
+                d[0]=arr[d[0]]
+                d[1]=arr[d[1]]
+            } else{
+                d=("0"+day.toString()).split("")
+                d[0]=arr[0]
+                d[1]=arr[d[1]]
+            }
+            str += d.join("")+"天"
+            if(hour>10){
+                h=hour.toString().split("")
+                h[0]=arr[h[0]]
+                h[1]=arr[h[1]]
+            } else{
+                h=("0"+hour.toString()).split("")
+                h[0]=arr[0]
+                h[1]=arr[h[1]]
+            }
+            str += h.join("")+"小时"
+            if(minutes>10){
+                m=minutes.toString().split("")
+                m[0]=arr[m[0]]
+                m[1]=arr[m[1]]
+            } else{
+                m=("0"+day.toString()).split("")
+                m[0]=arr[0]
+                m[1]=arr[m[1]]
+            }
+            str += m.join("")+"分钟"
+            if(seconds>10){
+                s=seconds.toString().split("")
+                s[0]=arr[s[0]]
+                s[1]=arr[s[1]]
+            } else{
+                s=("0"+hour.toString()).split("")
+                s[0]=arr[0]
+                s[1]=arr[s[1]]
+            }
+            str += s.join("")+"秒"
+            document.getElementById("time").innerHTML=("倒计时："+str)
         }
         window.onload=function(){
             fn()

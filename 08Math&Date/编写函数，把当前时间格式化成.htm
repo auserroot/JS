@@ -12,11 +12,12 @@
             var time = new Date()
             var year = time.getFullYear()
             var month = time.getMonth()
+            month=month<10?"0"+month:month
             var day = time.getDate()
             var hours = time.getHours()
             var minutes = time.getMinutes()
             var seconds = time.getSeconds()
-            console.log(year+"-"+month+"-"+day+" "+hours+"-"+minutes+"-"+seconds)
+            console.log(year+"-"+(month+1)+"-"+day+" "+hours+"-"+minutes+"-"+seconds)
         }
         getTime()
     </script>
