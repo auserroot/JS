@@ -9,4 +9,56 @@
 		<input type="button" value="请留言" id="btn"/>
 		<ul id="con"></ul>
 	</body>
+	<script>
+		//监听元素
+		var t = document.getElementById("t")
+		var btn = document.getElementById("btn")
+		var con = document.getElementById("con")
+
+		btn.onclick=function(){
+			
+		    //获取输入内容
+			var str = t.value
+			// console.log(str)
+			//初始化
+			var num=false
+			if(num==false){
+				// 创建li标签
+			    var li = document.createElement("li")
+			    //传值
+			    li.innerHTML = str
+				// 将其插入ul
+				con.appendChild(li)
+				num=true
+			}else{
+				// 创建li标签
+			    var li1 = document.createElement("li")
+			    //传值
+			    li1.innerHTML = str
+				// 将其插入ul
+				con.insertBefore(li1,li)
+			}
+			// con.appendChild(li)
+			var hig = parseInt(getStyle(con,'height'))
+			// console.log(hig)
+			if(hig>105){
+				con.style.height = "105px"
+				con.style.overflow = "auto"
+			    li.style.overflow = "hidden"
+			}
+		}
+
+
+		  // 封装一个函数来返回指定元素的指定样式
+		  function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                // 如果能进这里，非IE，说明window.getComputedStyle存在
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                // 如果进这里，IE浏览器
+                return dom.currentStyle[attr]
+
+            }
+        }
+	</script>
 </html>

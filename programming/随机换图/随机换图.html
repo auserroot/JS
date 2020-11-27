@@ -6,6 +6,22 @@
 	</head>
 	<body>
 		<img src="1m.jpg" alt="" id="img1"/>
+
+        <script src="public.js"></script>
+		<script>
+			//设置图片链接改变时间
+			setInterval(Imgget,400)
+			function Imgget(){
+				// 获取随机数
+				var num =rand(1,4)
+				// 存储随机图片链接
+				var str =num+"m.jpg"
+				//获取元素
+				var getImg = $id("img1")
+				//改变图片链接
+			    getImg.src = str
+			}
+		</script>
 	</body>
 </html>
 
