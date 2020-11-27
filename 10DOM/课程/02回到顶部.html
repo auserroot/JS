@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 10000px;
+        }
+        button{
+            width: 100px;
+            height: 100px;
+            line-height: 50px;
+            font-size:20px;
+            text-align: center;
+            border:1px solid #ccc;
+            border-radius: 5px;
+            position: fixed;
+            bottom:10px;
+            right:10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>回到顶部</button>
+    <script src="./public.js"></script>
+    <script>
+        // 需求分析：点击button按钮，页面滚动到顶部
+        // 1 获取相关元素
+        var btn = document.querySelector('button');
+        // 2 添加click事件
+        btn.onclick = function(){
+            if(document.documentElement.scrollTop){
+                document.documentElement.scrollTop = 0
+            }else{
+                document.body.scrollTop = 0;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        /* 
+            需求分析
+                1 创建一个表格
+                2 表头是数组arr里面的对象的几个成员名
+                3 arr里面有几个对象，表格就有几行数据
+                4 创建的表格最后一列是一个删除按钮
+                5 点击删除按钮可以删除当前行(今天的作业)
+        */
+        var arr = [
+            {
+                name: 'Jack',
+                age: 18,
+                gender: '男'
+            },{
+                name: 'Rose',
+                age: 20,
+                gender: '女'
+            },{
+                name: 'Top',
+                age: 22,
+                gender: '男'
+            }
+        ]
+
+        // 创建一个字符串，用于存储表格的html字符串
+        var str = '<table>'
+        // 拼接表头信息,遍历arr[0]这个对象，来生成表头的thml字符串
+        str+="<tr>"
+        for(var key in arr[0]){
+            str+="<td>"+key+"</td>";
+        }
+        str+="<td>操作</td>";
+        str+="</tr>"
+
+        // arr里面有几个对象，表格就有几行数据
+        for(var i=0;i<arr.length;i++){
+            // i=0
+            str+="<tr>";
+            // str+="<td>jack</td>";
+            // str+="<td>18</td>";
+            // str+="<td>男</td>";
+            // str+="<td>删除</td>";
+            for(var key in arr[i]){
+                str+="<td>"+arr[i][key]+"</td>"
+            }
+            str+="<td>删除</td>"
+            str+="</tr>"    
+        }
+        str+="</table>";
+        // 把table放到box这个div里面展示
+        $id('box').innerHTML = str;
+    </script>
+</body>
+</html>

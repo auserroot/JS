@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+        #Q-nav {
+            overflow: hidden;
+        }
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style> 
+    
+</head>
+<body>
+<div class="top" id="top">
+    <img src="images/top.png" alt=""/>
+</div>
+<div id="Q-nav">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="main">
+    <img src="images/main.png" alt=""/>
+</div>
+<script src="../public.js"></script>
+<script>
+        /* 
+            需求分析：
+                1 当页面滚动的时候，如果滚动的距离超过top的高度，nav就固定在顶部
+                2 当页面滚动的时候，如果滚动的距离小于top的高度，nav就回到原来的位置
+        */
+        // 获取相关元素
+        var nav = $id('Q-nav');
+        var oTop = $id('top');//不能在全局定义top变量
+        var main = $id('main')
+        var height = oTop.offsetHeight;//offsetHeight可以获取指定元素的高度，不带单位，可以直接参与运算
+        // 当页面滚动的时候
+        window.onscroll = function(){
+            var distance = getScroll().top;
+            if(distance>height){
+                // 如果滚动的距离超过top的高度，nav就固定在顶部
+                nav.className = "fixed";
+                main.style.marginTop = nav.offsetHeight +"px";
+            }else{
+                // 如果滚动的距离小于top的高度，nav就回到原来的位置
+                nav.className = ""
+                main.style.marginTop = 0;
+            }
+        }
+    
+</script>
+</body>
+</html>
+
