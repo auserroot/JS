@@ -36,9 +36,11 @@
         // 回到顶部功能
         var btn = document.getElementById("btn")
         btn.onclick = function(){
-            document.body.scrollTop=0
-            document.documentElement.scrollTop=0
-            window.pageYOffset=0
+            if(document.body.scrollTop){
+                document.body.scrollTop=0
+            }else{
+                document.documentElement.scrollTop=0
+            }
         }
     </script>
 </body>
