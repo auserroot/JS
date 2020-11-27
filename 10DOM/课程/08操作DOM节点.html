@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>我是一个p标签</p>
+    </div>
+    <script>
+        /* 
+            操作DOM节点
+                ==> 我们所说的操作无非就是：增删改查(Create,Remove,Update,Find)
+                ==> 创建一个节点(因为向页面中增加之前，我们需要先创建一个节点出来)
+                    --> createElement:用于创建一个元素节点
+                    --> createTextNode:用于创建一个文本节点
+                    --> createDocumentFragment:用于创建一个文档碎片节点
+                ==> 向页面中增加一个节点
+                    --> appendChild:向一个元素节点的末尾追加一个节点
+                    --> 语法：父节点.appendChild(要插入的子节点)
+                    --> insertBefore:向一个元素节点前面插入一个节点
+                    --> 语法：父节点.insertBefore(要插入的节点,插入在哪个节点的前面)
+                ==> 删除页面中的某个节点
+                    --> removeChild:移除一个节点下的某个节点
+                    --> 语法：父节点.removeChild(要移除的节点)
+                ==> 修改页面中的某个节点
+                    --> replaceChild:将页面中的某个节点替换掉
+                    --> 语法：父节点.replaceChild(新节点，旧节点)                
+                ==> 克隆页面中的某个节点
+                    --> cloneNode():克隆页面中的某个节点
+                    --> 语法: 要克隆的节点.cloneNode(是否克隆标签里面的内容，默认是false)
+                    --> 返回值: 克隆好的节点
+
+        */
+
+        // 1 创建一个节点
+        // 元素节点
+        var div = document.createElement('div');
+        div.innerHTML = "我是创建的div元素节点"
+        console.log(div)
+        // 文本节点
+        var textNode = document.createTextNode('我是创建的文本节点')
+        console.log(textNode)
+
+
+        // 2 向页面中增加一个节点
+        // appendChild：向div中追加一个文本节点
+        div.appendChild(textNode)
+
+        // insertBefore
+        var pageDiv = document.querySelector('div');
+        var span = document.createElement('span');
+        var p = pageDiv.children[0]
+        span.innerHTML = "我是span标签"
+        pageDiv.insertBefore(span,p)
+       
+       
+        
+        // 3 删除页面中的某个节点
+        // 使用removeChild删除span节点
+        pageDiv.removeChild(span);//写法一
+        // span.parentNode.removeChild(span);//写法二
+
+        // 4 修改页面中的某个节点
+        // 用span标签替换p标签
+        pageDiv.replaceChild(span,p)
+
+        // 5 克隆页面中的某个节点
+        var p2 = p.cloneNode(true);
+        pageDiv.appendChild(p);//p在span的后面
+        pageDiv.insertBefore(p2,span);//p2在span的前面
+
+    </script>
+</body>
+</html>

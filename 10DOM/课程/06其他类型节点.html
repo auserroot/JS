@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="one" index="1">
+        <!-- 我是注释 -->
+        <ul>
+            <li>1</li>
+        </ul>
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        // 元素节点，节点的属性如果是系统属性，那么在dom节点的对象上也有这个属性
+        console.dir(div)
+        
+        // 注释节点
+        console.dir(div.childNodes[1])
+
+        // 文档节点
+        console.log(document)
+
+        // 文档类型节点
+        console.log(document.doctype)
+
+        // 文档碎片节点
+        // 可以看做一个容器，这个容器里面可以放很多dom元素，但是这个容器是没有显示在页面上的
+        // 要要插入多个元素到页面上的时候，可以先把元素插入到文档碎片节点，全部插入完成以后，再一次性插入到页面
+        // 这样就可以节约渲染次数
+        var node = document.createDocumentFragment();
+        console.log(node)
+
+    </script>
+</body>
+</html>

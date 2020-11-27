@@ -43,7 +43,6 @@
 		<div id="container">
 			<a href="#"  class="on">充话费</a>
 			<a href="#" >充流量</a>
-
 			<a href="#" >充固话</a>
 			<a href="#" style="border-right: solid 1px #FF4400;">充宽带</a>
 
@@ -63,38 +62,25 @@
 				<img src="images/4.png" />
 			</div>
 		</div>
-
-
-
-		<script>
-			// 获取元素
-			window.onload=function(){
-				var geta = (document.getElementsByTagName('a')).toString()
-			    console.log(geta)
-			var dp = document.querySelectorAll("#container .content")
-			var getimg = document.getElementsByTagName("img")
-			// a1.onclick = function(){
-			// 	dp.style.display = "block;"
-			// 	getimg.src="images/1.png"
-			// }
-			// a2.onclick = function(){
-			// 	a2.setAttribute("class","on")
-			// 	dp.style.display = "block;"
-			// 	getimg.src="images/2.png"
-			// }
-			// a3.onclick = function(){
-			// 	a3.setAttribute("class","on")
-			// 	dp.style.display = "block;"
-			// 	getimg.src="images/3.png"
-			// }
-			// a4.onclick = function(){
-			// 	a4.setAttribute("class","on")
-			// 	dp.style.display = "block;"
-			// 	getimg.src="images/4.png"
-			// }
-			}
-			
-		</script>
 	</body>
 </html>
-
+<script type="text/javascript">
+	//找到四个标题
+	var bts = document.getElementsByTagName("a");//四个 [标题一,]
+	var divs = document.getElementsByClassName("content");//四个 [内容一，]
+	//对象可以动态的添加属性  属性作用记录对象在页面中的位置（下标）
+	//for循环为所有的标题添加同一个鼠标事件
+	for( var i = 0 ; i < bts.length ; i++ ){
+		bts[i].index = i; //为每一个标题对象记录 下标
+		bts[i].onclick = function(){
+			//排他思想   先将所有的标题样式 清空  
+			for( var j = 0 ; j < bts.length ; j++ ){
+				bts[j].className = "";
+				divs[j].style.display = "none";
+			}
+			//操作当前的标题时，为该标题添加样式 on 
+			this.className = "on"; //留下当前操作 
+			divs[this.index].style.display = "block";
+		}
+	}
+</script>

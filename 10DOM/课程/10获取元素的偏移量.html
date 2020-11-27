@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div.father{
+            width: 400px;
+            height: 400px;
+            margin:50px 300px;
+            background:pink;
+            position: relative;
+        }
+        div.son{
+            width: 100px;
+            height: 100px;
+            background:chartreuse;
+            position: absolute;
+            top:100px;
+            left:100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">
+
+        </div>
+    </div>
+    <script>
+        /* 
+            获取元素的偏移量
+                ==> 就是元素在页面上的位置
+                ==> 我们有几个属性来获取
+                    ==> offsetLeft/offsetTop
+                    ==> offsetWidth/offsetHeight
+                ==> offsetLeft和offsetTop
+                    ==> 获取的是元素左边的偏移量和上边的偏移量
+                    ==> 分成两个情况来看
+                    ==> 父元素没有定位的情况
+                        ==> 获取元素外边框到页面内侧的距离
+                    ==> 父元素有定位的情况下
+                        ==> 获取元素外边框到有定位的父元素边框内次的距离(其实就是我们写的left和top)
+                ==> offsetWidth和offsetHeight
+                    ==> 获取元素的:内容宽高+padding宽高+boreder宽高
+        */
+       var father = document.body.children[0];
+       var son = father.children[0] 
+       console.log(son.offsetLeft);
+       console.log(son.offsetTop);
+
+
+       console.log(son.offsetWidth)
+    </script>
+</body>
+</html>

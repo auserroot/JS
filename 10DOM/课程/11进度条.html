@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div.box{
+            width: 400px;
+            height: 20px;
+            background:white;
+            border:1px dotted #ccc;
+            margin:50px auto;
+        }
+        div.process{
+            height: 20px;
+            text-align: center;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="process"></div>
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        /* 
+            需求分析:
+                1 实现一个进度条
+                2 process这个div的宽度每隔一段时间就增加一点
+                3 直到和box这个div一样宽就停止
+                4 并且在宽度增加的过程中背景色不断变化
+                5 process这个div里面随时显示当前的进度百分比
+        */
+
+        // 获取相关元素
+        var box = document.querySelector('.box');//外层盒子
+        var processDiv = box.children[0];//宽度不断变化的那个盒子
+        var width = 0;//0% - 100%
+        // 每隔一段时间
+        var timer = setInterval(function(){
+            // process这个div的宽度增加一点
+            width++;           
+            processDiv.style.width = width+"%";
+            // 宽度增加的过程中背景色不断变化
+            processDiv.style.background = getColor();
+            // process这个div里面随时显示当前的进度百分比
+            processDiv.innerHTML = width+"%";
+            // 直到和box这个div一样宽就停止
+            if(width>=100){
+                processDiv.style.width = "100%";
+                processDiv.innerHTML = "100%";
+                clearInterval(timer)
+            }
+        },50)
+        
+    </script>
+</body>
+</html>

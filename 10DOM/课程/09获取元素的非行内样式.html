@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        /* 
+            获取元素的非行内样式
+                ==> 我们在操作DOM的时候，很重要的一点就要操作元素的css样式
+                ==> 那么在操作css样式时候，我们避免不了要获取元素的样式
+                ==> 之前我们使用 元素.style.xxx来获取
+                ==> 但是这个只能获取元素的行内样式
+                ==> 大部分样式不是写成行内，我们就获取不到这个样式
+                ==> 这里介绍两个方法获取:getComputedStyle和currentStyle
+                ==> 两个方法作用一样，只不过一个在非IE浏览器，一个在IE浏览器
+            getComputedStyle(非IE浏览器)
+                ==> 语法:window.getComputedStyle(元素,null).要获取的属性
+            currentStyle(IE浏览器)
+                ==> 语法:元素.currentStyle.要获取的属性
+
+        */
+
+        // getComputedStyle(非IE浏览器)
+        var div = document.querySelector('div');
+        // console.log(div.style.width);//只能获取元素的行内样式
+        // console.log(window.getComputedStyle(div,null).width);//在IE会报错
+        // currentStyle(IE浏览器)
+        // console.log(div.currentStyle.width);//非IE会报错
+        console.log(getStyle(div,'width'))
+        console.log(getStyle(div,'height'))
+        console.log(getStyle(div,'backgroundColor'))
+
+        // 封装一个函数来返回指定元素的指定样式
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                // 如果能进这里，非IE，说明window.getComputedStyle存在
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                // 如果进这里，IE浏览器
+                return dom.currentStyle[attr]
+
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul text="我是ul的一个属性">
+        <li>hello</li>
+        <!-- 我是注释节点 -->
+    </ul>
+    <script>
+        /* 
+            节点属性:
+                ==> 我们知道节点类型很多，而且我们也能获取不同类型的节点
+                ==> 不同的节点属性有什么区别呢？
+            nodeType
+                ==> 获取节点的节点类型，用数字表示
+                ==> nodeType===1:就表示该节点是一个元素节点
+                ==> nodeType===2:就表示该节点是一个属性节点
+                ==> nodeType===3:就表示该节点是一个文本节点
+            nodeName
+                ==> 获取节点的节点名称
+                ==> 元素节点的nodeName就是大写的标签名
+                ==> 属性节点的nodeName就是属性名
+                ==> 文本节点的nodeName就是#text
+            nodeValue
+                ==> 获取节点的值
+                ==> 元素节点没有nodeValue
+                ==> 属性节点的nodeValue就是属性值
+                ==> 文本节点的nodeValue就是文本内容
+        */
+        // 先获取ul
+        var ul = document.querySelector('ul')
+        
+        // 获取ul下的第一个子元素节点
+        var eleNode = ul.children[0];
+        
+        // 获取到ul的属性节点组合,获取到其中的text属性节点
+        var attrNode = ul.attributes[0];
+
+        // 获取到ul的第一个子文本节点
+        var textNode = ul.childNodes[0];
+
+        // 注释节点
+        var commentNode = ul.childNodes[3];
+
+        // 文档节点
+        console.log(document)
+
+        // 文档类型节点
+        console.log(document.doctype)
+
+        // 文档碎片节点
+        var node = document.createDocumentFragment();
+
+        // 1 nodeType:节点类型
+        console.log(eleNode.nodeType);//1
+        console.log(attrNode.nodeType);//2
+        console.log(textNode.nodeType);//3 
+        console.log(commentNode.nodeType);//8 
+        console.log(document.nodeType);//9
+        console.log(document.doctype.nodeType);//10 
+        console.log(node.nodeType);//11 
+
+        // 2 nodeName:节点名称
+        console.log(eleNode.nodeName);//LI
+        console.log(attrNode.nodeName);//text
+        console.log(textNode.nodeName);// #text
+        console.log(commentNode.nodeName);// #comment
+        console.log(document.nodeName);// #document
+        console.log(document.doctype.nodeName);// html
+        console.log(node.nodeName);// #document-frament
+        
+
+        // 3 nodeValue:节点的值
+        console.log(eleNode.nodeValue);//null
+        console.log(attrNode.nodeValue);//属性值
+        console.log(textNode.nodeValue);//文本内容
+
+
+        
+
+    </script>
+</body>
+</html>

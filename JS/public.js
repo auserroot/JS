@@ -36,6 +36,19 @@ function getScroll(){
         }
     }
 }
+
+// 封装一个函数来返回指定元素的指定样式
+function getStyle(dom,attr){
+    if(window.getComputedStyle){
+        // 如果能进这里，非IE，说明window.getComputedStyle存在
+        return window.getComputedStyle(dom,null)[attr]
+    }else{
+        // 如果进这里，IE浏览器
+        return dom.currentStyle[attr]
+
+    }
+}
+
 // 判断arr里面是否含有num
 function has(arr,num){
     for(var i=0;i<arr.length;i++){
