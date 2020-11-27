@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+        <p> 
+            emm
+            <span>0</span>
+            <span class="0" id="1" index=2>1</span>
+            <span>2</span>
+            emmmm
+        </p>
     <script>
         /*
             DOM:一个由节点和对象（包含属性和方法的对象）组成的结构集合
@@ -21,21 +28,38 @@
             属性节点：通过getAttribute 获取的元素
 
             获取：
-                childNodes ：获取某节点下所有子节点
-              ***children ： 获取某节点下所有子级元素节点***（常用）
-                firstChild ： 获取某节点下子级第一个节点
-                fristElementChild ：获取某元素下子级的第一个元素节点
-                lastChild ：获取某节点下子级最后一个节点
-                lastElementChild ： 获取某节点下子级最后一个元素节点
-                nextSibling ：获取某节点下一个兄弟节点
-                nextElementSibling ： 获取某节点下一个兄弟元素节点
-                previousSibling ： 获取某节点上一个兄弟节点
-                previousElementSibling ：获取某节点上一个兄弟元素节点
-              ***parentNode ： 获取某节点的父级节点***（常用）
-                attribute：获取某元素节点的所有属性节点
+        */    
+       //获取p标签
+        var p = document.querySelector("p")
+        // childNodes ：获取某节点下所有子节点       
+        console.log(p.childNodes)
+        // ***children ： 获取某节点下所有子级元素节点***（常用）
+        console.log(p.children)
+        //  firstChild ： 获取某节点下子级第一个节点
+        console.log(p.firstChild)
+        //  fristElementChild ：获取某元素下子级的第一个元素节点
+        console.log(p.firstElementChild)
+        //  lastChild ：获取某节点下子级最后一个节点
+        console.log(p.lastChild)
+        //  lastElementChild ： 获取某节点下子级最后一个元素节点
+        console.log(p.lastElementChild)
 
-        
-        */
+        var span1=p.children[1]
+        //  nextSibling ：获取某节点下一个兄弟节点
+        console.log(span1.nextSibling)
+        //  nextElementSibling ： 获取某节点下一个兄弟元素节点
+        console.log(span1.nextElementSibling)
+        //  previousSibling ： 获取某节点上一个兄弟节点
+        console.log(span1.previousSibling)
+        //  previousElementSibling ：获取某节点上一个兄弟元素节点
+        console.log(span1.previousElementSibling)
+        // ***parentNode ： 获取某节点的父级节点***（常用）
+        console.log(span1.parentNode)
+        //  attributes：获取某元素节点的所有属性节点       
+        console.log(span1.attributes) //所有属性节点(获取标签属性)
+        console.log(span1.attributes[0])//通过下标获取某个属性
+        console.log(span1.attributes.id)//通过属性名获取属性
+        console.log(span1.attributes["id"])//通过属性名获取属性
     </script>
 </body>
 </html>
