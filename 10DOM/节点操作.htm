@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <p>p标签</p>
+    </div>
+
+
+    <script>       
+        /*
+            DOM节点操作：增(Create)、删(Remove)、改(Update)、查(Find)
+        */
+
+       //创建节点
+       /*createElement：用于创建元素节点*/
+       //元素节点
+       var div = document.createElement("div")
+       div.innerHTML = "创建的div元素节点"
+       console.log(div)
+       /*createTextNode:用于创建文本节点*/
+        //文本节点
+        var text = document.createTextNode("创建的文本节点")
+        console.log(text)
+        /*createDocumentFragment：用于创建文档碎片节点*/
+
+        //添加节点
+        /*appendChild：在一个元素末尾创建节点
+          语法：父节点.appenChild(要插入的节点)
+        */
+        var span1 = document.createElement("sapn")
+        span1.innerHTML="创建的span节点"
+        div.appendChild(span1)
+
+        /*insertBefore:在一个元素前插入节点
+           语法： 父节点.insertBefore(要插入的节点，在那个节点前插入)
+        */
+        var getDiv = document.querySelector("div");
+        var p =  getDiv.children[0]
+        getDiv.insertBefore(span1, p)
+
+        //删除节点
+        /*removeChild：移除一个节点下的某个节点
+          语法：父节点.removeChild(要移除的节点)
+        */
+       //写法1（获取后直接调用父元素）
+          getDiv.removeChild(span1)
+        // 写法2(直接用要移除元素寻找父元素)
+        // span1.parentNode.removeChild(span1)
+
+        // 修改节点
+        /*replaceChild：将页面中某个节点替换
+          语法：父节点.replaceChild(新节点，旧结点)
+        */
+         getDiv.replaceChild(span1,p)
+
+         //克隆节点
+         /*
+           cloneNode():克隆页面上某个节点   
+           语法：要克隆的节点.cloneNode(是否克隆标签里面的内容,默认为false)      
+         */
+         var p2 = p.cloneNode(true)
+         getDiv.appendChild(p)
+         getDiv.insertBefore(p2,span1)
+    </script>
+</body>
+</html>

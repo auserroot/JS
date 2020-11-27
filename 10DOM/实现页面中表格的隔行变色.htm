@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        td{
+            width: 200px;
+            height: 50px;
+        }
+        .bg1{
+            background-color: cyan;
+        }
+        .bg2{
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        // 实现页面中表格的隔行变色
+
+         //获取元素标签
+        var td = document.getElementsByTagName("td")
+        // console.log(td)
+        for(var i=0;i<td.length;i++){
+            if(i%2==1){
+                td[i].className = 'bg2'
+            }else{
+                td[i].className = 'bg1'
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

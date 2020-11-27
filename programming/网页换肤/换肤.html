@@ -7,6 +7,48 @@
 	<title></title>
 </head>
 
+<script>
+
+    window.onload = function(){
+        //获取元素
+        var hf = document.getElementById("hf")
+        var hy = document.getElementById("hy")
+
+        hf.onclick = function(){
+            //获取节点
+            var h = document.querySelector("head")
+            //创建一个link标签
+            var link = document.createElement("link")
+             //给link标签添加属性
+             link.setAttribute("rel","stylesheet")
+             link.setAttribute("type","text/css")
+             //给link标签添加css连接
+             var num = parseInt(Math.random()*4+1)
+             console.log(num)
+             var str = "css/hs"+num+".css"
+             console.log(str)
+             link.setAttribute("href",str)
+            //将link标签插入head标签中
+            h.appendChild(link)
+        }
+
+        hy.onclick = function(){
+           //获取节点
+           var h = document.querySelector("head")
+            //创建一个link标签
+            var link = document.createElement("link")
+             //给link标签添加属性
+             link.setAttribute("rel","stylesheet")
+             link.setAttribute("type","text/css")
+             //给link标签添加css连接
+             link.setAttribute("href","css/hs1.css")
+            //将link标签插入head标签中
+            h.appendChild(link)
+            
+        }
+    }
+
+</script>
 	
 <body>
 <!--top-->
