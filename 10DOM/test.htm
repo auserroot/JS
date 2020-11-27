@@ -7,9 +7,10 @@
 </head>
 <body>
         <p> 
+            <!-- 0123 -->
             emm
             <span>0</span>
-            <span class="0" id="1" index=2>1</span>
+            <span class="0" id="1">1</span>
             <span>2</span>
             emmmm
         </p>
@@ -60,6 +61,24 @@
         console.log(span1.attributes[0])//通过下标获取某个属性
         console.log(span1.attributes.id)//通过属性名获取属性
         console.log(span1.attributes["id"])//通过属性名获取属性
+
+        // 元素节点，节点的属性如果是系统属性，那么在dom节点的对象上也有这个属性
+        console.dir(span1)
+        //注释节点
+        console.log(p.childNodes[1])
+        console.dir(p.childNodes[1])
+        //文档节点
+        console.log(document)
+        //文档类型节点
+        console.log(document.doctype)
+        //文档碎片节点
+        /*
+          可以看作一个可以存储dom元素的空容器，但其内容不显示在页面上
+          要插入多个元素时可以现将元素插入文档碎片节点，后一次性输出，这样可以提升性能
+          节约渲染次数
+        */
+       var node = document.createDocumentFragment();
+       console.log(node)
     </script>
 </body>
 </html>
