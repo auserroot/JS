@@ -43,6 +43,7 @@
 		<div id="container">
 			<a href="#"  class="on">充话费</a>
 			<a href="#" >充流量</a>
+
 			<a href="#" >充固话</a>
 			<a href="#" style="border-right: solid 1px #FF4400;">充宽带</a>
 
@@ -62,6 +63,38 @@
 				<img src="images/4.png" />
 			</div>
 		</div>
+
+
+
+		<script>
+			// 获取元素
+			window.onload=function(){
+				var geta = (document.getElementsByTagName('a')).toString()
+			    console.log(geta)
+			var dp = document.querySelectorAll("#container .content")
+			var getimg = document.getElementsByTagName("img")
+			// a1.onclick = function(){
+			// 	dp.style.display = "block;"
+			// 	getimg.src="images/1.png"
+			// }
+			// a2.onclick = function(){
+			// 	a2.setAttribute("class","on")
+			// 	dp.style.display = "block;"
+			// 	getimg.src="images/2.png"
+			// }
+			// a3.onclick = function(){
+			// 	a3.setAttribute("class","on")
+			// 	dp.style.display = "block;"
+			// 	getimg.src="images/3.png"
+			// }
+			// a4.onclick = function(){
+			// 	a4.setAttribute("class","on")
+			// 	dp.style.display = "block;"
+			// 	getimg.src="images/4.png"
+			// }
+			}
+			
+		</script>
 	</body>
 </html>
 

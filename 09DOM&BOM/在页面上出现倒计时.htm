@@ -27,9 +27,14 @@
 
         window.onload = function () {
             getTime()
-            setInterval(function(){
-                getTime()
-            },1000)
+            // 1
+            // setInterval(function(){
+            //     getTime()
+            // },1000)
+            // 2
+            setInterval(getTime,1000)
+            // 3
+            // setInterval("getTime()",1000)
         }
     </script>
 </body>
