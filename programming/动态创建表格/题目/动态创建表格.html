@@ -62,15 +62,15 @@
 
 				// 给a标签添加功能(未生效)
 				var tbody = tab.children
-				tbody.onclick = function (event) {
-					var tagetevent = event.tagetevent
-					if (tagetevent.nodeNmae === "a") {
-						if (tagetevent.nodevalue == "删除") {
-							tbody.removeChild(this.parentNode.parentNode)
+				var a = document.getElementsByTagName("a")
+				tbody.onclick = function () {
+						if (a.value === "删除") {
+							// tbody.removeChild(this.parentNode.parentNode)
+							tab.deleteRow(trNum-1)
 						}
 					}
 				}
-			}
+			
 
 	    //添加点击事件
 		btn.onclick = function () {
