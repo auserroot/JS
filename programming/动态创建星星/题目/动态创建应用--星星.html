@@ -6,4 +6,61 @@
 	</head>
 	<body bgcolor="#000000" >
 	</body>
+		<script>
+			//记录添加图片
+			var size=0;
+			// 打印图片
+			function printImg(){
+				//获取元素
+			var boDy = document.querySelector("body")
+			//创建img标签
+			var getImg = document.createElement("img")
+		
+			// 获取窗口大小
+			var wHeight = window.innerHeight
+            console.log(wHeight)
+            var wWidth = window.innerWidth
+            console.log(wWidth)
+			
+				// 获取随机数
+			// 控制图片大小
+			var num = parseInt(Math.random()*29+10)
+			//控制出现位置
+			var i = Math.round(Math.random()*wWidth)
+			var j = Math.round(Math.random()*wHeight)
+			console.log(i)
+			console.log(j)
+			//传链接
+			getImg.src = "star.gif"
+			// 插入页面
+			boDy.appendChild(getImg)
+			//获取添加后的img标签
+			var Img = document.getElementsByTagName("img")
+			//设置随机大小
+			var width = num + "px"
+			var tOp = j+"px"
+			var lEft = i+"px"
+			// console.log(width)
+
+			// 给body设置定位
+			boDy.style.position = "relative"
+			
+				Img[size].style.width=width
+				Img[size].style.position = "absolute"
+			    // 设置随机出现
+			    Img[size].style.left = lEft
+				Img[size].style.top = tOp
+				size++
+				//点击删除图片
+				getImg.onclick=function(){
+					this.parentNode.removeChild(this)
+					size--
+				}
+	    }
+				//运行
+				setInterval(printImg,3000)
+		
+			  
+	
+		</script>
 </html>
