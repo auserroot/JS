@@ -3,6 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<style>
+			/* 该属性仅支持在支持css3的浏览器显示 */
+			.box::-webkit-scrollbar{
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<input type="text" id="t" />
@@ -50,7 +56,9 @@
 			if(hig>105){
 				con.style.height = "105px"
 				// 当li高度超过ul时将其隐藏(会显示滑动条)
-				con.style.overflow = "auto"
+				con.style.overflow = "auto"	
+				//隐藏滑动条
+				con.setAttribute("class","box")			
 			}
 		}
 
