@@ -16,19 +16,23 @@
         </div>
 
         <script>
-            // window.onload=function(){
+           
                 var getimg = document.querySelector("#container img")
                 // 初始化
                 getimg.src="images/diceDynamic.gif"
                 //构造函数
                 function shake(){
-                    // 获取随机数
-                    var num = parseInt(Math.random()*6+1)
-                    //coonsole.log(num)
-                    // 匹配图片
-                    getimg.src = "images/dice_"+num+".png"
+                    var timer = parseInt(Math.random()*2500+500)
+                    setTimeout(function(){
+                        // 获取随机数
+                        var num = parseInt(Math.random()*6+1)
+                        //coonsole.log(num)
+                        // 匹配图片
+                        getimg.src = "images/dice_"+num+".png"
+                    },timer)
+                    getimg.src="images/diceDynamic.gif"
                 }
-            // }
+            
             
         </script>
     </body>
