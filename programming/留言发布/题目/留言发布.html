@@ -14,37 +14,43 @@
 		var t = document.getElementById("t")
 		var btn = document.getElementById("btn")
 		var con = document.getElementById("con")
+		//初始化(记录第几次输入)
+		var num=0
 
 		btn.onclick=function(){
 			
 		    //获取输入内容
 			var str = t.value
 			// console.log(str)
-			//初始化
-			var num=false
-			if(num==false){
-				// 创建li标签
-			    var li = document.createElement("li")
-			    //传值
-			    li.innerHTML = str
-				// 将其插入ul
-				con.appendChild(li)
-				num=true
+			if(str == ""){
+				alert("请输入内容")
 			}else{
+				num++
 				// 创建li标签
-			    var li1 = document.createElement("li")
-			    //传值
-			    li1.innerHTML = str
-				// 将其插入ul
-				con.insertBefore(li1,li)
-			}
-			// con.appendChild(li)
+				var li = document.createElement("li")
+				// 获取 li标签
+				var li_list = document.getElementsByTagName("li")
+				//传值
+				li.innerHTML = str
+				//判断（如果是第一次输入用appendChild在ul下添加li）
+				if(num==1){   
+				  	 // 将其插入ul
+					  con.appendChild(li)
+			    }else{ 
+					// 如果不是是第一次输入则用insertBefore在ul下第一个li前添加li，shi后添加的显示在前
+				     // 将其插入ul 
+					 con.insertBefore(li,li_list[0])
+					}
+			    }
+				t.value = ""//添加完清空输入框
+			//获取ul高度
 			var hig = parseInt(getStyle(con,'height'))
 			// console.log(hig)
+			// 设置高度限制
 			if(hig>105){
 				con.style.height = "105px"
+				// 当li高度超过ul时将其隐藏(会显示滑动条)
 				con.style.overflow = "auto"
-			    li.style.overflow = "hidden"
 			}
 		}
 
