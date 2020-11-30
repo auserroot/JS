@@ -64,23 +64,28 @@
 		</div>
 	</body>
 </html>
-<script type="text/javascript">
-	//找到四个标题
-	var bts = document.getElementsByTagName("a");//四个 [标题一,]
-	var divs = document.getElementsByClassName("content");//四个 [内容一，]
-	//对象可以动态的添加属性  属性作用记录对象在页面中的位置（下标）
-	//for循环为所有的标题添加同一个鼠标事件
-	for( var i = 0 ; i < bts.length ; i++ ){
-		bts[i].index = i; //为每一个标题对象记录 下标
-		bts[i].onclick = function(){
-			//排他思想   先将所有的标题样式 清空  
-			for( var j = 0 ; j < bts.length ; j++ ){
-				bts[j].className = "";
-				divs[j].style.display = "none";
-			}
-			//操作当前的标题时，为该标题添加样式 on 
-			this.className = "on"; //留下当前操作 
-			divs[this.index].style.display = "block";
-		}
-	}
+<script>
+	//获取元素
+	var a = document.querySelectorAll("a")
+	console.log(a)
+	var Div = document.querySelectorAll(".content")
+	console.log(Div)
+	// 点击a标签时更换背景颜色
+	for (var i = 0; i < a.length; i++) {
+		// console.log(a[i])
+		//记录当前索引
+		a[i].num =i
+		// 添加点击事件
+		a[i].onclick = function () {
+			// 遍历标签清空样式（初始化状态）
+			for(var j=0;j<a.length;j++){
+					a[j].className=""
+					Div[j].style.display = 'none'
+				}
+				// 给当前点击的a标签添加on类名
+				this.setAttribute('class', 'on')
+				//改变当前索引对应的div的display属性
+				Div[this.num].style.display = 'block'
+		    }
+	    }
 </script>
