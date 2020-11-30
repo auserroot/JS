@@ -51,8 +51,20 @@
         for(var i=0;i<td.length;i++){
             if(i%2==1){
                 td[i].className = 'bg2'
+                td[i].onmouseover=function(){
+                    this.className = 'bg1'
+                }
+                td[i].onmouseout=function(){
+                    this.className = 'bg2'
+                }
             }else{
                 td[i].className = 'bg1'
+                td[i].onmouseover=function(){
+                    this.className = 'bg2'
+                }
+                td[i].onmouseout=function(){
+                    this.className = 'bg1'
+                }
             }
         }
 

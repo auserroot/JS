@@ -66,6 +66,7 @@
 				tbody.onclick = function () {
 						if (a.value === "删除") {
 							// tbody.removeChild(this.parentNode.parentNode)
+							tr.remove()
 							tab.deleteRow(trNum-1)
 						}
 					}
