@@ -58,9 +58,17 @@
 				}
 	    }
 				//运行
-				setInterval(printImg,3000)
-		
-			  
+				var t = setInterval(printImg,3000)
+
+				//页面最小化清除定时器
+				document.onvisibilitychange = function(){
+					console.log(document.hidden)
+					if(document.hidden){
+						clearInterval(t)
+					}else{
+						setInterval(printImg,3000)
+					}
+				}
 	
 		</script>
 </html>

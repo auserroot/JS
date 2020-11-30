@@ -26,6 +26,7 @@
 		//生成表格
 			function printTable() {
 				str += "<table>"
+
 				for (var i = 0; i < row.value; i++) {
 					str += "<tr>"
 					for (var j = 0; j < col.value; j++) {
@@ -62,13 +63,18 @@
 
 				// 给a标签添加功能(未生效)
 				var tbody = tab.children
+				console.log(tbody)
 				var a = document.getElementsByTagName("a")
+				console.log(a)
 				tbody.onclick = function () {
-						if (a.value === "删除") {
+					for(var j=0;j<a.length;j++){
+						var tr = a[j].parentNode.parentNode
+						if (a[j].value === "删除") {
 							// tbody.removeChild(this.parentNode.parentNode)
 							tr.remove()
-							tab.deleteRow(trNum-1)
+							// tab.deleteRow(tr.value-1)
 						}
+					}
 					}
 				}
 			
