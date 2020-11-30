@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 10000px;
+        }
+        img{
+            position: absolute;
+            top:0;
+            left:0;
+            display:none;
+        }
+        div.father{
+            width: 200px;
+            height: 200px;
+            background:red;
+            position: relative;
+            top:100px;
+            left:200px;
+            border:1px solid chartreuse;
+            display: none;
+        }
+        div.son{
+            width: 50px;
+            height: 50px;
+            background-color: chartreuse;
+            margin:50px auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <img src="./star.gif" alt="">
+    <script>
+        /* 
+            需求分析：点击页面实现星星跟着鼠标移动
+            技术点:
+                ==> 点击事件的光标坐标点获取
+                ==> 每次点击事件，参照物不同，坐标也是不一样的，因此要指定相对坐标系
+                ==> 例如
+                    + 相对事件源（你点击的元素）
+                    + 相对页面
+                    + 相对浏览器窗口
+                ==> 因为都不一样，所有我们获取的事件对象里面的属性也不一样
+                ==> 相对你点击的元素来说
+                    + offsetX和offsetY
+                    + layerX和layer 
+                ==> 相对于浏览器窗口你点击的坐标
+                    + clientX和clientY
+                ==> 相对于浏览器窗口你点击的坐标
+                    + pageX和pageY
+
+        */
+
+        // 1 给father这个div添加点击事件
+        // var father = document.querySelector('.father')
+        // father.onclick = function(e){
+        //     e = e||window.event;
+        //     console.log("===相对你点击的元素来说:X坐标===")
+        //     console.log(e.offsetX||e.layerX)
+        //     console.log("===相对你点击的元素来说:Y坐标===")
+        //     console.log(e.offsetY||e.layerY)
+        // }
+
+        // 2  给页面添加点击事件
+        var img = document.querySelector('img')
+        document.onclick = function(e){
+            e = e||window.event;
+            console.log("===相对于浏览器窗口你点击的X坐标===")
+            console.log(e.clientX)
+            console.log("===相对于浏览器窗口你点击的Y坐标===")
+            console.log(e.clientY)
+            console.log("===相对于页面你点击的X坐标===")
+            console.log(e.pageX)
+            console.log("===相对于页面你点击的Y坐标===")
+            console.log(e.pageY)
+            img.style.display = "block";
+            img.style.left = e.pageX+"px";
+            img.style.top = e.pageY+"px";
+        }
+    </script>
+</body>
+</html>

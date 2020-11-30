@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.onkeyup = function(e){
+            e = e||window.event;
+            keyCode = e.keyCode||e.which;//按键编码
+            // console.log('======')
+            // console.log(keyCode)
+            // console.log(e.shiftKey)
+            // console.log(e.ctrlKey)
+            // console.log(e.altKey)
+            if(e.ctrlKey&&keyCode==65){
+                alert("你按下了ctrl+a键")
+            }
+            
+        }
+    </script>
+</body>
+</html>

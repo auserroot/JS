@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+            top:0;
+            left:0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="./star.gif" alt="">
+    <script>
+        /* 
+            事件对象里面有关于坐标的信息
+                ==> 不同的参考内容，坐标值不一样
+                ==> 相对被点击的元素
+                    ==> offsetX/offsetY
+                    ==> 有兼容性问题，在火狐是:layerX和layerY
+                    ==> 不常用
+                ==> 相对浏览器的坐标
+                    ==> clientX/clientY
+                    ==> 没有兼容性问题，经常使用
+                ==> 相对页面的坐标
+                    ==> pageX/pageY
+                    ==> 有兼容性问题，经常使用，使用的时候需要使用兼容写法
+        */
+
+        // 案例：鼠标移动，星星跟着鼠标移动
+        // 星星这个img的left和top都是相对body的
+        // 如果要星星跟着鼠标，就要知道鼠标的坐标，并且是相对页面的坐标
+        var img = document.querySelector('img')
+        document.onmousemove = function(e){
+            e = e||window.event;
+            console.log("x坐标是"+e.pageX)
+            console.log("y坐标是"+e.pageY)
+            img.style.display = "block";
+            img.style.left = e.pageX+"px";
+            img.style.top = e.pageY+"px";
+        }
+    </script>
+</body>
+</html>

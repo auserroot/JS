@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for(var i=1;i<=10;i++){
+            console.log(i);//1
+        }
+        setTimeout(function(){
+            console.log('1s');//3或者4
+        },0);
+        document.onclick = function(){
+            console.log('onclick');//3或者4
+        };
+        console.log('hello world');//2
+
+        
+        // 1 js代码分两种：同步代码和异步代码
+        // 异步代码:不是顺序执行执行的代码，比如定时函数，事件处理函数
+        // 同步代码:按照顺序执行的代码
+        // 2 js代码执行顺序：先同步再异步
+    </script>
+</body>
+</html>

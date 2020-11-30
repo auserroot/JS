@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <input type="text" id="text">
+    <script>
+        /* 
+            键盘事件
+                ==> 我们在键盘事件里面最主要的就是做两个事情
+                    ==> 判断点击的是哪个按键
+                    ==> 有没有组合按键:shift/alt/ctrl
+                ==> 是不是所有元素都可以绑定键盘事件？
+                    ==> 我们一般只能给document和表单元素绑定键盘事件
+                    ==> 确定按键：通过e.keyCode或者e.which来获取，为什么有两个，因为有兼容性问题
+                        ==> 8:删除:BACKSPACE
+                        ==> 13:回车ENTER
+                        ==> 32:空格键:SPACE
+                        ==> 27:取消键ESC
+                        ==> 9:制表符tab
+                    ==> 是否有组合按钮
+                        ==> 组合按键最主要的就是：shift/ctrl/alt三个按键
+                        ==> 在我点击一个按键的时候要判断弄一下这三个键有没有按下，有就是组合了，没有就是没有组合按键
+                        ==> 事件对象里面为我们提供了三个属性
+                            ==> altKey:alt键按下了得到true，否则得到false
+                            ==> shiftKey:shift键按下了得到true，否则得到false
+                            ==> ctrlKey:ctrl键按下了得到true，否则得到false
+        */
+
+        // 1 给页面绑定键盘事件
+        // document.onkeydown = function(e){
+        //     e = e||window.event;
+        //     console.log(e.keyCode)
+        //     console.log(e.which)
+        // }
+
+        // 2 给表单元素绑定键盘事件
+        // document.getElementById('text').onkeyup = function(e){
+        //     e = e||window.event;
+        //     var code = e.keyCode||e.which;
+        //     if(code==65){
+        //         // 如果按的a键,input背景色变红色
+        //         this.style.background = "red"
+        //     }else if(code==66){
+        //         // 如果按的b键,input背景色变蓝色
+        //         this.style.background = "skyblue"
+        //     }
+        // }
+
+
+        // 3 给div绑定事件
+        document.querySelector('div').onkeydown = function(e){
+            console.log('不发触发keydown事件')
+        }
+    </script>
+    
+</body>
+</html>

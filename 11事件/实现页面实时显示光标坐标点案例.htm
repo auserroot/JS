@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <script>
+        // 实现页面实时显示光标坐标点案例
+        document.onmousemove=function(e){
+            // 添加事件（兼容）
+            e = e||window.event
+            // 打印光标位置
+            // console.log(e.pageX)
+            // console.log(e.pageY)
+            var txt = document.querySelector("p")
+            txt.innerHTML ="目前光标位置" + "(" + e.pageX + "," + e.pageY + ")"
+        }
+    </script>
+</body>
+</html>

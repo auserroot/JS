@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 400px;
+            list-style: none;
+        }
+        li{
+            height: 30px;
+        }
+        li:nth-child(2n){
+            background:pink;
+        }
+        li:nth-child(2n+1){
+            background:skyblue;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background:red;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div class="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        /* 
+            需求分析：
+                1 鼠标移入某个li,该li的背景色变成red
+                    + 每个li都要绑定onmouseover事件
+                2 鼠标移出某个li,该li的背景色变成原来的颜色
+                    + 每个li都要绑定onmouseout事件
+            技术点：
+                鼠标移入事件:onmouseover
+                鼠标移出事件:onmouseout
+        */
+
+        // 获取相关元素
+        var liArr = document.querySelectorAll('li');//节点的集合是一个伪数组
+        var color = "";//我用color记录你移入的那个li 的背景色，等你移出的时候，就可以恢复这个颜色
+        
+        // 当要给一个集合里面的多个元素绑定事件，可以循环绑定
+        for(var i=0;i<liArr.length;i++){
+            liArr[i].onmouseover = function(){
+                // 每次鼠标移入，先记录原来的颜色
+                color = getStyle(this,'backgroundColor');
+                // 再变色
+                // 在事件函数里面this是事件源，就是绑定事件的那个dom节点
+                this.style.background = "red"
+            }
+            liArr[i].onmouseout= function(){
+                // 在事件函数里面this是事件源，就是绑定事件的那个dom节点
+                this.style.background = color;
+            }
+        }
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 测试onmouseover和onmouseout事件
+        // var div = document.querySelector('div');
+        // div.onmouseover = function(){
+        //     console.log('onmouseover事件发生了')
+        // }
+        // div.onmouseout = function(){
+        //     console.log('onmouseout事件发生了')
+        // }
+    </script>
+</body>
+</html>

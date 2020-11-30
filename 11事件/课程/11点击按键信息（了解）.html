@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            点击按键信息
+                ==> 鼠标两个按键：左键和右键
+                ==> 事件对象里面也有这个信息，确定你点击的是左键还是右键
+                ==> 我们使用e.button来获取信息
+                ==> 0表示鼠标左键，2表示鼠标右键
+        */
+
+        document.onclick = function(e){
+            // 左键点击
+            e = e||window.event;
+            console.log(e.button)
+        }
+
+        document.oncontextmenu = function(e){
+            // 右键点击
+            e = e||window.event;
+            console.log(e.button)
+        }
+    </script>
+</body>
+</html>
