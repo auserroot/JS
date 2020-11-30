@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>123321</p>
+    <script>
+        document.onkeydown = function(e){
+            e = e || window.event
+            var keyCode = e.keyCode
+            console.log(keyCode)
+            while(keyCode == 9){
+                var p = document.querySelector("p")
+                p.innerHTML = '321123'
+                break
+            }
+        }
+    </script>
+</body>
+</html>
