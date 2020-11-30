@@ -47,25 +47,27 @@
 
          //获取元素标签
         var td = document.getElementsByTagName("td")
-        // console.log(td)
+        console.log(td)
         for(var i=0;i<td.length;i++){
             if(i%2==1){
                 td[i].className = 'bg2'
+                var color = getStyle(td[i],'backgroundColor')
+                console.log(color)
                 td[i].onmouseover=function(){
-                    var color = getStyle(this,'backgroundColor')
                     this.style.background = "red"
                 }
                 td[i].onmouseout=function(){
-                    this.className = color
+                    this.style.background = color
                 }
             }else{
                 td[i].className = 'bg1'
+                var color0 = getStyle(td[i],'backgroundColor')
+                console.log(color0)
                 td[i].onmouseover=function(){
-                    var color = getStyle(this,'backgroundColor')
                     this.style.background = "red"
                 }
                 td[i].onmouseout=function(){
-                    this.className = color
+                    this.style.background = color0
                 }
             }
         }
