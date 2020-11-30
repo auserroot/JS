@@ -52,23 +52,35 @@
             if(i%2==1){
                 td[i].className = 'bg2'
                 td[i].onmouseover=function(){
+                    var color = getStyle(this,'backgroundColor')
                     this.style.background = "red"
                 }
                 td[i].onmouseout=function(){
-                    this.className = 'bg2'
+                    this.className = color
                 }
             }else{
                 td[i].className = 'bg1'
                 td[i].onmouseover=function(){
+                    var color = getStyle(this,'backgroundColor')
                     this.style.background = "red"
                 }
                 td[i].onmouseout=function(){
-                    this.className = 'bg1'
+                    this.className = color
                 }
             }
         }
 
-        
+        // 封装一个函数来返回指定元素的指定样式
+function getStyle(dom,attr){
+    if(window.getComputedStyle){
+        // 如果能进这里，非IE，说明window.getComputedStyle存在
+        return window.getComputedStyle(dom,null)[attr]
+    }else{
+        // 如果进这里，IE浏览器
+        return dom.currentStyle[attr]
+
+    }
+}
     </script>
 </body>
 </html>
