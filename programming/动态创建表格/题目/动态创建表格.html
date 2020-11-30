@@ -20,37 +20,47 @@
 		var btn = document.getElementById("btn")
 		var box = document.getElementById("box")
 
-		var str = ""
+		// var str = ""
 		var trNum = 0
 		var tdNum = 0
 		//生成表格
 			function printTable() {
-				str += "<table>"
-
+				// str += "<table>"
+				var table = document.createElement("table")
+				box.appendChild(table)
 				for (var i = 0; i < row.value; i++) {
-					str += "<tr>"
+					// str += "<tr>"
+					var tr = document.createElement("tr")
+					table.appendChild(tr)
 					for (var j = 0; j < col.value; j++) {
-						str += "<td>"
+						/* str += "<td>"
 						str += tdNum
-						str += "</td>"
+						str += "</td>" */
+						var td = document.createElement("td")
+						td.innerHTML = tdNum
+						tr.appendChild(td)
 						tdNum++
 					}
-					str += "<td><a href='#'>删除</a></td>"
-					str += "</tr>"
+					// str += "<td><a href='#'>删除</a></td>"
+					// str += "</tr>"
+					var td2 = document.createElement("td")
+					td2.innerHTML = "删除"
+					td2.className="del"
+					tr.appendChild(td2)
 					trNum++
 					// console.log(trNum)
 				}
-				str += "</table>"
-				box.innerHTML = str
-				console.log(tdNum)
+				// str += "</table>"
+				// box.innerHTML = str
+				// console.log(tdNum)
 				// console.log(str)
 
 				//设置样式
 				var tab = document.querySelector("table")
-				var tr = document.getElementsByTagName("tr")
+				// var tr = document.getElementsByTagName("tr")
 				var td = document.getElementsByTagName("td")
-				// console.log(tr)
-				// console.log(td)
+				console.log(tr)
+				console.log(td)
 
 				tab.style.border = "1px solid #333"
 
@@ -62,18 +72,21 @@
 				}
 
 				// 给a标签添加功能(未生效)
-				var tbody = tab.children
-				console.log(tbody)
-				var a = document.getElementsByTagName("a")
-				console.log(a)
-				tbody.onclick = function () {
-					for(var j=0;j<a.length;j++){
-						var tr = a[j].parentNode.parentNode
-						if (a[j].value === "删除") {
-							// tbody.removeChild(this.parentNode.parentNode)
-							tr.remove()
+				// var tr = tab.children
+				// console.log(tr)
+				// var a = document.getElementsByTagName("a")
+				// console.log(a)
+
+				var tdlist = document.getElementsByClassName("del")
+						console.log(tdlist)
+				for(var j=0;j<tdlist.length;j++){
+					// if (tdlist[j].value === "删除") {
+						tdlist[j].onclick = function () {
+							var tr = this.parentNode
+							tr.parentNode.removeChild(tr)
+							//  this.remove()
 							// tab.deleteRow(tr.value-1)
-						}
+						// }
 					}
 					}
 				}
