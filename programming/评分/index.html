@@ -20,5 +20,74 @@
 <li class="default"> </li>
 </ul>
 <div id="div"></div>
+
+<script>
+    var getli = document.querySelectorAll('.default')
+    var div = document.querySelector('#div')
+        for (var i = 0; i < getli.length; i++) {
+            getli[i].index = i
+            // console.log(getli[i].index)
+            ul1.onmouseover = function(e) {
+                e=e||window.event
+                var target = e.target||e.sreElenent
+                if(target.className=='default'){
+                     for(var j=0;j<=target.index;j++){
+                        getli[j].style.backgroundPositionY = '-'+27+'px'
+                        switch(target.index){
+                        case 0 : div.innerHTML = '一星分期好评'
+                        break
+                        case 1 : div.innerHTML = '有点差'
+                        break
+                        case 2 : div.innerHTML = '有待提高'
+                        break
+                        case 3 : div.innerHTML = '还行'
+                        break
+                        case 4 : div.innerHTML = '很好'
+                        break
+                        default : div.innerHTML = ''
+                        break
+                        }
+                        
+                     }
+                }
+            }
+            ul1.onmouseout = function(e) {
+                e=e||window.event
+                var target = e.target||e.sreElenent
+                if(target.className=='default'){
+                    for(var j=0;j<getli.length;j++){
+                        getli[j].style.backgroundPositionY = 0+'px'
+                        if(target.index-1==-1){
+                            div.innerHTML=""
+                        }
+                     }
+                     for(var j=0;j<=target.index;j++){
+                        getli[j].style.backgroundPositionY = '-'+27+'px'
+                        if(target.index-1==-1){
+                            getli[j].style.backgroundPositionY = 0+'px'
+                        }
+                     }
+                }
+            }
+
+            ul1.onclick = function(e) {
+                e=e||window.event
+                var target = e.target||e.sreElenent
+                if(target.className=='default'){
+                    for(var k=0;k<=target.index;k++){
+                        getli[k].style.backgroundPositionY = '-'+27+'px'
+                     }
+                }
+            }
+
+            ul1.ondblclick = function(e) {
+                e=e||window.event
+                var target = e.target||e.sreElenent
+                if(target.className=='default'){
+                target.style.backgroundPositionY = 0+'px'
+                }
+            }
+        }
+</script>
 </body>
 </html>
