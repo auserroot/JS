@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义字体形状</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+		#wrap {
+			background: url(img/bg.jpg) 0 0 no-repeat;
+			width: 556px;
+			height: 535px;
+			margin: 10px auto;
+			position: relative;
+			display: block;
+		}
+		#showbox {
+			position: absolute;
+			top: 100px;
+			left: 10px;
+			height: 270px;
+			width: 385px;
+			display: block;
+			font-size: 16px;
+			overflow: auto;
+		}
+		textarea {
+			border: none;
+			position: absolute;
+			width: 385px;
+			height: 75px;
+			left: 10px;
+			top: 415px;
+			font-size: 16px;
+		}
+		select {
+			position: absolute;
+			top: 385px; 
+			left: 8px;
+		}
+		input {
+			position: absolute;
+			top: 509px;
+			left: 323px;
+			width: 80px;
+			cursor: pointer;
+		}
+		#showbox div {
+			width: 20px;
+			display: inline-block;
+			font-size: 16px;
+			margin: 2px 0;
+		}
+		div img {
+			width: 16px;
+			height: 16px;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="wrap">
+		<div id="showbox">
+			<!--<div><img src="12-img/heart.gif"><span>1</span></div>-->
+		</div>
+		<select name="fontStyle" id="fontStyle">
+			<option value="balloon">气球字体</option>
+			<option value="love">表白字体</option>
+			<option value="knife">砍刀字体</option>
+			<option value="jiong">囧人字体</option>
+			<option value="shuai">衰人字体</option>
+			<option value="default" selected>默认字体</option>
+		</select>
+		<textarea id="cont"></textarea>
+		<input type="button" value="发送" id="send">
+	</div>
+</body>
+</html>
