@@ -74,7 +74,7 @@
                      for(var j=0;j<=target.index;j++){
                         getli[j].style.backgroundPositionY = '-'+27+'px'
                          //若未选中任何子元素清空子元素样式
-                        if(target.index-1==-1){
+                        if(target.index-1==-1||target.index+1==getli.length){
                             getli[j].style.backgroundPositionY = 0+'px'
                         }
                      }

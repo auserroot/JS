@@ -81,7 +81,64 @@
 	<script>
 		//获取元素
 		var showtxt = document.querySelector('#showbox')
-		var fontStyle = document.querySelector('#fontStyle')
+		var getFont = document.querySelector('#fontStyle')
+		var conTxt = document.querySelector('#cont')
+		var Send = document.querySelector('#send')
+		// console.log(Send)
+		// console.log(getFont)
+		//添加点击事件
+		/* Send.onclick=function(){
+			var box = document.createElement("div")
+			var txt = document.createElement('span')
+			var getImg = document.createElement('img')
+			var br = document.createElement('br')
+			// console.log(br)
+			if(getFont.value=='balloon'){
+				getImg.src = 'img/balloon.png'
+			}else if(getFont.value=='love'){
+				getImg.src = 'img/heart.gif'
+			}else if(getFont.value=='knife'){
+				getImg.src = 'img/knife.gif'
+			}else if(getFont.value=='jiong'){
+				getImg.src = 'img/jiong.gif'
+			}else if(getFont.value=='shuai'){
+				getImg.src = 'img/shuai.gif'
+			}else{
+				getImg.style.display = 'none'
+			}
+			var texts = conTxt.value
+			txt.innerHTML = texts
+			box.appendChild(getImg)
+			box.appendChild(txt)
+			showtxt.appendChild(box)
+			showtxt.appendChild(br)
+		} */
+
+		Send.onclick=function(){
+			var str = ''
+			var getImg = {
+				'balloon' : 'img/balloon.png',
+				'love' : 'img/heart.gif',
+				'knife' : 'img/knife.gif',
+				'jiong' : 'img/jiong.gif',
+				'shuai' : 'img/shuai.gif',
+				'default' : ''
+			}
+			var texts = conTxt.value
+			var obj = getFont.value
+			// console.log(obj)
+			// console.log(getImg[obj])
+			if(obj=='default'){
+				showtxt.innerHTML += texts +'<br>'
+				conTxt.value = ''
+			}
+			var arr = String(texts).split("")
+			for(var i=0;i<arr.length;i++){
+				str += '<div><img src='+getImg[obj]+'><span>'+arr[i]+'</img></span></div>'
+			}
+			showtxt.innerHTML += str +'<br>'
+		}
+
 	</script>
 </body>
 </html>
