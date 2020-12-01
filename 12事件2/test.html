@@ -15,7 +15,7 @@
         #txt{
             width: 100px;
             height: 100px;
-            margin: 0 auto;
+            margin: 50px auto;
             background-color: red;
         }
     </style>
@@ -111,16 +111,86 @@
                 alert(2)
             })*/
 
-            // attachEvent
+            // attachEvent/*ie7 8 中使用*/
             // 点击div的时候，两个事件处理函数都会执行，并且顺序注册，倒序执行
-            box.attachEvent('onclick',function(){
+
+            /* box.attachEvent('onclick',function(){
                 alert(1)
             })
             box.attachEvent('onclick',function(){
                 alert(2)
+            }) */
+            //默认情况（冒泡阶段）自下而上执行事件处理函数
+            /* box.addEventListener('click',function(){
+                console.log('box')
             })
+            txt.addEventListener('click',function(){
+                console.log('txt')
+            }) */
+            
+
+            // 捕获阶段  自上而下执行事件处理函数
+            /* box.addEventListener('click',function(){
+                console.log('box')
+            },true)
+            txt.addEventListener('click',function(){
+                console.log('txt')
+            },true) */
+
+
+            //阻止冒泡
+            window.addEventListener('click',function(){
+                console.log('window')
+            })
+            document.body.addEventListener('click',function(){
+                console.log('body')
+            })
+            box.addEventListener('click',function(e){
+                console.log('box')
+                e=e||window.event
+                // 在事件传播到box时不再继续向上传播（即在此处阻止冒泡  stopPropagation()
+                // 阻止冒泡的兼容写法
+            //     e.stopPropagation?e.stopPropagation():e.cancelBubble = true
+            // })
+            // txt.addEventListener('click',function(){
+            //     console.log('txt')
+            // })
+
+
+
+            /* 事件的传播
+                     当元素触发一个事件的时候，其父元素也会触发相同的事件
+                     父元素的父元素也会触发相同的事件
+                     也就是点击了子元素
+                     会触发子元素的点击事件
+                     点击了父元素
+                     会触发父元素的点击事件
+                     也是点击了body上，会触发body的点击事件
+                     也是点击了html上，会触发html的点击事件
+                     也是点击了document上，会触发document的点击事件
+                     也是点击了window上，会触发window的点击事件
+                    
+            事件的传播的注意事项
+                只会传播同类事件
+                只会从点击元素开始按照html的结构逐层向上元素的事件会被触发   
+                内部元素不管有没有该事件，只要上层元素有该事件，那么上层元素的事件就会触发 */
+
  
 
+        /*
+            事件委托：（利用冒泡机制）
+                将子元素的事件交给父元素执行
+            
+            事件触发：
+                点击子元素，只要父元素有点击事件处理函数，就能执行父元素的事件处理函数
+
+            target
+                表示点击目标，是事件对象里面的属性
+                在IE下使用srcElement
+
+            委托
+                此时点击子元素也能触发父元素的事件处理函数
+                并且能获取点击的目标target
 
 
 
