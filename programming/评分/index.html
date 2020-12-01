@@ -22,17 +22,24 @@
 <div id="div"></div>
 
 <script>
+    // 获取元素
     var getli = document.querySelectorAll('.default')
     var div = document.querySelector('#div')
+        // 添加委托事件
         for (var i = 0; i < getli.length; i++) {
+            // 记录索引
             getli[i].index = i
             // console.log(getli[i].index)
+            // 添加鼠标经过事件
             ul1.onmouseover = function(e) {
                 e=e||window.event
                 var target = e.target||e.sreElenent
+                // 判断子节点
                 if(target.className=='default'){
+                    //  循环选中目标更改背景样式
                      for(var j=0;j<=target.index;j++){
                         getli[j].style.backgroundPositionY = '-'+27+'px'
+                        // 给div添加文字
                         switch(target.index){
                         case 0 : div.innerHTML = '一星分期好评'
                         break
@@ -51,18 +58,22 @@
                      }
                 }
             }
+            // 添加鼠标移出事件
             ul1.onmouseout = function(e) {
                 e=e||window.event
                 var target = e.target||e.sreElenent
                 if(target.className=='default'){
+                    // 循环清空背景样式
                     for(var j=0;j<getli.length;j++){
                         getli[j].style.backgroundPositionY = 0+'px'
+                        //若未选中任何子元素清空div
                         if(target.index-1==-1){
                             div.innerHTML=""
                         }
                      }
                      for(var j=0;j<=target.index;j++){
                         getli[j].style.backgroundPositionY = '-'+27+'px'
+                         //若未选中任何子元素清空子元素样式
                         if(target.index-1==-1){
                             getli[j].style.backgroundPositionY = 0+'px'
                         }
@@ -70,6 +81,7 @@
                 }
             }
 
+            // 添加鼠标点击事件（选中
             ul1.onclick = function(e) {
                 e=e||window.event
                 var target = e.target||e.sreElenent
@@ -80,6 +92,7 @@
                 }
             }
 
+            // 添加鼠标双击事件（取消
             ul1.ondblclick = function(e) {
                 e=e||window.event
                 var target = e.target||e.sreElenent
