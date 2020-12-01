@@ -79,18 +79,20 @@
                 getCode()
             },500)
             num++
-            result.innerHTML = "你正确输入了"+num+"个字母"
+            // result.innerHTML = "你正确输入了"+num+"个字母"
             // console.log(num)
         }else{
             eNum++ 
-            num = 0
+            // num = 0
             setTimeout(function(){
                 char.removeAttribute('class')
                 getCode()
             },500)
             char.setAttribute('class','animated shake error')
-            result.innerHTML = "你输错了"+eNum+"个字母"
+            // result.innerHTML = "你输错了"+eNum+"个字母"
             // console.log(eNum)
         }
+        var r = num + eNum
+        result.innerHTML = "正确率"+parseFloat((num/r)*100).toFixed(2)+"%"
     }
 </script>

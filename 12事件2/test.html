@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: rebeccapurple;
+            margin: 0 auto;
+            border: 1px solid ;
+        }
+        #txt{
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: red;
+        }
+    </style>
+</head>
+<body style="height: 10000px;"> 
+    <div id="box">
+        <p id="txt"></p>
+    </div>
+    <script>
+      /*   //获取鼠标距离页面位置
+        document.onclick = function (e) {
+            e = e || event
+            console.log('**************pageY**************')
+            console.log(e.pageY)
+            //兼容写法
+            console.log('***鼠标距浏览器窗口距离+滚动距离***')
+            console.log(e.clientY + getScroll().top)
+        }
+
+        // 封装一个方法用来获取页面滚动的距离
+        function getScroll() {
+            if (window.pageYOffset) {
+                return {
+                    top: window.pageYOffset,
+                    left: window.pageXOffset
+                }
+            } else if (document.documentElement.scrollTop) {
+                return {
+                    top: document.documentElement.scrollTop,
+                    left: document.documentElement.scrollLeft
+                }
+            } else {
+                return {
+                    top: document.body.scrollTop,
+                    left: document.body.scrollLeft
+                 }
+            }
+        }*/
+/********************************************************************************************/
+
+            /*
+                事件绑定：
+                    on+事件：只能给一个元素同一类事件绑定一个事件处理函数
+                             如果写了第二个事件处理函数，将覆盖前一个函数
+                             
+                    addEventListener:不兼容IE8及以下版本
+                    在IE中使用：attachEvent
+
+                事件监听：
+                    addEventListener：
+                        语法： 元素.addEventListener(事件类型,事件处理函数[,冒泡或捕获])
+                               事件前不写on
+                               事件处理函数与on+事件类型一样
+                               冒泡或捕获：默认冒泡（false）
+                                    目标：
+                                        点击哪，点击时该元素就是目标
+                                    冒泡：
+                                        事件从目标的事件处理函数开始，依次向外，直到window的事件处理函数触发（自下而上执行事件处理函数）
+                                    捕获：
+                                        时间从window的时间处理函数开始，依次向内，直到事件目标的事件处理函数执行（自上而下执行时间处理函数）
+
+                        阻止冒泡：e.stopPropagation()在IE中有兼容问题
+                            兼容写法：e.stopPropagation?e.stopPropagation():e.cancelBubble=true
+
+                        顺序注册，顺序执行
+                    
+                    attchEvent：IE7 8 使用
+                        语法：  元素.attchEvent(事件类型，事件处理函数)
+                                事件前要写on
+                                事件处理函数与on+事件类型一样
+                        顺序注册，倒序执行
+
+            */
+
+
+            // 使用on+事件类型绑定事件
+            // 可直接将id box 作为变量使用
+            // console.log(box)
+           /*  box.onclick=function(){
+                alert(1)
+            } */
+            // 此时如果再次给box绑定新的click事件将覆盖上面的事件
+            /* box.onclick=function(){
+                alert(2)
+            } */
+
+            //addEventListener
+            // 点击页面时两个函数都会执行，并且按照注册顺序执行
+           /*  box.addEventListener('click',function(){
+                alert(1)
+            })
+            box.addEventListener('click',function(){
+                alert(2)
+            })*/
+
+            // attachEvent
+            // 点击div的时候，两个事件处理函数都会执行，并且顺序注册，倒序执行
+            box.attachEvent('onclick',function(){
+                alert(1)
+            })
+            box.attachEvent('onclick',function(){
+                alert(2)
+            })
+ 
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
