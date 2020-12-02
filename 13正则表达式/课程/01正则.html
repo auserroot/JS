@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            正则
+                ==>正则表达式:regular expression,又称“规则表达式”
+                ==>由我们自己来书写“规则”,专门用来检测字符串是否符合“规则”使用的
+                ==>我们使用一些特殊的字符或者符号定义一个“规则公式”，然后用定义好的规则去检查字符串是否符合要求
+            创建一个正则表达式
+                ==>把一些字符和符号写在//中间，叫做正则表达式，比如/abc/
+                ==>创建一个正则表达式由两种方法：字面量和构造函数
+                    -->字面量:在//里面的都是字符串
+                    -->构造函数
+                ==>两个方法创建的结果是一样的
+        */
+        // 正则
+        var reg = /abc/;
+        var str1 = "zhangsan";
+        var str2 = "abcdefg";
+        console.log(reg.test(str1));//false
+        console.log(reg.test(str2));//true
+
+
+        // 字面量
+        var reg2 = /abcdef/
+
+        // 构造函数
+        var reg3 = new RegExp('abcdef')
+
+        console.log(reg2)
+        console.log(reg3)
+    </script>
+</body>
+</html>

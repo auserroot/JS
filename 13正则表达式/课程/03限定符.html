@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            限定符:某个字符后面接一个限定符，意思就是指定该字符出现的次数
+                ==>*:前一个内容重复至少0次,也就是可以出现0-正无穷次
+                ==>+:前一个内容重复至少1次,也就是可以出现1-正无穷次
+                ==>?:前一个内容出现0次或者1次,也就是可以出现0-1
+                ==>{n}:前一个内容出现n次,也就是出现必须出现n次
+                ==>{n,}:前一个内容至少出现n次,也就是出现n-正无穷次
+                ==>{n,m}:前一个内容至少出现n次,至多出现m次，也就是出现n-m次
+                ==>限定符一般是配合元字符使用的
+
+        */
+        console.log("====================")
+        var reg1 = /\d*/;//规则：数字出现至少0次
+        console.log(reg1.test("abc"));//true
+        console.log(reg1.test("abc2"));//true
+        console.log(reg1.test("abc123"));//true
+
+        console.log("====================")
+        var reg2 = /\d+/;//规则：数字出现至少1次
+        console.log(reg2.test("abc"));//false
+        console.log(reg2.test("abc2"));//true
+        console.log(reg2.test("abc123"));//true
+
+        console.log("====================")
+        var reg3 = /\d?/;//规则：数字出现0-1次
+        console.log(reg3.test("abc"));//true
+        console.log(reg3.test("abc2"));//true
+        console.log(reg3.test("abc123"));//true
+
+
+        console.log("====================")
+        var reg4 = /\d{2}/;//规则：数字出现2次
+        console.log(reg4.test("abc"));//false
+        console.log(reg4.test("abc2"));//false
+        console.log(reg4.test("abc123"));//true
+
+        console.log("====================")
+        var reg5 = /\d{3,}/;//规则：数字至少出现3次
+        console.log(reg5.test("abc"));//false
+        console.log(reg5.test("abc2"));//false
+        console.log(reg5.test("abc123"));//true
+
+
+        console.log("====================")
+        var reg6 = /\w\d+/;//规则:包含字符和一个以上数字，并且要在一起
+        console.log(reg6.test("abc"));//false
+        console.log(reg6.test("abc#2"));//false
+        console.log(reg6.test("abc123"));//true
+
+
+        
+       
+    </script>
+</body>
+</html>

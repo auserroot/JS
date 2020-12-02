@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            边界符:限定字符串的开始和结尾的
+                ==> ^:表示开头
+                ==> $:表示结束
+                ==> ^$:表示精确匹配,只能是^$里面的内容，不能多也不能少
+        */
+        console.log("=================")
+        var reg = /\d{3,5}/;//规则：包含3到5个连续的数字
+        console.log(reg.test('abc'));//false
+        console.log(reg.test('abc123'));//true
+        console.log(reg.test('1'));//false
+        console.log(reg.test('12456'));//true
+        console.log(reg.test('124'));//true
+        console.log(reg.test('1248979'));//true
+
+        console.log("=================")
+        var reg = /^\d{3,5}$/;//规则：字符串就是3-5个数字
+        console.log(reg.test('abc'));//false
+        console.log(reg.test('abc123'));//false
+        console.log(reg.test('1'));//false
+        console.log(reg.test('12456'));//true
+        console.log(reg.test('124'));//true
+        console.log(reg.test('1248979'));//false
+
+        console.log("=================")
+        var reg = /^\d{3,5}/;//规则：字符串包含3-5个数字开头
+        console.log(reg.test('abc'));//false
+        console.log(reg.test('abc123'));//false
+        console.log(reg.test('1'));//false
+        console.log(reg.test('12456'));//true
+        console.log(reg.test('124'));//true
+        console.log(reg.test('1248979'));//true
+
+        console.log("=================")
+        var reg = /\d{3,5}$/;//规则：字符串包含3-5个数字结尾
+        console.log(reg.test('abc'));//false
+        console.log(reg.test('abc123'));//true
+        console.log(reg.test('1'));//false
+        console.log(reg.test('12456'));//true
+        console.log(reg.test('124'));//true
+        console.log(reg.test('1248979'));//true
+    </script>
+</body>
+</html>

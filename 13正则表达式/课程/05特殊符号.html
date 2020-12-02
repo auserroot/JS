@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            特殊符号
+                ==>():限定一组元素
+                ==>[]:字符集合，表示写在[]里面的任意一个都行
+                ==>[^]:反字符集合,表示写在[]里面之外的任意一个字符
+                ==>-:范围，比如a-z,表示从字符a得到字母z都可以
+                ==>|:或，正则里面a|b,表示字母a和b都可以
+        */
+        var reg = /^[^_$].{6,}@(163|126|qq|sina)\.(com|net)$/
+        /* 
+            ^$:表示精确匹配
+            [^_$]：不能以_和$开头
+            .{6,}：后面接6位换行以外的任意字符串
+            @：后面接@
+            (163|126|qq|sina)：后面接163或者126或者qq或者sina
+            \.：后面接一个.
+            (com|net):后面接com或者net
+        */
+
+        console.log(reg.test("23324445@qq.com"));//true
+        console.log(reg.test("chenlili#@qq.com"))//true
+        console.log(reg.test("$213123123@qq.com"))//false
+    </script>
+</body>
+</html>

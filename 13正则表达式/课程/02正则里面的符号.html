@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            正则里面的符号——元字符
+                ==> . :匹配非换行的任意字符
+                ==> \ :转义字符，把有意义的符号变成没有意义的字符，把没有意义的字符变成有意义的字符
+                ==> \d:匹配数字
+                ==> \D:匹配非数字
+                ==> \s:匹配空白字符(空格/制表符/...)
+                ==> \S:匹配非空白字符
+                ==> \w:匹配字母数字下划线
+                ==> \W:匹配非字母数字下划线
+            正则的常用方法
+                ==>test是用来检测字符串是否符合我们正则的标准
+                ==>正则.test(字符串)
+                ==>返回值:boolean    
+
+        */
+
+        
+        // 第一题
+//         var reg1 = /./;//规则：要包含任意一个非换行的字符
+//         console.log(reg1.test('abc'));//true
+//         console.log(reg1.test(' '))//true
+//         console.log(reg1.test('a bc'))//true
+//         console.log(reg1.test(`
+// `))//false
+//         console.log(reg1.test('.'))//true
+
+        // 第二题
+        // var reg1 = /\./;//规则：要包含.
+        // console.log(reg1.test('abc'));//false
+        // console.log(reg1.test(' '))//false
+        // console.log(reg1.test('a...bc'))//true
+        // console.log(reg1.test('.'))//true
+
+        
+        // 第三题--转义字符
+        // 在字符串里面 \ 有特殊含义，表示转义，所以:\后面必须有字符
+        // console.log('\a');//a在字符串里面没有特殊含义，转义还是a
+        // console.log('\\');// \在字符串里面有特殊函数，转义以后就是没有特殊含义的“\”
+        // console.log(('\\\c'));// 第一个"\"是转义符，第二个"\"被转义，就是没有意义的"\",第三个"\"是转义符
+        // 在正则表达式里面 \ 有特殊含义，表示转义，所以:\后面必须有字符
+        // var reg1 = /./;//规则:包含任意字符
+        // var reg2 = /\./;//规则:包含字符.
+        // var reg3 = /\\./;//规则：包含“\”和任意字符串，这两个要在一起
+        // var reg4 = /\d/;//规则：包含任意数字
+        // var reg5 = new RegExp('\\d')//规则：包含任意数字
+
+        // 第四题
+        // var reg1 = /\\./;//规则：要包含\和任意字符，并且两个字符要在一起
+        // console.log(reg1.test('abc'));//false
+        // console.log(reg1.test(' '))//false
+        // console.log(reg1.test('a...bc'))//false
+        // console.log(reg1.test('.'))//false
+        // console.log(reg1.test('\\a'));//true
+
+
+        // 第五题
+        // var reg1 = /\d/;
+        // console.log(reg1.test('一'));//false
+        // console.log(reg1.test('123'));//true
+        // console.log(reg1.test('456'));//true
+        // console.log(reg1.test(''));//false
+
+
+        // 第六图
+        var reg1 = /\w\w/
+        console.log(reg1.test('fjlds'));//true
+        console.log(reg1.test('_a'));//true
+        console.log(reg1.test('#a'));//false
+        console.log(reg1.test('324'));//true
+
+
+        
+    </script>
+</body>
+</html>

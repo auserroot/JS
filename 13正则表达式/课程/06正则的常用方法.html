@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            正则的常用方法
+                + test
+                + exec：把字符串中符合条件的内容捕获出来
+                    ==>语法：正则.exex('字符串')
+                    ==>返回值:把字符串中符合正则的要求的第一项以及一些其他信息，以数组形式返回
+        */
+        var reg = /\d{3,}/
+        var str = "fdsf83245df76dsf985436d8f56ds5gdff73246s5324dsf";
+        var res = reg.exec(str);
+        console.log(res)
+        /* 
+            0: "83245"   //捕获出来的内容
+            groups: undefined 
+            index: 4  //开始的索引
+            input: "fdsf83245df76dsf985436d8f56ds5gdff73246s5324dsf"
+            length: 1
+            __proto__: Array(0)
+        */
+    </script>
+</body>
+</html>
