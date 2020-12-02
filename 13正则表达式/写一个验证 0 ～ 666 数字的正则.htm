@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 写一个验证 0 ～ 666 数字的正则
+        var num = prompt('输入一个数')
+        // console.log(num)
+        if(num.length==1){
+            var reg = /[0-9]/
+            console.log(reg.test(num))
+        }
+        if(num.length==2){
+            var reg = /[0-9][0-9]/
+            console.log(reg.test(num))
+        }
+        if(num.length==3){
+            var reg = /^[1-5][0-9][0-9]|^6[0-9][0-6]/
+            console.log(reg.test(num))
+        }
+    </script>
+</body>
+</html>
