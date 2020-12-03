@@ -48,7 +48,64 @@
 		<div id="detail"></div>
 	</body>	
 </html>
-
+<script src="../public.js"></script>
+<script> 
+	//添加
+	$id("saveBtn").onclick = function(){
+		//克隆第二行
+		var tr = $id("tab").children[0].children[1].cloneNode(true);
+		tr.children[1].innerHTML = $id("topic_name").value;
+		tr.children[2].innerHTML = $id("topic_content").value;
+		tr.children[4].innerHTML = $id("author").value;
+		$id("tab").children[0].appendChild(tr);	
+	}
+	//使用委托为所有的td添加一个单击事件
+	$id("tab").onclick = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.nodeName == "TD" ){
+			//创建一个文本框
+			var opt = create("input");
+			opt.type = "text";
+			opt.value = target.innerHTML;
+			
+			target.innerHTML = "";
+			target.appendChild(opt);
+			opt.focus(); //让创建的文本框自动获取焦点
+			
+			//失去焦点时  将文本框的内容复制到表格上
+			opt.onblur = function(){
+				target.innerHTML = opt.value;
+			}
+		}
+	}
+	
+	//查询详细信息   使用事件监听
+	$id("tab").addEventListener("click",function(e){
+		var e = e || event;
+		e.stopPropagation();
+		var target = e.target || e.srcElement;
+		if( target.name == "detail" ){
+			$id("detail").style.display = "block";
+			$id("detail").style.left = e.pageX +"px";
+			$id("detail").style.top = e.pageY +"px";
+			$id("detail").innerHTML = target.parentNode.parentNode.children[1].innerHTML;
+		}
+	})
+	//点击文档  隐藏信息
+	document.onclick = function(){
+		$id("detail").style.display = "none";
+	}
+	
+	//删除
+	$id("tab").addEventListener("click",function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.className == "delbtn" ){
+			 target.parentNode.parentNode.remove();
+		}
+	})
+</script>
 
 
 

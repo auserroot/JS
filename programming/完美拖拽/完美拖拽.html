@@ -22,4 +22,63 @@
 	    <p><strong>offsetTop:</strong><span>231</span></p>
 	    <p><strong>offsetLeft:</strong><span>533</span></p>
 	</div>
-</body></html>
+	<script>
+		/* 
+			需求分析：
+				1 点击h2可以拖拽box这个div
+				2 点击a可以回放div的轨迹
+			技术点:
+				要能够回放，必须把第一次走过的坐标都记录下来				
+		*/
+
+		// 获取相关元素
+		var h2 = document.querySelector('#tz');
+		var a = document.querySelector('#a1')
+		var arr = [];//arr用于记录运动过的坐标
+		var box = document.querySelector('#box');
+		var timer;
+		// 1 点击h2可以拖拽
+		h2.onmousedown = function(e){
+				
+			e = e||window.event;
+			var target = e.target||e.srcElement;//鼠标真正按下的地方
+			if(target.nodeName=="A"){
+				return;
+			}
+			// 如果代码能运行到这一行，说明没有进入if，就不是在a上按下
+			arr = [];
+			var startX = e.offsetX||e.layerX;
+			var startY = e.offsetY||e.layerY;
+			document.onmousemove = function(e){
+				e = e||window.event;
+				var left = e.pageX - startX;
+				var top = e.pageY - startY;
+				// 把走过的坐标都记录下来	
+				arr.push({
+					"left":left,
+					"top":top
+				})
+				// 定位元素
+				box.style.left = left+"px";
+				box.style.top = top+"px";
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+		}
+		// 2 点击a可以回放div的轨迹
+		a.onclick = function(){
+			var index = arr.length - 1;//数组的最后一个坐标的索引
+			timer = setInterval(function(){				
+				box.style.left = arr[index].left+"px";
+				box.style.top = arr[index].top+"px";
+				index--;
+				if(index<0){
+					clearInterval(timer)
+				}
+			},20)
+		}
+		
+	</script>
+</body>
+</html>

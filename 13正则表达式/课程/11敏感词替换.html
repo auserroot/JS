@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title>11敏感词</title>
+     </head>
+     <style type="text/css">
+          *{
+              padding: 0; margin: 0;
+          }
+          #edit {
+              margin: 0 auto;
+              width: 1000px;
+              text-align: center;
+              overflow: hidden;
+          }
+          #commentlist {
+              margin: 0 auto;
+              width: 1000px;
+          }
+          #commentlist .comment{
+              width: 800px;
+              min-height: 80px;
+              margin: 20px auto;
+              background: darkkhaki;
+              border-radius: 3px;
+              position: relative;
+              overflow: hidden;
+          }
+          #commentlist .comment p{
+              margin: 10px 10px;
+          }
+          #sendBtn {
+              display: block;
+              margin: 10px auto;
+              width: 100px;
+              height : 30px;
+              line-height: 30px;
+              background: linear-gradient(to bottom, #faa, #f40);
+              box-shadow: 0 0 2px #000;
+              border-radius: 4px;
+          }
+
+          #sendBtn:hover{
+              cursor: pointer;
+              background: linear-gradient(to bottom, #fee, #f40);
+          }
+     </style>
+     <body>
+          <div id="edit">
+              <p>请输入你的发言:</p>
+              <p>
+                   <textarea id="contentInput" name="" rows="5" cols="60"></textarea>
+              </p>
+              <p><a class="send" id="sendBtn">发送</a></p>
+          </div>
+          <div id="commentlist">
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+              <div class="comment" id="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                   xxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+          </div>
+     </body>
+     <script>
+         /* 
+            需求分析
+                1 用户可以在textarea里面输入留言
+                2 点击sendBtn按钮，对用户输入的留言进行敏感词过滤
+                3 过滤完成以后，在commentlist里面添加一个和#comment这个div长的一样的div
+                4 就是内容和时间不同
+         */
+
+        // 获取相关元素
+        var textarea = document.querySelector('textarea');//文本输入区域
+        var sendBtn = document.querySelector('#sendBtn');//发送按钮
+        var commentlist = document.querySelector('#commentlist');//留言显示总容器
+        var arr = ['tmd','tnnd','sb','mlgb'];
+        
+
+        // 点击sendBtn按钮
+        sendBtn.onclick = function(){
+            var text = textarea.value;//获取用户输入内容
+            // 变量敏感词数组，逐个替换
+            for(var i=0;i<arr.length;i++){
+                text = text.replace(new RegExp(arr[i],'g'),"***")
+            }
+            // 创建一个结构和#comment一样的div
+            var commentDiv = document.querySelector("#comment").cloneNode(true);
+            // id不需要
+            commentDiv.id=""
+            // commentDiv里面的索引是1的p标签里面的内容要换成用户输入的内容
+            var pArr = commentDiv.children;
+            pArr[1].innerHTML = text;
+            // commentDiv里面的索引是2的p标签里面的时间要换成现在
+            pArr[2].innerHTML = new Date().toLocaleDateString()+" "+(new Date().toLocaleTimeString("zh-cn", {hour12: false})).slice(0,-3)
+
+            // 把commentDiv放到commentlist的最前面
+            commentlist.insertBefore(commentDiv,commentlist.children[0])
+        }
+
+
+     </script>
+</html>

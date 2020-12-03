@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            + search
+                ==>是查找字符串中是否有符合正则条件的内容
+                ==>语法:字符串.search(正则)
+                ==>返回值:有的话返回开始索引，没有返回-1
+            + match
+                ==>找到字符串中符合正则条件的内容返回
+                ==>语法:字符串.match(正则)
+                ==>返回值：
+                    -->没有标识符g，就是和exec方法一样
+                    -->有标识符g，是返回一个数组，里面是匹配到的每一项
+                    -->如果参数不是正则，是一个字符串，就是和exec方法一样
+            + repalce
+                ==>将字符串中符合正则的字符串替换掉
+                ==>语法:字符串.replace(正则,要替换成的字符串)
+                ==>返回值:替换好的字符串
+                    -->没有标识符g,只替换匹配到的第一个
+                    -->有标识符g，符合条件的全部替换
+                    -->如果参数不是正则，是一个字符串，只替换匹配到的第一个
+                    
+        */
+
+
+        //search
+        // var reg = /\d{3}/;
+        // var str = "hello123hello123";
+        // var str2 = "hello";
+        // console.log(str.search(reg))
+        // console.log(str2.search(reg))
+
+
+        // match
+        // var str = "h2k132hk21h42k3hk421khwkehrherkh4eh325h45";
+        // var reg = /\d+/;
+        // var reg2 = /\d+/g;
+        // console.log(str.match(reg))
+        // console.log(str.match(reg2))
+        // console.log(str.match('hk'))
+
+
+        // replace
+        // var str = "apple放假了多APPLefdsfsdfapplefldsjfldsjfjdsf";
+        // var reg = /apple/;
+        // var reg2 = /apple/gi;
+        // console.log(str.replace(reg,"苹果"));
+        // console.log(str.replace(reg2,"苹果"));
+        // console.log(str.replace('apple','句子'))
+    </script>
+</body>
+</html>

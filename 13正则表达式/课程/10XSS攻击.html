@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <input type="button" value="发表留言">
+    <div>
+        <!-- <img src="https://www.baidu.com/img/flexible/logo/pc/result.png" onclick="location.href='https://www.baidu.com/other.php?url=K60000jaFWAns-I55Yw4N8dsOEiTbYlglom81-VhuY_fp1KCCrq96reLDcTMLsfLoNE9p5wleSLwLZQcUoGfmUemfB3WqUfITEG0JvT7khpA4xUjV7WQ8WN-JCIePLZSDvi96sR-dbhRV7PrpwOgshz9A6wi0Qio6RtbSFkfNOQnSGqOHECrn8AHZSWvQOfjNByjaCcP8ZJlw7FlEruzWg98acn8.DR_jilqq7Pau-tgblUNKLkEB3p_jnNqdjRkXq-dKl-muCyr1ugm0.TLFWgv-b5HDkrfK1ThPGujYknHb0THY0IAYqklXL46KdTvNzgLw4TARqn0K9u7qYXgK-5Hm0IvqzujLZGexh0ZFWIWYk0ZNzU7qGujYkPHczPHRsnWDL0Addgv-b5HD1rH0zn1n30AdxpyfqnH0LrH6zP1T0UgwsU7qGujYknHR1P0KsI-qGujYs0A-bm1dcHbc0mLFW5HcYPWcs&ck=6439.12.118.297.149.337.149.554&dt=1606891191&wd=%E5%8D%83%E9%94%8B&tpl=tpl_11534_23295_19442&l=1522550217&us=linkName%3D%25E6%25A0%2587%25E5%2587%2586%25E5%25A4%25B4%25E9%2583%25A8-%25E4%25B8%25BB%25E6%25A0%2587%25E9%25A2%2598%26linkText%3D%25E5%258D%2583%25E9%2594%258B%25E6%2595%2599%25E8%2582%25B2-%25E5%259D%259A%25E6%258C%2581%25E6%2595%2599%25E8%2582%25B2%25E5%2588%259D%25E5%25BF%2583%25EF%25BC%258C%25E5%2581%259A%25E7%259C%259F%25E5%25AE%259E%25E7%259A%2584%25E8%2587%25AA%25E5%25B7%25B1%252CIT%25E5%259F%25B9%25E8%25AE%25AD%25E8%2589%25AF%25E5%25BF%2583%25E5%2593%2581%25E7%2589%258C%26linkType%3D'"> -->
+    </div>
+    <script>
+        // 需求分析:用户点击发表留言，文本框里面的内容显示在div里面
+        // 获取相关元素
+        var textInp = document.querySelector('[type="text"]');
+        var button = document.querySelector('[type="button"]');
+        var div = document.querySelector('div');
+
+        // 用户点击发表留言
+        button.onclick = function(){
+            // innerHTML认识html代码
+            // div.innerHTML = textInp.value;
+
+
+            // 解决方法一
+            // div.innerText = textInp.value;
+
+            // 解决方法二:过滤和转义
+            var text = textInp.value;
+            text = text.replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/\s/g,"&nbsp;")
+            .replace(/"/g,"&quot;");
+            div.innerHTML = text;
+        }
+    </script>
+</body>
+</html>
