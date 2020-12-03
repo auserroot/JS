@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            json:是一种特殊的字符串
+                ==> 组织形式类似js里面的数组或者对象
+                ==> 成员们要使用""
+                ==> json字符串的最后一个对象后面不能加逗号
+                ==> 用来序列化对象、数组、数值、字符串、布尔值和 null
+            json文件的作用
+                ==> 各个变成语言都认识json
+                ==> 就可以用于前后端的数据传送
+                ==> 轻量级的数据交换格式
+            JSON的两个方法
+                ==> JSON.parse
+                    -->可以将json格式的字符串变成js的对象或者数组
+                    -->语法:JSON.parse(json字符串)
+                    -->返回值：js的对象或者数组
+                ==> JSON.stringify
+                    -->可以将js里面的对象或者数组变成标准的json格式的字符串
+                    -->语法:JSON.stringify(js对象或者数组)
+                    -->返回值:json字符串
+
+
+
+        */
+        
+        // JSON.parse
+        var str = '{"name":[null,11,22],"age":12}';
+        var obj = JSON.parse(str);
+        console.log(str)
+        console.log(obj)
+
+        // JSON.stringify
+        var obj2 = {
+            name:"zhangsan",
+            'age':12,
+            love:function(){},
+            a:undefined
+        }
+        var str2 = JSON.stringify(obj2);// 在转换的过程有，有不符合要求的进行标准化
+        console.log(str2)
+    </script>
+</body>
+</html>

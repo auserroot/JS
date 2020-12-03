@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "zhangsan";
+        var str2 = "张hello三三";
+        var reg = /[\u4E00-\u9FA5]/g;//基本汉字的编码范围
+
+        // 判断字符串里面是否有函数
+        console.log(reg.test(str))
+        console.log(reg.test(str2))
+
+        // 判断一个字符串里面汉字的个数
+        console.log(str2.match(reg).length)
+
+    </script>
+</body>
+</html>

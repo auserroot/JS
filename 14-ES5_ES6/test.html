@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            ES5和ES6
+                ECMAScript是js的语法
+
+                    新增功能：
+                        forEach：
+                            语法：arr.forEach(callback[,thisArg])
+                                callback：是执行次数（数组里有几个元素，callback就执行几次）
+                                callback里面有三个形参，1.遍历到的数组元素 2.遍历到的数组元素索引 3.数组本身
+                                thisArg是callback里面this的指向，可选参数
+
+        */
+               
+                var arr = [1,2,3,4,5] 
+                console.log('========forEach=========')
+                arr.forEach(function(item,index,array){
+                    console.log('本次循环到的是'+item+'索引为'+index)//打印当前循环到的值与其索引
+                    //打印形参array
+                    console.log(array)//结果为：arr数组本身
+                    // console.log(this)//全局函数默认为window
+                    console.log(this)//修改参数后this为修改后的值
+                },document.body)
+       /*
+                        map
+                            类似forEach
+                            返回值是一个新数组
+
+        */
+                console.log('========map=========')
+                var newArr = arr.map(function(item){
+                    //将遍历到的每个元素值*2返回到新数组
+                    return item*2
+                })
+                console.log(newArr)
+        /*
+                        filter
+                            类似forEach
+                            返回值是一个新数组
+
+        */
+                console.log('========filter=========')
+                var newArr2 = arr.filter(function(item){
+                    if(item>3){
+                        return true
+                    }else{
+                        return false
+                    }
+                })
+                console.log(newArr2)//将值为真的返回到新数组
+        /*
+                        reduce
+                            语法：arr.reduce（callback[,initValue]）
+                                callback里面有两个形参，1.上次callback的返回值 2.当前遍历到的元素
+                                initValue：第一次执行函数的初始值，如果没有，默认是数组索引第0项
+        */
+
+                console.log('========filter=========')
+                var result = arr.reduce(function(accumulator,currentValue){
+                    //数组中有多少个元素，函数就执行几次
+                    // accumulator:上次遍历的返回值
+                    // currentValue：本次遍历到的元素
+                    return accumulator + currentValue
+                })//由于最开始遍历时accumulator值为0，可以初始化一个值
+                console.log(result)
+
+        /*
+                this关键字
+                    每个函数内都有this关键字
+                        函数内部的this关键字只与函数的调用方式有关，与函数的定义方式无关
+                        函数内部的this指向取决于函数的调用方式
+                            作为普通函数调用，this指向window
+                            作为事件函数调用，this指向事件源
+                            作为对象方法调用，this指向对象
+                            作为定时函数调用，this指向window
+                        this指向可以改变
+                            可以利用call、apply、bind将this指向改变
+                            call：附加在函数调用后面使用，可以忽略本身指向
+                            语法：
+                                函数名.call(要改变的this指向，实参1，实参2)
+                            apply：附加在函数调用后面使用，可以忽略本身指向
+                            语法：
+                                函数名.apply(要改变的this指向,[实参1，实参2])
+                                call和apply方法都会立即执行函数，第一个参数都是要改变的this指向
+                                apply传递函数实参的时候要以数组形式
+                            bind：与call和apply不一样，bind不会立即执行函数
+                            而是返回一个已经改变this指向的函数
+                            语法：
+                                var newFn = 函数名.bind(要改变的this指向)
+                                newFn(实参1，实参2)
+                                
+        */
+    </script>
+</body>
+</html>
