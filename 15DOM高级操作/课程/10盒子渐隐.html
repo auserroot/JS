@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border:none;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top:50px;
+            left:0px;
+            opacity:1;
+            /* 设置opacity便于获取第一次的透明度的值 */
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击按钮div渐隐</button>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        // 需求:点击按钮div渐隐
+        // 获取相关元素
+        var btn = $id('btn');
+        var box = $id('box');
+        var target = 0;
+
+        btn.onclick = function(){
+            clearInterval(box.timer)
+            // 每隔50毫秒，透明度减少剩余的10分之一
+            box.timer = setInterval(function(){
+                /* 
+                    由于透明都是小数
+                        ==> current=1 target=0 speed=-1 next = 0  (一步到位)
+                        ==> current=0 target=1 speed=1  next = 1  (一步到位)
+                    解决方法
+                        ==> target  和 current 都 放大100倍
+                        ==>current=100 target=0 speed = -10 next=90 (div.style.opacity=next/100)
+                        
+                */
+                // 1 获取当前位置
+                var current = parseInt(getStyle(box,'opacity')*100);  
+                // 2 计算速度
+                var speed  = (target - current)/10;    
+                // 速度取整
+                speed = speed>0?Math.ceil(speed):Math.floor(speed); 
+                // 3 计算下一个位置
+                var next = current + speed;
+                // 4 有条件的定位元素
+                if(next==target){
+                    clearInterval(box.timer)
+                }
+                box.style.opacity = next/100;
+                //兼容ie78
+                box.style.filter = "alpha(opacity="+next+")";
+            },200)
+
+        }
+    </script>
+</body>
+</html>

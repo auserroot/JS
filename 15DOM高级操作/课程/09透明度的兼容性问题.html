@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            opacity:0.5;  
+            filter:alpha(opacity=50);
+            /* 
+                css里面的opacity:ie9+
+                css里面的filter:ie78
+            */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        // opacity在IE78不支持，但是只要设置了，ie78就能获取到样式值
+        var opacity = getStyle(box,'opacity');
+        console.log("opacity:"+opacity)
+    </script>
+</body>
+</html>

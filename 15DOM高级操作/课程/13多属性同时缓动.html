@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 250px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border:none;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            position: absolute;
+            top:50px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击按钮div宽度400和高度600</button>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        // 方法一：先宽度变化完，再高度变化
+        // btn.onclick = function(){
+        //     // 一个物体上只有一个定时器
+        //     move(box,"width",400,function(){
+        //         move(box,"height",600)
+        //     });
+            
+        // }
+
+
+        // 方法二:宽度和高度同时变化
+        btn.onclick = function(){
+            clearInterval(box.timer)
+            // 每隔一段时间宽度和高度同时运动一段距离
+            box.timer = setInterval(function(){
+                var flag = true;//每次定时开始都假设前面的位置没有问题
+                // 宽度运动一段距离
+                var current = parseInt(getStyle(box,'width'))
+                var speed = (400 - current)/10;
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                var next = current + speed;
+                if(next!=400){
+                    flag = false;
+                }
+                box.style.width = next+"px";
+
+                // 高度运动一段距离
+                var current = parseInt(getStyle(box,'height'))
+                var speed = (600 - current)/10;
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                var next = current + speed;
+                if(next!=600){
+                    flag = false;
+                }
+                box.style.height = next+"px";  
+
+                // 最后
+                if(flag==true){
+                    clearInterval(box.timer)
+                }
+            },50)
+        }
+
+
+        // 需求：封装一个函数animate，能够实现多属性同时缓动
+        function animate(dom,json,fn){
+            var dom = document.getElementById('box');
+            var json = {
+                width:400,
+                height:600,
+                left:400,
+                opacity:50
+            };
+            var fn = function(){
+                console.log('定时器停止的时候执行本函数')
+            }
+        }
+    </script>
+</body>
+</html>

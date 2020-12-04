@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border:none;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            position: absolute;
+            top:50px;
+            left:800px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击按钮div运动到400</button>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        // 需求:点击button，div运动到left=400的位置
+
+        // 获取相关元素
+        var box = $id('box');//运动的盒子
+        var btn = $id('btn');//按钮
+
+        // 我的起点是left = 0，我的目的是left = 400
+        // 先快后慢运动到目标
+        // 剩余路程越多，说明我距离目标越远，速度就越快
+        // 剩余路程越少，说明我距离目标越近，速度就越慢
+        // 速度 = 剩余路程/10
+        btn.onclick = function(){
+            // 要用定时器，先清定时器
+            clearInterval(box.timer)
+            // 每隔50毫秒运动一段距离：剩余路程/10
+            box.timer = setInterval(function(){
+                // 1 获取当前位置
+                var current = box.offsetLeft;
+                // 2 计算速度
+                // 如果这么写，永远到不了
+                // var speed = (400-current)/10; 
+                // 速度要取整
+                var speed = Math.floor((400-current)/10);
+                // 3 计算下一个位置
+                var next = current + speed
+                // 4 有条件的定位元素
+                if(next==400){
+                    clearInterval(box.timer)
+                }
+                box.style.left = next+"px";    
+                console.log(11)            
+                
+            },50)
+
+        }
+
+        /* 
+            通过查看f12里面的element发现div的left停留在404.5不动了，分析原因
+                ==> 由于速度是小数，offsetLeft会取整导致到达不了
+                    ==> current = 405  speed=-0.5 next=404.5  left:404.5px
+                    ==> current = 405  speed=-0.5 next=404.5  left:404.5px
+                    ==> ....
+                ==> 如果速度向下取整
+                    ==> current = 405  speed=-1 next=404  left:404px
+                    ==> current = 404  speed=-1 next=403  left:403px
+                    ==> .....
+                    
+        */
+    </script>
+</body>
+</html>

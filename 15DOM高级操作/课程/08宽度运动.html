@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border:none;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            position: absolute;
+            top:50px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击按钮div宽度到400</button>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        // 需求:点击按钮，div的宽度缓动到400px
+        var btn = $id('btn');
+        var box = $id('box');
+        var target = 800;
+        btn.onclick = function(){
+            clearInterval(box.timer)
+            // 每隔50毫秒宽度变化:剩余宽度/10
+            box.timer = setInterval(function(){
+                // 1 获取当前位置
+                var current = parseInt(getStyle(box,'width'));//parseInt是为了去除单位同时取整
+                // 2 计算速度
+                var speed = (target - current)/10;
+                // 速度如果>,向上取整，如果<0,向下取整
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                // 3 计算下一个位置
+                var next = current + speed;
+                // 4 有条件的定位元素
+                if(next == target){
+                    clearInterval(box.timer);
+                }
+                box.style.width = next+"px";
+            },50)
+        }
+    </script>
+</body>
+</html>

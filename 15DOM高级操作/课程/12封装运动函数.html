@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 250px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border:none;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            position: absolute;
+            top:50px;
+            left:0px;
+            opacity:1;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">点击按钮box的宽度运动到500</button>
+    <button id="btn2">点击按钮box的高度运动到20</button>
+    <button id="btn3">点击按钮box的透明度变成0.5</button>
+    <button id="btn4">点击按钮box的z-index变成99999999</button>
+    <button id="btn5">点击按钮box的left变成400</button>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        /* 
+            需求:封装一个move函数，可以实现指定元素的指定属性运动到指定的目标
+                ==>dom:传入要运动的dom节点
+                ==>attr:传入要缓动的属性
+                ==>target:传入要运动到的目标
+        */
+        // 获取相关元素
+        var btnW = $id('btn1')
+        var btnH = $id('btn2')
+        var btnO = $id('btn3')
+        var btnZ = $id('btn4')
+        var btnL = $id('btn5')
+        var box = $id('box');
+        // 点击按钮box的宽度运动到500
+        btnW.onclick = function(){
+            move($id('box'),"width",500)
+        }
+        // 点击按钮box的高度运动到20
+        btnH.onclick = function(){
+            move($id('box'),"height",20)
+        }
+        // 点击按钮box的透明度变成0.5
+        btnO.onclick = function(){
+            move($id('box'),"opacity",50)
+        }
+        // 点击按钮box的z-index变成99999999
+        btnZ.onclick = function(){
+            move($id('box'),"zIndex",99999999)
+        }
+
+        // 点击按钮box的left变成400
+        btnL.onclick = function(){
+            move($id('box'),"left",400)
+        }
+        function move(dom,attr,target){
+            // var dom = $id('box');
+            // var attr = "width";
+            // var target  = 500;
+            clearInterval(dom.timer)
+            // 每隔20毫秒运动一段距离
+            dom.timer = setInterval(function(){
+                // 1 获取元素当前位置
+                if(attr=="opacity"){
+                    // 如果属性是透明度，要放大100倍
+                    var current = parseInt(getStyle(dom,"opacity")*100);
+                }else{
+                    var current = parseInt(getStyle(dom,attr));
+                }
+                // 2 计算速度
+                var speed = (target - current)/10;
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                // 3 计算下一个位置
+                // 特例：如果是zIndex，一步到位
+                if(attr=='zIndex'){
+                    var next = target;
+                }else{
+                    var next = current + speed;
+                }
+                // 4 有条件的定位元素
+                if(next==target){
+                    clearInterval(dom.timer)
+                }
+                // 如果属性是透明度，要除以100
+                if(attr=="opacity"){
+                    dom.style.opacity = next/100;
+                    dom.style.filter = "alpha(opacity="+next+")";
+                }
+                else if(attr=="zIndex"){
+                    dom.style[attr] = next;
+                }
+                else{
+                    dom.style[attr] = next+"px";
+                }
+                
+            },20)
+        }
+    </script>
+</html>
