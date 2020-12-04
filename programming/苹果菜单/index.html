@@ -29,27 +29,19 @@ body {margin:0px;}
 	var box = document.querySelector("#div1")
 	var getA = document.querySelectorAll('a')
 	var getImg = document.querySelectorAll('img')
-	console.log(getImg)
+	// console.log(getImg)
 	// 添加事件
 	box.onmouseover = function(){
 		box.className='box'
-	/* 	for(var i=0;i<getImg.length;i++){
-			if(getImg[i].width=='64'){
-				var width = getImg[i].width
-				width=width+10
-				getImg[i].width = width
-		   }
-		} */
-		
 		for(var i=0;i<getImg.length;i++){
 			getImg[i].onmouseover = function(e){
 				e=e|window.event
-				console.log(this.width)
+				// console.log(this.width)
 				this.width = '128'
 			}
 			getImg[i].onmouseout = function(e){
 				e=e|window.event4
-				console.log(this.width)
+				// console.log(this.width)
 				this.width = '64'
 			}
 		}
