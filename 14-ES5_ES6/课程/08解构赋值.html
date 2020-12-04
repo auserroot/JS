@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            解构赋值
+                + 解构对象==>快速从对象中获取成员值
+                + 解构数组==>快速从数组中获取元素
+                + 注意:
+                    ==>{}是专门用来解构对象用的
+                    ==>[]是专门用来解构数组用的
+                    ==>不能混用
+        */
+
+        // 1 解构对象
+        // var obj = {
+        //     a:1,
+        //     b:2,
+        //     c:3
+        // }
+        // var a = obj.a;
+        // var b = obj.b;
+        // var c = obj.c;
+
+        // 可以使用解构赋值快速定义变量并赋值
+        // var {a,b,c} = obj;//等价于上面的三句话
+        // console.log(a,b,c)
+
+        // 2 解构数组
+        // var arr = ['hello','xiaoxi','xiaowang','world'];
+        // var aa = arr[0];
+        // var bb = arr[1];
+        // var cc = arr[2];
+        // 可以使用解构赋值快速定义变量并赋值
+        // var [aa,bb,cc] = arr;//等价于上面的三句话,多的"world"没有赋值给变量
+        // console.log(aa,bb,cc)
+
+
+        // 3 解构赋值
+        var a = 1;
+        var b = 2;
+        var c = 3;
+
+        // 定义数组
+        // var arr = [a,b,c]
+        
+        // 定义对象
+        // var obj = {
+        //     a:a,
+        //     b:b,
+        //     c:c
+        // }
+        // 如果在给对象定义键值对的时候，刚好成员们和成员值的变量名相同，可以简写成
+        var obj = {a,b,c};
+        console.log(obj)
+    </script>
+</body>
+</html>

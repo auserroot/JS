@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- <script>
+        /*
+            Map :
+                保存键值对
+                类似对象（Map键可以是任意类型
+                常用方法：
+                    size：
+                        返回map里键值对的数量
+                    set：
+                        设置map中键值对
+                    get：
+                        获取键对应值
+                    delete：
+                        删除指定键值对
+                    has：
+                        判断是否包含指定键
+                    clear：
+                        清空键值对
+
+        */
+       var a = {}
+       var b = {
+           name:'zhangsan'
+       }
+       var c = function(){}
+       let tmap = new Map([
+           [a,'a的值'],
+           [b,'b的值'],
+           [c,'c的值']
+       ])
+    //    设置map中键值对
+       tmap.set('d','d的值')
+       console.log(tmap)
+    //    判断是否包含指定键
+       console.log(tmap.has(b))
+    //    删除指定键值对
+    //    tmap.delete(c)
+    //    console.log(tmap)
+    //    清空键值对
+    //    tmap.clear()
+    //    console.log(tmap)
+
+    // for of 遍历Map类型
+    for(var i of tmap){
+        console.log(i)//i表示某个键值对
+    }
+    </script> -->
+    
+
+    <!-- /*******************************************************/ -->
+    <!-- <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /*
+            Array.from
+                可以将伪数组转换成数组
+                语法：
+                    Array.from(伪数组)
+                    返回转换好的数组
+         */
+        var liList = document.getElementsByTagName('li')//伪数组
+        var liarr = Array.from(liList)
+        liarr.forEach(function(i){
+            console.log(i)
+        })
+    </script> -->
+    <!-- /*******************************************************/ -->
+    <!-- <script>
+        /*
+            offset获取元素大小时会将返回值取整
+        */
+       var bod = document.querySelector("body")
+       console.log(bod)
+       var div = document.createElement('div')
+       div.style.width=103.5+'px'
+       div.style.height=103.4+'px'
+       bod.appendChild(div)
+       console.log(div.offsetWidth)
+       console.log(div.offsetHeight)
+    </script> -->
+    <!-- /*******************************************************/ -->
+
+    <button id="btn">点击清除定时器</button>
+    <script>
+        /*
+         *  点击清除定时器（clearInterval、clearTimeout）
+         */  
+         /*方法一：
+                定义全局变量（过多容易导致变量名冲突 
+          */ 
+        // var i=0
+        // var timer =null
+        // btn.onclick = function(){
+        //     /*
+        //         每次点击后都要清除前一个定时器（要用定时器，先清定时器
+        //     */
+        //    clearInterval(timer)
+        //    i++
+        //    timer = setInterval(function(i){
+        //        console.log(i)
+        //    },1000,i)//传入参数i
+        // }
+
+        // 方法二
+        var i=0
+        btn.onclick = function(){
+            // 利用每个按钮id不变，记录点击次数(将定时器和id为xx的DOM节点绑定)
+            clearInterval(btn.timer)
+            i++
+            btn.timer = setInterval(function(i){
+                console.log(i)
+            },1000,i)
+        }
+    </script>
+</body>
+</html>

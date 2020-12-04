@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            箭头函数
+                ==>es6里面新增的简写函数的语法方式
+                ==>重点:箭头函数只能简写函数表达式,不能简写声明式函数
+                ==>语法:
+                    var fn = (函数的形参)=>{ 函数体内要执行的代码 }
+                ==>注意：
+                    如果只有一个行参，可以省略()
+                    如果不写{}，表示return {}里面的内容
+                ==>箭头函数的特殊性
+                    + 箭头函数内部没有this，箭头函数的this是上下文的this
+                    + 箭头函数内部没有arguments这个参数集合
+
+                
+        */
+        // 函数一
+        // const fn = function(a,b){
+        //     console.log(a,b)
+        // }
+
+        // 可以用箭头函数写成
+        // const fn = (a,b)=>{console.log(a,b)}
+        // fn(1,2)
+
+
+        // 函数二
+        // const fn = function(obj){
+        //     console.log(obj)
+        // }
+        // 可以用箭头函数写成
+        // const fn = (obj)=>{console.log(obj)};
+        // const fn = obj=>{console.log(obj)};//如果只有一个形参，可以省略()
+        // fn({name:"lucy"})
+
+
+        // 函数三
+        // const fn = function(obj){
+        //     console.log(obj);
+        // }
+        // 可以用箭头函数写成
+        // const fn = (obj)=>{console.log(obj)};
+        // const fn = obj=>console.log(obj);
+        //如果只有一个形参，可以省略(),如果要执行的函数只有一句，可以省略{}，同时自动return这句话的返回值
+        // console.log(fn({name:"aa"}))
+
+        // 函数四
+        // const fn = a=>a;//简写的箭头函数意思是下面:
+        // const fn = (a)=>{return a};
+
+        
+        
+        // 特殊性1 箭头函数内部没有this:箭头函数的this是上下文的this
+        
+        // var fn = ()=>{
+        //     console.log(this);//window
+        // }
+        // document.onclick = ()=>{
+        //     console.log(this);//window
+        // }
+        // var obj = {
+        //     love:function(){
+        //         document.onclick = ()=>{
+        //             console.log(this)
+        //         }
+        //     }
+        // }
+        // obj.love()
+
+        // 特殊性2 箭头函数内部没有arguments这个参数集合
+        // var fn = function(){
+        //     console.log(arguments);//所有实参的集合
+        //     console.log(arguments.callee);//就是函数本身
+
+        // }
+        // fn(1,2,3,4,45,5,3,214,2,4,324,3244)
+
+        var fn = ()=>{
+            console.log(arguments);//会报错        
+        }
+        fn(1,2,3,4,45,5,3,214,2,4,324,3244)
+        
+    </script>
+</body>
+</html>

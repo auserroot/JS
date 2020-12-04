@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                Symbol
+                    ==> 是一种基本数据类型
+                    ==> Symbol()函数会返回symbol类型的值
+                    ==> 这个值是唯一的
+                    ==> symbol的值目前只能作为对象的成员名
+        */
+
+        const s1 = Symbol();
+        const s2 = Symbol(42);
+        const s3 = Symbol('foo');
+        
+        console.log(typeof s1);
+        console.log(s2===42);//false
+        console.log(s1===Symbol())//false
+        console.log(s2==='foo')//false
+        console.log(s2===Symbol(42))//false
+        console.log(s1===s1)//true
+    </script>
+</body>
+</html>

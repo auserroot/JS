@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 101.5px;
+            height: 103.4px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 获取div的宽度和高度
+        var div = document.querySelector('div');
+        // offset在获取元素的大小的时候会取整
+        console.log(div.offsetWidth)
+        console.log(div.offsetHeight)
+    </script>
+</body>
+</html>

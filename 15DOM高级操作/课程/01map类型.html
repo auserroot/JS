@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Map
+                ==>保存键值对
+                ==>类似以前学过的对象，但是他的一个键可以是任意类型
+                ==>常用方法：
+                    -->size：返回map里面的键值对的数量
+                    -->set：设置map中的键值对
+                    -->get:获取键对应的值
+                    -->delete:删除指定键值对
+                    -->has:判断是包含指定键
+                    -->clear:清空map的键值对
+        */
+        var key1 = {}
+        var key2 = {
+            name:"zhangsan",
+            age:12
+        }
+        var key3 = function(){
+
+        }
+        let myMap = new Map([
+            [key1,"我是key1的值"],
+            [key2,"我是key2的值"],
+            [key3,"我是key3的值"]
+        ])
+        myMap.set("set","hello")
+        console.log(myMap.has(key2))
+        // myMap.delete(key2)
+        // myMap.clear()
+        console.log(myMap)
+        console.log(myMap.size)
+        console.log(myMap.get(key1))
+
+        // 给map添加一个键值对
+        var key4 = Symbol();
+        myMap.set(key4,'14');
+        console.log(myMap.get(key4))
+
+        // for of 遍历Map类型
+        for(var key of myMap ){
+            console.log(key);// key就是某一个键值对
+        }
+    </script>
+</body>
+</html>

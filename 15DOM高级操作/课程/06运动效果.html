@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border:none;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+            position: absolute;
+            top:50px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击按钮div运动到400</button>
+    <div id="box">
+
+    </div>
+    <script src="./public.js"></script>
+    <script>
+        // 需求:点击button，div运动到left=400的位置
+
+        // 获取相关元素
+        var box = $id('box');//运动的盒子
+        var btn = $id('btn');//按钮
+
+        // 运动效果；匀速运动
+        // 我的起点是left = 0，我的目的是left = 400
+        // 我决定每50毫秒运动20px，这是匀速运动
+        btn.onclick = function(){
+            // 要用定时器，先清定时器
+            clearInterval(box.timer)
+            // 开启定时器，每50毫秒，left增加20
+            box.timer = setInterval(function(){
+                // 1 获取当前位置
+                var current = box.offsetLeft;
+                // 2 计算速度
+                var speed = 20;
+                // 3 计算下一个位置
+                var next = current + speed;                
+                // 4 有条件的定位元素
+                if(next>=400){
+                    clearInterval(box.timer);
+                    next = 400;
+                }
+                box.style.left = next+"px";
+            },50)
+        }
+
+
+        // 运动效果:缓动
+    </script>
+</body>
+</html>

@@ -96,8 +96,152 @@
                             语法：
                                 var newFn = 函数名.bind(要改变的this指向)
                                 newFn(实参1，实参2)
-                                
+
         */
+
+                // var fn =function (){
+                //     console.log(this)
+                // }
+                // fn()//全局函数调用this为window
+                // document.onclick = fn //作为事件函数调用this为事件源document
+
+                // var obj = {
+                //     love:fn
+                // }
+                // obj.love()//作为对象函数调用this为对象
+
+                // setTimeout(fn,2000)//作为时间函数调用this为window
+
+                console.log('**********************')
+                var fun = function(a,b){
+                    console.log(this)
+                    console.log(a,b)
+                    console.log('**********************')
+                }
+                //普通函数执行
+                fun('1','2')//this为window
+
+                // call改变this指向
+                fun.call({a:1},'a','b')//将this指向改为指向{a:1}
+                fun.call(null,'a','b')//第一个参数为空时，表示不修改this指向
+
+                //apply改变this指向(apply传递函数实参的时候要以数组形式)
+                fun.apply({name:"apply"},['a','b'])//将this指向{name:"apply"}
+                fun.apply(null,['a','b'])//第一个参数为空时，表示不修改this指向
+
+                // bind
+                var newFun = fun.bind({name:"bine"})//将this指向{name:"bine"}
+                newFun('a','b')
+                // setTimeout('newFun("a","b")',3000)//{name:"bine"}
+
+                /*
+                    json:是一种特殊的字符串
+                        组织形式类似js里面的数组或对象
+                        成员要是用""
+                        json字符串最后一个对象后面不能加','
+                        用来序列化对象、数组、数值、字符串、布尔值和null（没有undefined）
+                    json文件作用：
+                        用于前后端数据交互（轻量级数据交换格式）
+                    JSON方法：
+                        JSON.parse
+                            可以将json格式的字符串转换为js数组或对象
+                            语法：
+                                JSON.parse(json字符串)
+                            返回值：
+                                js对象或数组
+                        JSON.stringify(js对象或数组)
+                            可以将js里的对象或数组转换为json字符串
+                            语法：
+                                JSON.stringify(js对象或数组)
+                            返回值：
+                                json字符串
+                */
+
+                //JSON.parse
+                var str = '{"name":[null,1,2],"age":12}'
+                var obj = JSON.parse(str)
+                console.log(str)
+                console.log(obj)
+
+                //JSON.stringify
+                var obj2 = {
+                    name:"zhangsan",
+                    love:function(){},
+                    'age':12,
+                    a:undefined
+                }
+                var str2 = JSON.stringify(obj2)//在转换过程中会标准化对象（将不符合json要求的成员去除）
+                console.log(str2)
+
+
+                /* ES6新增
+                    let、const关键字：
+                    与vard区别：
+                        不允许重复声明变量，且没有变量声明提升（没有预解析），会被代码块限制作用范围
+                    let与const区别：
+                        let声明时可以不赋值 const声明时必须赋值
+                        let声明变量值可改变 const声明变量值不能改变
+
+                箭头函数
+                    只能简写函数表达式，不能简写声明式函数
+                    语法：
+                        var fn = (函数形参)=>{要执行代码}
+                        如果只有一个形参()可以省略
+                        如果不写{}表示return{}内的内容
+                    特殊性：
+                        箭头函数内部没有this，其this是父级的this
+                        箭头函数内部没有arguments这个参数集合  
+                        
+                        
+                函数传参时的默认值：
+                    定义函数有时需要默认值（指不传参时，使用默认值）
+                    箭头函数使用默认值时只有一个参数也需要（）
+
+                */
+
+                // ES6中直接将默认值写在形参中
+                var fun = (a=1)=>{
+                    console.log(a)
+                }
+               var func = function(a=10){
+                   console.log(a)
+               }
+               fun()//不传参时使用默认值
+               fun(0)//传参时使用实参
+               func()//不传参时使用默认值
+               func(null)//传参时使用实参
+               
+                /*
+
+                解构赋值：
+                    解构对象：快速从对象中获取成员
+                    解构数组：快速从数组中获取元素
+                        {}是专门用于解构对象的
+                        []是专门用于解构数组的
+                        不能混用
+                */
+        // 1 解构对象
+        // var obj = {
+        //     a:1,
+        //     b:2,
+        //     c:3
+        // }
+        // var a = obj.a;
+        // var b = obj.b;
+        // var c = obj.c;
+
+        // 可以使用解构赋值快速定义变量并赋值
+        // var {a,b,c} = obj;//等价于上面的三句话
+        // console.log(a,b,c)
+
+        // 2 解构数组
+        // var arr = ['hello','xiaoxi','xiaowang','world'];
+        // var aa = arr[0];
+        // var bb = arr[1];
+        // var cc = arr[2];
+        // 可以使用解构赋值快速定义变量并赋值
+        // var [aa,bb,cc] = arr;//等价于上面的三句话,多的"world"没有赋值给变量
+        // console.log(aa,bb,cc)
     </script>
 </body>
 </html>

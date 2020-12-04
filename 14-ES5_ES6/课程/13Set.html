@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            + Set
+                ==>类似数组，是值的集合，set中的元素只会出现一次，set中的元素是唯一的
+            + 创建set类型
+                ==>var s1 = new Set();//是set类型，里面没有元素
+                ==>var s2 = new Set(['123','abc']);//是set类型，里面有2个元素
+            + size属性：表示set集合里面有多少个元素
+            + 常用方法
+                ==> add:添加一个元素,返回值是添加完成的set类型
+                ==> delete:删除一个元素，返回布尔值
+                ==> clear:情况set里面的元素
+                ==> has:判断是否存在某个元素，返回布尔值
+        */
+
+        // 创建set类型
+        var s1 = new Set()
+        var s2 = new Set(['123','456','456']);//重复的会被删除
+        console.log(s1)
+        console.log(s2)
+
+        // 常用方法
+        console.log(s1.add('hello'))
+        console.log(s1.add('world'))
+        console.log(s1.add('xiaoli'))
+        console.log(s1.add('xiaowang'))
+        console.log(s1.add('xiaoli'))
+
+        console.log(s1.delete('xiaoli'))
+
+        console.log(s1.has('xiaoli'))
+
+        s1.clear();
+
+
+
+        // 案例：数组去重
+        var arr = [23,312,4,214,32,4,45,124,43,32,89,3,213,213];
+        var set = new Set([...arr]);
+        arr = [...set];
+        console.log(arr)
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击清除定时器</button>
+    
+    <script>
+        var num = 0;
+        
+        // 清除定时器只能用clearInterval或者clearTimeout，给timer重新赋值不能清除以前的定时器
+
+        // 方法一:
+        // 定义全局变量过多容器导致变量名冲突
+        // var timer = null;
+        // btn.onclick = function(){
+        //     // 每次点击以后，都要先清除前面一个定义的定时器，然后再开启本次定时器
+        //     // 要每次点击能够找到上次定义的定时器,可以使用全局变量
+        //     // 要用定时器，先清定时器
+        //     clearInterval(timer);
+        //     num++;
+        //     timer = setInterval(function(num){
+        //         console.log(num)
+        //     },1000,num)
+        // }
+
+        // btn.onclick 点击一次，timer = 1;
+        // btn.onclick 点击第二次，clearInterval(1); timer = 2
+        // btn.onclick 点击第三次，clearInterval(2); timer = 3
+
+
+        // 方法二:
+        btn.onclick = function(){
+            // 每次点击以后，都要先清除前面一个定义的定时器，然后再开启本次定时器
+            // 要每次点击能够找到上次定义的定时器,可以使用全局变量
+            // 要用定时器，先清定时器
+            clearInterval(btn.timer);
+            num++;
+            btn.timer = setInterval(function(num){
+                console.log(num)
+            },1000,num)
+        }
+    </script>
+</body>
+</html>

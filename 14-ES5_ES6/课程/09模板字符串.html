@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+    <script>
+        /* 
+            模板字符串
+                ==>es5中我们表示字符串是使用''和""
+                ==>es6中我们新增了一个东西可以用来表示字符串，就是``(反引号)
+                ==>和单引号，双引号的区别
+                    1 反引号可以换行书写
+                    2 反引号可以直接在字符串里面接变量
+                        ==> 在``里面的${}就是用来书写变量的位置
+
+        */
+
+        var str = "hello";
+        var str1 = 'hello1';
+        var str2 = `hello2`;
+        console.log(str,str1,str2)
+
+        // 1 反引号可以换行书写
+        console.log(`<ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>`)
+
+        // 2 反引号可以直接在字符串里面接变量
+        var year = "2020"
+        var month = "12"
+        var day = "3"
+        console.log("今天是"+year+"年"+month+"月"+day+"日");
+        console.log(`今天是${year}年${month}月${day}日`)
+        
+    </script>
+</body>
+</html>

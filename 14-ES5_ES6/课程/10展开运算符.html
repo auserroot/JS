@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            展开运算符
+                ==> es6里面新增了一个运算符...,叫做展开运算符
+                ==> 作用就是展开数组
+                ==> 作用就是展开对象
+                ==> 在函数传递参数的时候也可以使用
+
+
+        */
+
+        // 1 展开数组
+        var arr = [2,3,4]
+        var arr1 = ["hello","world"];
+        var arr2 = [...arr,...arr1];//展开再合并数组
+        console.log(arr2)
+
+        // 2 展开对象
+        var obj1 = {
+            name:"zhangsan",
+            age:12
+        }
+        var obj2 = {
+            gender:"女",
+            love:"fruit",
+            age:20
+        }
+        var obj = {
+            ...obj2,
+            ...obj1,
+            score:100
+        }
+        console.log(obj)
+
+        // 3 在函数传递参数的时候也可以使用
+        let array = [11,22,33];
+        function fn(a,b,c){
+            console.log(a)
+            console.log(b)
+            console.log(c)
+        }
+        fn(...array)
+
+
+        var fun = (...arr)=>{
+            console.log(arr)
+        }
+        fun(11,222,3,34,4,4,4,45,4)
+    </script>
+</body>
+</html>

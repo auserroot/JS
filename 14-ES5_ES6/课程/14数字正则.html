@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            写一个验证 0 ～ 666 数字的正则
+            1位数: 0-9  正则/^\d$/
+            2位数: 1-9(十位)0-9(个位)  正则/^[1-9]\d$/
+            3位数: 
+                ==> 小于600  1-5(百位)0-9(十位)0-9(个位)  正则/^[1-5]\d{2} $/
+                ==> 大于等于600小于660  6(百位)0-5(十位)0-9(个位)  正则/^6[0-5]\d $/
+                ==> 大于等于660小于等于666  6(百位)6(十位)0-6(个位)  正则/^6{2}[0-6] $/
+        */
+        var reg = /^((\d)|([1-9]\d)|([1-5]\d{2})|(6[0-5]\d)|(6{2}[0-6]))$/;
+        console.log(reg.test(660))
+        console.log(reg.test(589))
+        console.log(reg.test(6))
+        console.log(reg.test(667))
+        console.log(reg.test(666))
+    </script>
+</body>
+</html>

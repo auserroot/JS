@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">定时器1</button>
+    <button id="btn2">定时器2</button>
+    
+    <script>
+        var num1 = 0,num2=0;
+        // 定时器1的点击事件
+        btn1.onclick = function(){
+            // 要用定时器，先清定时器
+            clearInterval(btn1.timer)
+            num1++;
+            // 每次点击产生一个定时器编号，这个编号下次要用要记录要一个下次能够读取的变量上
+            // dom对象是唯一的，我把定时器编号记录在dom对象的某个属性上
+            btn1.timer = setInterval(function(num){
+                console.log(num)
+            },1000,num1)
+        }
+        // 点击第一次 clearInterval(undefined) btn1.timer = 1;
+        // 点击第二次 clearInterval(1) btn1.timer = 2;
+
+        // 定时器2的点击事件
+        btn2.onclick = function(){
+            clearInterval(btn2.timer);
+            num2++;
+            btn2.timer = setInterval(function(num){
+                console.log(num)
+            },1000,num2)
+        }
+
+    </script>
+</body>
+</html>

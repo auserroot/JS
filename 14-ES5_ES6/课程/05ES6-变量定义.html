@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+    <script>
+        /* 
+            ES6新增的内容
+                ==> 新增了let和const关键字
+                ==> 和var的一些区别
+                    + let和const不允许重复声明变量
+                    + let和const声明的变量不会在预解析的时候解析(也就是没有变量声明提升)
+                    + let和const声明的变量会被所有代码块限制作用范围
+                ==> let和const的一些区别
+                    + let声明的时候可以不赋值，const声明的时候必须赋值
+                    + let声明的变量的值可以改变，const声明的变量的值不可以改变
+        */
+        
+        // 2 let和const声明的变量不会在预解析的时候解析(也就是没有变量声明提升)
+        // console.log(a)//不会报错
+        // console.log(b)//会报错
+        // console.log(c)//会报错
+
+        var a = 1;
+        let b = 2;
+        const c = 3;
+        
+        
+        // 1 let和const不允许重复声明变量
+        // var a = 11;//不会报错
+        // let b = 22;//会报错
+        // const c =33;//会报错
+
+
+        // 3 let和const声明的变量会被所有代码块限制作用范围
+        // {
+        //     var aa = 1;
+        //     let bb = 2;
+        //     const cc = 3;            
+        // }
+        // console.log(aa);//不会报错
+        // console.log(bb);//会报错
+        // console.log(cc);//会报错
+
+        // let案例:点击li显示这是第几个里
+        // var liArr = document.querySelectorAll('li');
+        // 方法一：使用var在函数外面定义的是全局变量（无法实现）
+        // for(var i=0;i<liArr.length;i++){
+        //     liArr[i].onclick = function(){
+        //         // 由于i是全局变量，这个事件函数要等所有li的事件绑定完，点击才会执行，此时i=4
+        //         console.log("这是第"+i+"个li")
+        //     }
+        // }
+
+        // 方法二：使用let定义的是局部变量（可以实现）
+        // for(let i=0;i<liArr.length;i++){
+        //     // 第0次循环的时候，{let i=0; liArr[0].onclick = fn}
+        //     // 第1次循环的时候，{let i=1; liArr[1].onclick = fn }
+        //     // 第2次循环的时候，{let i=2; liArr[2].onclick = fn }
+        //     // 第3次循环的时候，{let i=3; liArr[3].onclick = fn }
+        //     liArr[i].onclick = function(){
+        //         // 要i的值，在事件函数里面找不到i，去上级的作用域，找到本地的i
+        //         console.log("这是第"+i+"个li")
+        //     }
+        // }
+        
+
+        // 4 let声明的时候可以不赋值，const声明的时候必须赋值
+        // let aaa;//不会报错
+        // const bbb;//会报错
+        // console.log(aaa);//不会报错
+        // console.log(bbb);//会报错
+
+        // 5 let声明的变量的值可以改变，const声明的变量的值不可以改变
+        // let aa = 11;
+        // const bb = 22;
+        // aa = 222;//不会报错
+        // bb = 333;//会报错
+    </script>
+</body>
+</html>
