@@ -7,7 +7,7 @@
     height: 265px;
     margin: 100px auto;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .slider-img {
     width: 310px;
