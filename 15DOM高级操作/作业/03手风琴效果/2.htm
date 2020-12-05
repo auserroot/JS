@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>手风琴效果</title>
+    <style>
+        ul{list-style: none}
+        *{margin:0; padding:0;}
+        div{
+            width: 1200px;
+            height: 400px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;            
+        }
+        div ul {
+            width: 2000px;
+        }
+    </style>
+</head>
+<body>
+	<div>
+	    <ul id="box">
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	    </ul>
+    </div>
+    
+    <script>
+            //需求:
+            //1 当鼠标移入某个li,该li变宽(800),其他li变窄(100)
+            //2 当鼠标移出li,所有li的宽度都变成240
+
+            //获取元素
+            var box = document.querySelector("#box")
+            var lilist = document.querySelectorAll("li")
+            // console.log(lilist)
+
+            //添加图片背景
+            for(var i=0;i<lilist.length;i++){
+                lilist[i].style.backgroundImage = 'url(images/'+(i+1)+'.jpg)'
+                //鼠标移入改变li宽度
+                lilist[i].onmousemove = function(e){
+                    e=e||window.event
+                    for(var j=0;j<lilist.length;j++){
+                        lilist[j].style.width = 100+'px'
+                    }
+                    this.style.width = 800+'px'
+                }
+                //鼠标移出恢复li宽度
+                lilist[i].onmouseout = function(e){
+                    e=e||window.event
+                    for(var j=0;j<lilist.length;j++){
+                        lilist[j].style.width = ''
+                    }
+                    this.style.width = ''
+                }
+                
+            }
+
+            
+
+    </script>
+</body>
+</html>
+
+
