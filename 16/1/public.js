@@ -210,7 +210,7 @@ function animate(dom,json,fn){
                 fn()
             }
         }
-    },1000/60)
+    },100)
 }
 
 

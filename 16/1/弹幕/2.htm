@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		*{ margin: 0; padding: 0;}
+		#box{ width: 542px; height: 330px;
+		border: 3px solid goldenrod;
+		margin-left:300px;}
+	   #btm{margin: 0;padding: 0; height: 30px;background: goldenrod;
+	   display: flex; z-index: 999; position: relative; }
+	   #btm span{ flex: 1; flex-direction: column;font: 16px/30px "微软雅黑";
+	   color: #fff;  text-align: center; cursor: pointer;}
+	   #btm span:nth-child(1){ flex: 3;}
+	   #btm span input{ width:100% ; height: 30px; font: 16px/30px "微软雅黑";
+	   border: none; outline: none;}
+	   #content{ height: 300px; position: relative; z-index: 999;
+	   background:rgba(0,0,0,0.7)}
+	   #content span{color:#fff; height: 30px; font: 14px/30px "微软雅黑"; position: absolute;left:542px;
+	   white-space: nowrap;}
+	   #v{ position: absolute;
+	   left: 303px; top: -32px; width: 542px; height: 358px; background: url(2.png);}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="content"></div>
+		<p id="btm">
+			<span><input type="text" id="text" /></span>
+			<span id="sendCon">发送</span>
+			<span id="hideCon">隐藏</span>
+			<span id="showCon">显示</span>
+		</p>
+	</div>
+	<div id="v">
+		 
+	</div>
+</body>
+<script src="../public.js"></script>
+<script>
+    // 监听元素
+    var content = $id('content')
+    var text = $id('text')
+    var sendConbtn = $id('sendCon')
+    var hideConbtn = $id('hideCon')
+    var showConbtn = $id('showCon')
+    // 添加事件
+    sendConbtn.onclick = function(){
+        // 创建span标签用于存储弹幕内容
+        var spanText = document.createElement('span')
+        spanText.style.zIndex = '9999'
+        // 获取随机数让span随机出现
+         var topNum = rand(0,300)
+        spanText.style.top = topNum +'px'
+        //点击按钮发送text中的内容到content
+        spanText.innerHTML = text.value
+        content.appendChild(spanText)
+        //获取span
+        var getSpan = content.children
+        // console.log(getSpan)
+        // 遍历span
+        for(var i=0;i<getSpan.length;i++){
+            // 获取span宽度
+            var w = getSpan[i].offsetWidth
+            // 匀速运动
+            move(getSpan[i],{"left":-w},function(){
+                var getSpan = content.children
+                for(var i=0;i<getSpan.length;i++){
+                    // 判断隐藏条件
+                    if(-parseInt(getSpan[i].style.left)>=-Math.ceil(getSpan[i].offsetWidth)){
+                        // getSpan[i].style.display = 'none' //有bug
+                        getSpan[i].style.opacity = '0'
+                }
+               }
+            })
+            // 变速运动
+            // animate(getSpan[i],{"left":-w},function(){
+            //     var getSpan = content.children
+            //     for(var i=0;i<getSpan.length;i++){
+            //         // console.log(getSpan[i])
+            //         // console.log(-getSpan[i].offsetWidth)
+            //         // console.log(getSpan[i].style.left)
+            //         if(parseInt(getSpan[i].style.left)==-parseInt(getSpan[i].offsetWidth)){
+            //             getSpan[i].style.display = 'none'
+            //     }
+            //    }
+            // })
+            
+        }
+        //清空输入框
+        text.value = ''
+    }
+
+    //点击隐藏弹幕（有缺陷：只隐藏当前span和之前span，对之后span无效//需再次点击）
+    // hideConbtn.onclick = function(){
+    //     var getSpan = content.children
+    //     for(var i=0;i<getSpan.length;i++){
+    //         getSpan[i].style.display = 'none'
+    //     }
+    // }
+
+    //改进
+    hideConbtn.onclick = function(){
+        // content.style.display = 'none'//会导致不占位页面布局发生变化
+        content.style.opacity = '0'
+    }
+
+    //点击显示弹幕
+    showConbtn.onclick = function(){
+        // var getSpan = content.children
+        // for(var i=0;i<getSpan.length;i++){
+        //     getSpan[i].style.display = 'block'
+        // }
+        
+        // content.style.display = 'block'
+        content.style.opacity = '1'
+    }
+
+</script>
+</html>
