@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            width: 200px;
+            height: 40px;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: cyan;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            opacity:1;
+            z-index:1;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击按钮div运动</button>
+    <div id="box"></div>
+    <script src="../JS/public.js"></script>
+    <script>
+        //函数能控制元素宽 高 left top opacity z-index 单属性改变
+        // // 获取元素
+        // var btn = $id("btn")
+        // var box = $id('box')
+        // 功能函数实现
+        function move(dom,attr,target){
+            /*
+            dom:要操作的dom元素
+            attr：要改变的属性
+            target：要改变属性的目标值
+            */
+           //清除定时器
+           clearInterval(dom.timer)
+           //创建定时器
+           dom.timer = setInterval(function () {
+                //获取开始位置
+                /*
+                    判断需要改变的属性
+                    opacity属性值在Chrome等高版本浏览器内属性值最大为1，操作时将其放大100倍
+                */
+                if (attr == 'opacity') {
+                    var start = parseInt(getStyle(dom, attr) * 100)
+                } else {
+                    var start = parseInt(getStyle(dom, attr))
+                }
+                //计算速度
+                var speed = (target - start) / 10
+                speed = speed>0?Math.ceil(speed):Math.floor(speed)
+                 //计算下一个位置(z-index直接附目标值)
+                if(attr == 'zIndex'){
+                    var next = target
+                }else{
+                    var next = start + speed
+                }
+                // 定位元素
+                if(next == target){
+                    clearInterval(dom.timer)
+                }
+                // 透明度
+                if(attr=='opacity'){
+                    dom.style.opacity = next/100
+                    dom.style.filter = 'alpha(opacity='+next+')'
+                }else if(attr=='zIndex'){
+                    dom.style[attr] = next
+                }else{
+                    dom.style[attr] = next + 'px'
+                }
+            },20)
+        }
+    </script>
+</body>
+</html>
