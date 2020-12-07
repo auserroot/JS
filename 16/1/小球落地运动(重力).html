@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ball{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left:0px;
+            top:200px;
+            background:skyblue;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="我要飞">
+    <div id="ball"></div>
+    <script>
+        //需求:点击按钮,小球做反弹运动,会受重力和摩擦力影响
+
+        //获取元素
+        var btn = document.getElementsByTagName('input')[0];//按钮
+        var ball = document.getElementById('ball');//小球
+
+        //设定初始速度
+        var speedX = 5;//速度为正,往右,速度为负,往左
+        var speedY = -20;//速度为负,往上,速度为正,往下
+
+        //绑定事件
+        btn.onclick = function(){
+            clearInterval(ball.timer);
+            ball.timer = setInterval(function(){
+                //计算下一个位置
+                var left = ball.offsetLeft + speedX;
+                var top = ball.offsetTop + speedY;
+                //判断是否到达边界(下边界)
+                if(top>window.innerHeight-ball.offsetHeight){
+                    top=window.innerHeight-ball.offsetHeight;
+                    //反弹
+                    speedY *= -0.8;
+                    speedX--;
+                    if(speedX<=0){
+                        speedX=0;
+                        clearInterval(ball.timer)
+                    }
+                }
+                //定位元素
+                ball.style.left = left+"px";
+                ball.style.top = top+"px";
+                //由于重力的影响,垂直速度会减低
+                speedY++;
+            },1000/60)
+        }
+    </script>
+</body>
+</html>

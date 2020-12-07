@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ball{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left:0px;
+            top:200px;
+            background:skyblue;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="我要飞">
+    <div id="ball"></div>
+    <script>
+        //需求:点击按钮,小球做反弹运动
+
+        //获取元素
+        var btn = document.getElementsByTagName('input')[0];//按钮
+        var ball = document.getElementById('ball');//小球
+        //设定初始速度
+        var speedX = 5;//速度为正,往右,速度为负,往左
+        var speedY = -7;//速度为负,往上,速度为正,往下
+        //绑定事件
+        btn.onclick = function(){
+            clearInterval(ball.timer);
+            ball.timer = setInterval(function(){
+                //获取当前位置
+                var currentX = ball.offsetLeft;
+                var currentY = ball.offsetTop;
+
+                //设置速度
+
+                //计算下一个位置
+                var nextX = currentX+speedX;
+                var nextY = currentY+speedY;
+
+                //边界检测
+                if(nextY<=0){
+                    speedY=-speedY;
+                }
+                if(nextY>=window.innerHeight-ball.offsetHeight){
+                    speedY=-speedY;
+                }
+                if(nextX>=window.innerWidth-ball.offsetWidth){
+                    speedX = -speedX;
+                }
+                if(nextX<=0){
+                    speedX = -speedX;
+                }
+                //定位元素
+                ball.style.left = nextX+"px";
+                ball.style.top = nextY+"px";
+            },1000/30)
+        }
+    </script>
+</body>
+</html>

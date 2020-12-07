@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap飞机跑道进度条动画特效 - 站长素材</title>
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+	<div class="progress">
+		<div class="progress-bar" style="width: 55%; background:#005394;">
+			<span>55%</span>
+		</div>
+	</div>
+
+	<div class="progress">
+		<div class="progress-bar" style="width: 100%; background:#d9534f;">
+			<span>100%</span>
+		</div>
+	</div>
+
+	<div class="progress">
+		<div class="progress-bar" style="width: 40%; background:#f0ad4e;">
+			<span>40%</span>
+		</div>
+	</div>
+</div>
+<script>
+	var progressArr = document.getElementsByClassName('progress');
+	for(var i=0;i<progressArr.length;i++){
+		
+		progressArr[i].onmousedown= function(e){	
+				var that = this;
+				var x = e.pageX;
+				var width;
+				if(x<this.offsetLeft+10){
+					width = 0;
+				}else if(x>this.offsetLeft+this.offsetWidth){
+					width = this.offsetWidth-20;
+				}else{
+					width = x - this.offsetLeft - 10;
+				}
+				this.children[0].style.width = this.children[0].children[0].innerHTML=	parseInt(width/(this.offsetWidth-20)*100)+"%";			
+			document.onmousemove = function(e){
+				var x = e.pageX;
+				var width;
+				if(x<that.offsetLeft+10){
+					width = 0;
+				}else if(x>that.offsetLeft+that.offsetWidth){
+					width = that.offsetWidth-20;
+				}else{
+					width = x - that.offsetLeft - 10;
+				}
+				that.children[0].style.width = that.children[0].children[0].innerHTML=	parseInt(width/(that.offsetWidth-20)*100)+"%";
+				return false;
+	
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;				
+			}
+		}
+	}
+</script>
+</body>
+</html>

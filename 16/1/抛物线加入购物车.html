@@ -1,0 +1,131 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>06抛物线加入购物车</title>  
+    <style>  
+    	*{
+    		margin:0;
+    		padding:0;
+    	}
+        #addToCart {  
+            position: fixed;  
+            left: 600px;  
+            cursor: pointer;  
+            width: 100px;  
+            height: 40px;  
+            line-height: 40px;  
+            border: 1px solid deeppink;  
+            text-align: center;  
+            color: deeppink;  
+            top:500px;
+        }  
+        #addToCart:hover{
+        	background: deeppink;
+        	color:white;
+        }  
+        #shopCart {  
+            position: fixed;  
+            right: 0;  
+            top: 200px;  
+            color: red;  
+        }  
+        #shopNum{
+        	width: 60px;
+        	height: 25px;
+        	background: deeppink;
+        	color:black;
+        	text-align: center;
+        	line-height: 25px;
+        }
+        .active{
+        	width: 25px;
+        	height: 25px;
+        	background: skyblue;
+        	position: absolute;
+        }
+    </style>
+	<body>
+		<div id="addToCart">  
+		   添加到购物车  
+		</div>  	
+		<div id="shopCart">  
+		    购物车  
+		  <p id="shopNum"></p>
+        </div>
+    </body>
+    <script>
+        /* 
+            需求分析:
+                1 点击添加到购物车按钮,生成一个蓝色的小方块
+                2 小方块沿着抛物线运动到购物车上
+                3 购物车数量增加1
+            技术点:
+                要做抛物线运动,需要知道y = a*x*x+b*x+c中的a,b,c,就可以通过x坐标计算y坐标
+
+        */
+        //获取相关元素
+        var btn = document.getElementById('addToCart');//添加到购物车按钮
+        var cart = document.getElementById('shopCart');//购物车
+        var p = document.getElementById('shopNum');//显示商品数量的容器
+        //初始化商品数量
+        var num = 0;
+        //任意取抛物线上的三个点
+        var startPoint = {
+            x:btn.offsetLeft+btn.offsetWidth/2,
+            y:btn.offsetTop
+        }
+        var endPoint = {
+            x:shopCart.offsetLeft+shopCart.offsetWidth/2,
+            y:shopCart.offsetTop
+        }
+        var topPoint = {
+            x:endPoint.x-80,
+            y:endPoint.y-50
+        }
+        //求a,b,c
+        var a = ((startPoint.y - endPoint.y) * (startPoint.x - topPoint.x) - (startPoint.y - topPoint.y) * (startPoint.x - endPoint.x)) / ((startPoint.x * startPoint.x - endPoint.x * endPoint.x) * (startPoint.x - topPoint.x)-(startPoint.x * startPoint.x - topPoint.x * topPoint.x) * (startPoint.x - endPoint.x));  
+		var b = ((endPoint.y - startPoint.y) - a * (endPoint.x * endPoint.x - startPoint.x * startPoint.x)) / (endPoint.x - startPoint.x);  
+		var c = startPoint.y - a * startPoint.x * startPoint.x - b * startPoint.x;
+        //页面上初始就有一个蓝色的小方块,只不过是隐藏的
+        var product = document.createElement('div');
+        product.className = "active"
+        document.body.appendChild(product)
+        //初始化小方块的位置
+        product.style.left = startPoint.x+"px";
+        product.style.top = startPoint.y+"px"; 
+        product.style.display = "none";
+
+        //1 点击添加到购物车按钮,生成一个蓝色的小方块
+        btn.onclick = function(){
+            product.style.display = "block";
+            //开始运动,运动需要定时器
+            clearInterval(btn.timer)
+            btn.timer = setInterval(function(){
+                //计算下一个位置
+                var left = product.offsetLeft + 5;
+                var top = a*left*left+b*left+c;
+                if(left>=endPoint.x){
+                    //购物车数量加1
+                    num++;
+                    p.innerHTML = num;
+                    //清除定时器
+                    clearInterval(btn.timer)
+                    //初始化小方块位置
+                    product.style.left = startPoint.x+"px";
+                    product.style.top = startPoint.y+"px"; 
+                    product.style.display = "none";
+                }else{
+                    //元素定位
+                    product.style.left = left+"px";
+                    product.style.top = top+"px";
+                }
+                
+            },25)
+        }
+
+
+    </script>
+</html>  
+
+

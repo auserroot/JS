@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>五星评分</title>
+<style type="text/css">
+#ul1{padding:0; margin:0; list-style:none;  width:300px; height:28px;}
+#ul1 li{float:left; background:url(star.gif) no-repeat 0 0; width:27px; height:28px; }
+</style>
+</head>
+<body>
+<ul id="ul1" >
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+	<li class="default"> </li>
+</ul>
+<div id="div"></div>
+</body>
+<script type="text/javascript">
+	/* 
+		需求分析:
+			1 鼠标移入某个li,该li前面的星星都高亮
+			2 鼠标点击某个li,该li前面的星星都高亮
+			3 鼠标移出ul,上次点击的li前面的星星都高亮
+			4 如果没有点击,鼠标移出ul都不高亮
+			5 根据高亮的星星数,显示相应的文字
+	*/
+
+	//书写一个自定义的构造函数,用于生产评分对象
+	function ScoreStar(starContainerId,textContainerId){
+		this.starContainer = document.getElementById(starContainerId);//星星所在容器
+		this.starArr = this.starContainer.children;//所有的星星
+		this.textContainer = document.getElementById(textContainerId);//文字所在容器
+		this.index = -1;//记录上次点击的星星的索引
+		this.textArr = ['差评','不推荐','一般','推荐','强力推荐'];//星星对应的文字说明
+		//自己调用init
+		this.init();
+	}
+	ScoreStar.prototype.init = function(){
+		//给星星容器添加鼠标移出事件
+		this.addStarContainerEvent();
+		//给星星添加移入和点击事件
+		this.addStarEvent();
+		
+	}
+	//给星星容器添加鼠标移出事件
+	ScoreStar.prototype.addStarContainerEvent = function(){
+		//里面的this是实例对象,that没有特殊含义,也可以取名aa,bb,任意都可以
+		var that = this;
+		//鼠标移出ul,上次点击的li前面的星星都高亮
+		this.starContainer.onmouseleave = function(){
+			//里面的this是事件源
+			that.light(that.index)
+		}
+	}
+	//给星星添加移入和点击事件
+	ScoreStar.prototype.addStarEvent = function(){
+		var that = this;
+		//this是实例对象
+		for(var i=0;i<this.starArr.length;i++){
+			//为了知道是哪个星星
+			this.starArr[i].flag = i;
+			//鼠标移入某个li,该li前面的星星都高亮
+			this.starArr[i].onmouseenter = function(){
+				//里面的this是事件源
+				that.light(this.flag)
+			}
+			//鼠标点击某个li,该li前面的星星都高亮
+			this.starArr[i].onclick = function(){
+				//里面的this是事件源
+				that.light(this.flag);
+				//更新记录的点击索引值
+				that.index = this.flag;
+			}
+			
+		}
+	}
+	ScoreStar.prototype.light = function(num){
+		//如果到时候light是由实例对象调用,那么这里的this是实例对象
+		for(var i=0;i<=num;i++){
+			this.starArr[i].style.backgroundPosition="0 -28px";
+		}
+		for(var i=num+1;i<this.starArr.length;i++){
+			this.starArr[i].style.backgroundPosition="0 0";
+		}
+		this.textContainer.innerHTML = this.textArr[num]?this.textArr[num]:""
+	}
+
+
+	var ss = new ScoreStar('ul1','div');
+	// ss.init()
+	
+</script>
+</html>

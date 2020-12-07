@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		*{ margin: 0; padding: 0;}
+		#box{ width: 542px; height: 330px;
+		border: 3px solid goldenrod;
+		margin-left:300px;}
+	   #btm{margin: 0;padding: 0; height: 30px;background: goldenrod;
+	   display: flex; z-index: 999; position: relative; }
+	   #btm span{ flex: 1; flex-direction: column;font: 16px/30px "微软雅黑";
+	   color: #fff;  text-align: center; cursor: pointer;}
+	   #btm span:nth-child(1){ flex: 3;}
+	   #btm span input{ width:100% ; height: 30px; font: 16px/30px "微软雅黑";
+	   border: none; outline: none;}
+	   #content{ height: 300px; position: relative; z-index: 999;
+	   background:rgba(0,0,0,0.7)}
+	   #content span{color:#fff; height: 30px; font: 14px/30px "微软雅黑"; position: absolute;left:542px;
+	   white-space: nowrap;}
+	   #v{ position: absolute;
+	   left: 303px; top: -32px; width: 542px; height: 358px; background: url(2.png);}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="content"></div>
+		<p id="btm">
+			<span><input type="text" id="text" /></span>
+			<span id="sendCon">发送</span>
+			<span id="hideCon">隐藏</span>
+			<span id="showCon">显示</span>
+		</p>
+	</div>
+	<div id="v">
+		 
+	</div>
+</body>
+</html>
+<script src="../public.js"></script>
+<script>
+	 //隐藏 显示 功能自己完成 
+	 function startMove(){
+	 	var oSpan = document.createElement("span");
+	 	oSpan.innerHTML = $id("text").value;
+	 	var t = rand(0,270);
+	 	oSpan.style.top = t + "px"; 
+	 	$id("content").appendChild(oSpan);
+		 var w = oSpan.offsetWidth;
+		 console.log(w)
+	 	move( oSpan ,{ left  : -w},function(){
+	 		oSpan.remove();
+	 	} )
+	 }
+	 
+	 $id("sendCon").onclick = function(){
+		startMove();
+	 }
+
+</script>
+ 

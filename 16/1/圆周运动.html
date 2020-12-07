@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle{
+            width: 600px;
+            height: 600px;
+            border-radius: 300px;
+            border:1px solid skyblue;
+            position: relative;
+            top:50px;
+            left:415px;
+        }
+        #ball{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left:0;
+            top:0;
+            border-radius: 15px;
+            background:skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+    <div id="circle"></div>
+    <script>
+        //需求:小球沿着圆环运动
+        //具体:每隔一段时间,要求在圆上运动一定的角度,初始在90度位置
+
+        //初始角度
+        var deg = 90;
+        //小球
+        var ball = document.getElementById('ball');
+        //圆环
+        var circle = document.getElementById('circle');
+        //半径
+        var r = circle.offsetWidth/2;
+        //原心坐标
+        var centerPoint = {
+            left:circle.offsetLeft+r,
+            top:circle.offsetTop+r
+        }
+        //把小球放到deg的位置
+        ball.style.left = centerPoint.left+r*Math.cos(deg*Math.PI/180)-ball.offsetWidth/2+"px";
+        ball.style.top = centerPoint.top-r*Math.sin(deg*Math.PI/180)-ball.offsetWidth/2+"px";
+        //开始运动
+        var timer = setInterval(function(){
+            //每隔一段时间角度增加5
+            deg+=5;
+            //定位小球
+            ball.style.left = centerPoint.left+r*Math.cos(deg*Math.PI/180)-ball.offsetWidth/2+"px";
+            ball.style.top = centerPoint.top-r*Math.sin(deg*Math.PI/180)-ball.offsetWidth/2+"px";
+        },1000/60)
+    </script>
+</body>
+</html>

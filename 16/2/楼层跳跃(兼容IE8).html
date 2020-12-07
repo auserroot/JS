@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#content li{
+			width:100%;		
+			font-size:100px;
+			text-align: center;				
+		}
+		#menu{
+			position: fixed;
+			display:none;
+			width:40px;
+			top:200px;
+			right:0;
+			list-style: none;
+			text-align: center;
+			background: white;
+		}
+		#menu li{
+			height:50px;
+			font-weight: 100;
+			font-size:14px;
+			line-height: 25px;
+			cursor: pointer;
+		}
+		#menu li:hover{
+			background:orange;
+			color:white !important;
+			font:900 14px;
+		}
+		#menu li.current{
+			background:orange;
+			color:white !important;
+			font:900 14px;
+		}
+		#menu li.to-top{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<ul id="content">
+	<li style="height:800px;line-height:800px;background:pink;">爱逛好货</li>
+	<li style="height:900px;line-height:900px;background:yellow;">好店直播</li>
+	<li style="height:400px;line-height:400px;background:lightblue;">品质特色</li>
+	<li style="height:600px;line-height:600px;background:lightgreen;">实惠热卖</li>
+	<li style="height:900px;line-height:900px;background:purple;">猜你喜欢</li>
+</ul>
+<ul id="menu">
+	<li style="color:#f05">爱逛好货</li>
+	<li style="color:#8d7afb">好店直播</li>
+	<li style="color:#A8C001">品质特色</li>
+	<li style="color:#F40">实惠热卖</li>
+	<li style="color:#3C3C3C">猜你喜欢</li>
+	<li style="color:#3C3C3C;height:65px;"  class="to-top"><p style="line-height: 15px;">︿</p>回到顶部</li>
+</ul>
+</body>
+<script type="text/javascript">
+	//要求
+	//1 当页面滚动到300px以后时,出现menu菜单栏,初始点亮第一个li
+	//2 点击menu里面的li,页面缓动到响应楼层
+	//3 当页面滚动到1300以后位置时,menu里面出现回到顶部按钮,当页面滚动到1300以上的位置时,回到顶部按钮隐藏
+	//4 当页面滚动时,当前被滚到的楼层菜单高亮
+	//5 点击回到顶部按钮,回到顶部
+
+	//获取相关元素
+	var menu = document.getElementById('menu');//菜单
+	var content =  document.getElementById('content');//内容
+	var lastLi = menu.children[menu.children.length-1];//回到顶部按钮
+	var contentLiArr = content.children; //内容里面li 的集合
+	var menuLiArr = menu.children;//菜单里面li 的集合
+	var index = 0;//定义楼层,初始为0
+	light()
+	//为了完成2和4功能点,定义一个数组,记录每个li的滚动高度区间
+	var arr = [0];
+	var scrollTop = 0;
+	for(var i=0;i<contentLiArr.length;i++){
+		scrollTop += contentLiArr[i].offsetHeight;
+		arr.push(scrollTop)
+	}
+
+	window.onscroll = function(){
+		//1 当页面滚动到300px以后时,出现menu菜单栏
+		if(getScroll()>300){
+			menu.style.display = "block";
+		}else{
+			menu.style.display = "none";
+		}
+
+		//3 当页面滚动到1300以后位置时,menu里面出现回到顶部按钮
+		if(getScroll()>1300){
+			lastLi.style.display = "block";
+		}else{
+			lastLi.style.display = "none";
+		}
+
+		//4 当页面滚动时,当前被滚到的楼层菜单高亮
+		//根据滚动高度,判断在哪个楼层
+		for(var i=0;i<arr.length-1;i++){
+			if(getScroll()>=arr[i]&&getScroll()<arr[i+1]){
+				index = i;
+				break;
+			}
+		}
+		light()
+
+	}
+
+	//5 点击回到顶部按钮,回到顶部
+	lastLi.onclick = function(){
+		animate(0)
+	}
+	//2 点击menu里面的li,页面缓动到响应楼层
+	for(var i=0;i<menuLiArr.length-1;i++){
+			menuLiArr[i].index = i;
+			menuLiArr[i].onclick = function(){
+				animate(arr[this.index])
+			}
+	}
+
+	function light(){
+		for(var i=0;i<menuLiArr.length-1;i++){
+			menuLiArr[i].index = i;
+			menuLiArr[i].className = ""
+		}
+		menuLiArr[index].className = "current"
+	}
+
+	function animate(target){
+		//scrollTop属性缓动
+		clearInterval(document.timer);
+		document.timer = setInterval(function(){
+			//1 获取元素当前位置
+			var current = getScroll();
+			//2 计算速度
+			var speed = (target - current)/10;
+			speed = speed>0?Math.ceil(speed):Math.floor(speed);
+			//3 计算元素当前位置
+			current = current + speed;
+			//4 判断是否到达目标
+			if(current==target){
+				clearInterval(document.timer);
+			}
+			//5 定位元素
+			setScroll(current)
+		},10)
+	}
+
+	function setScroll(value){		
+		if(document.body.scrollTop){
+			document.body.scrollTop = value;
+		}else{
+			document.documentElement.scrollTop = value;
+		}
+	}
+
+	function getScroll(){
+		return document.body.scrollTop+document.documentElement.scrollTop;
+	}
+</script>
+</html>

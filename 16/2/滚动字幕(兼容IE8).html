@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .slider {
+            width: 400px;
+            margin: 300px auto;
+            position: relative;
+            overflow: hidden;
+            border:2px dotted orange;
+            height:78px;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+        }
+        p{
+            padding:10px;
+            font:100 14px "微软雅黑";
+        }
+    </style>
+</head>
+<body>
+    <div class="slider" id="slider">
+        <ul>
+            <li>
+                <p>95公益周阿里、腾讯等六家公司同台联合做公益</p>
+                <p>淘宝造物节之城市秘密聚划算88红包省钱卡</p>
+            </li>
+            <li>
+                <p>新增《淘宝网汽配行业管理规范》公示通知</p>
+                <p>变更公示通知《淘宝网票务行业管理规范》</p>
+            </li>
+            <li>
+                <p>淘宝1212大促 招商在线职业培训</p>
+                <p>招商金秋超值购 招商运营神器年中大促</p>
+            </li>
+            <li>
+                <p>魔豆妈妈公益项目 让母爱永不打烊！</p>
+                <p>卖家注意：风险通报！ 售假获刑又起诉！</p>
+            </li>
+            <li>
+                <p>淘宝公益平台正式更名 益起来商家招募即将截止</p>
+                <p>卖家如何设置公益宝贝 公益机构开店全攻略</p>
+            </li>
+            <li>
+                <p>飞猪旅行集市商品2020年春节发货时间及交易超时调整公告</p>
+                <p>《淘宝网区域零售服务说明》变更公示通知</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    //要求:
+    //1 公告可以自动轮播,每3秒滚动一屏
+    //2 鼠标在公告中时停止轮播
+    //3 鼠标离开公告继续轮播
+
+
+    //获取相关元素
+    var slider = document.getElementById('slider')//总容器
+    var liArr = slider.children[0].children;//所有的文字li
+    var height = liArr[0].offsetHeight ;//一个li的高度
+    //使用一个变量来记录当前是第几个li
+    var index = 0;
+
+    //除了第index个,其他li 都放到上面
+    for(var i=0;i<liArr.length;i++){
+        liArr[i].style.top = -height+"px";
+    }
+    liArr[index].style.top = 0;
+
+    //公告自动滚动
+    slider.timer = setInterval(next,2000)
+
+
+    //鼠标移入slider,停止轮播
+    slider.onmouseenter = function(){
+        clearInterval(slider.timer)
+    }
+
+    //鼠标移出slider,开始轮播
+    slider.onmouseleave = function(){
+        clearInterval(slider.timer);
+        slider.timer = setInterval(next,2000);
+    }
+
+    //看下一张
+    function next(){
+        var current = index +1;
+        if(current>liArr.length-1){
+            current = 0;
+        }
+        //把要看的li先放到下边
+        liArr[current].style.top = height+"px";
+        animate(liArr[index],{top:-height})
+        animate(liArr[current],{top:0})
+
+        //更新总的索引
+        index = current;
+
+
+    }
+
+
+    //封装的函数
+    function getStyle(dom,attr){
+        if(window.getComputedStyle){
+            return window.getComputedStyle(dom,null)[attr];
+        }else{
+            return dom.currentStyle[attr];
+        }
+    }
+    function animate(dom,target,fn){
+        clearInterval(dom.timer)
+        dom.timer = setInterval(function(){
+            var flag = true
+            //每间隔20毫秒,width和left就缓动一段距离,直到他们都到达目标位置
+            for(var attr in target){
+                //1 获取元素原来位置
+                if(attr=="opacity"){
+                    var current = parseInt(getStyle(dom,"opacity")*100)
+                }else{
+                    var current = parseInt(getStyle(dom,attr))
+                }                   
+                //2 计算速度
+                var speed = (target[attr]-current)/10
+                speed = speed>0?Math.ceil(speed):Math.floor(speed)
+                //3 计算元素当前位置                    
+                if(attr=="zIndex"){
+                    current = target.zIndex;                                            
+                }else{
+                    current = current+speed
+                }
+                //4 判断是否到达目标
+                if(current!=target[attr]){
+                    flag = false;
+                }
+                //5 定位元素
+                if(attr=="zIndex"){
+                    dom.style.zIndex = current;
+                }
+                else if(attr=="opacity"){
+                    dom.style.opacity = current/100;
+                    dom.style.filter = "alpha(opacity="+current+")";
+                }
+                else{
+                    dom.style[attr] = current+"px";
+                }           
+                
+            }
+            if(flag){
+                clearInterval(dom.timer)
+                if(fn) {
+                    fn()
+                }
+            }
+
+        },20)
+
+    }
+</script>
