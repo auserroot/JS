@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ball {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 0px;
+            top: 200px;
+            background: skyblue;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="我要飞">
+    <div id="ball"></div>
+</body>
+<script>
+    // 获取元素
+    var btn = document.querySelector('[type="button"]')
+    var ball = document.querySelector('#ball')
+    var h = document.documentElement.clientHeight//html高度（窗口可视高度
+    // 初始化speed
+    var speedx = 5 
+    var speedy = -20
+
+    //点击按钮小球运动
+    btn.onclick = function(){
+        //清除定时器
+        clearInterval(ball.timer)
+        ball.timer = setInterval(function(){
+            //获取初始位置
+            var x = ball.offsetLeft
+            var y = ball.offsetTop
+            // 计算下一位置
+            var xleft = x + speedx
+            var ytop = y + speedy
+            // 边界
+            if(ytop>h-ball.offsetHeight){
+                ytop = h-ball.offsetHeight
+                // 计算速度
+                speedy *= -0.8
+                speedx--
+            if(speedx<=0){
+                speedx=0
+                clearInterval(ball.timer)
+            }
+        }
+            // 定位
+            ball.style.left = xleft +'px'
+            ball.style.top = ytop +'px'
+
+            speedy++
+        },20)
+    }
+</script>
+
+</html>
