@@ -73,27 +73,21 @@
 			<a href="javascript:;" id="replaceBtn">替换</a>
 		</div>
 	</div>
- <script>
-	 var article_content = document.querySelector("#article_content")
-	 var findBtn = document.querySelector("#findBtn")
-	 var replaceBtn = document.querySelector('#replaceBtn')
-	 var span = document.createElement('span')
-	 var txt = article_content.value
-	  findBtn.onclick = function(){
-	 		findBtn.value = prompt("输入要查找的文字")
-	  }
-	 var reg = findBtn.value
-	 if(txt.match(new RegExp(reg,'g'))){
-		article_content.appendChild(sapn)
-	 }
-
-	 replaceBtn.onclick = function(){
-		 replaceBtn.value = prompt("输入要查找的文字")
-		 var txt1 = replaceBtn.value
-		 var txt2 = prompt("输入将文字替换成")
-		 txt = txt.replace(new RegExp(txt1,'g'),txt2)
-	  }
- </script>
+ 
 </body>
 </html>
-
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("findBtn").onclick = function(){
+		str = $("article_content").innerHTML;
+		res = prompt("请输入要查找的内容");
+		reg = new RegExp(res,"g");
+		$("article_content").innerHTML = str.replace( reg, "<span>"+res+"</span>" );
+	}
+	$("replaceBtn").onclick = function(){
+		replaceCon =  prompt("请输入要替换的内容");
+		$("article_content").innerHTML = str.replace( reg,replaceCon );
+	}
+</script>
