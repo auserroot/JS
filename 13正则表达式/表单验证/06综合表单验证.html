@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+  
+<body>
+	<form action="./success.html" id="form">
+		用户名:<input type="text" id="username"> 
+		<span>用户名必须是6-8位的字母数字或者下划线</span>
+		<br>
+		密码:<input type="text" id="password"> 
+		<span>密码必须是8-12的字母,数字或者特殊符号</span>
+		<br>
+		<input type="submit" value="注册">
+	</form>
+	<script src="./public.js"></script>
+	<script>
+		/* 
+			需求分析
+				1 在输入用户名的时候，实时检测输入内容是否合法
+				2 把检测结果显示在旁边的span里面
+				3 在输入密码的时候，实时检测输入密码是否符合条件(合法，低强度，高强度)
+				4 把检测结果显示在旁边的span里面
+				5 点击注册按钮，再次检测用户名和密码是否合法，如果不合法就不提交，合法才提交
+		*/
+
+		// 获取当前元素
+		var usernameInp = $id('username');//用户名输入框
+		var usernameSpan = document.getElementsByTagName('span')[0];//用户名输入框旁边的span
+		var passwordInp = $id('password');//密码输入框
+		var passwordSpan = document.getElementsByTagName('span')[1];//密码输入框旁边的span
+		var form = $id('form');//表单
+
+		// 1 在输入用户名的时候，实时检测输入内容是否合法
+		// 2 把检测结果显示在旁边的span里面
+		usernameInp.oninput = checkUsername;
+
+		// 3 在输入密码的时候，实时检测输入密码是否符合条件
+		// 4 把检测结果显示在旁边的span里面 
+		passwordInp.oninput = checkPassword
+
+		// 5 点击注册按钮，再次检测用户名和密码是否合法，如果不合法就不提交，合法才提交
+		form.onsubmit = function(e){
+			e = e||window.event;
+			if(!(checkUsername()&&checkPassword())){
+				// 用户名和密码是不合法的，阻止提交
+				e.preventDefault?e.preventDefault():e.returnValue=false;
+			}
+		}
+
+		// checkUsername:用来检测用户名是否合法,如果合法返回true，否则就是false
+		function checkUsername(){
+			// 用户名必须是6-8位的字母数字或者下划线
+			var reg = /^\w{6,8}$/;//用户名检测的正则
+			var username = usernameInp.value;//输入的用户名
+			if(reg.test(username)){
+				// 用户名合法
+				usernameSpan.innerHTML = "用户名可以注册";
+				usernameSpan.style.color = "green";
+				return true;
+			}else{
+				// 用户名不合法
+				usernameSpan.innerHTML = "用户名必须是6-8位的字母数字或者下划线";
+				usernameSpan.style.color = "red";
+				return false;
+			}
+		}
+		// checkPassword:用来检测密码是否合法，如果合法返回true，否则就是false
+		function checkPassword(){
+			// 方法一： 密码必须是8-12的字母,数字或者特殊符号，不检测密码强度
+			// var reg = /^[\w~!@#]{8,12}$/;			
+			// var password = passwordInp.value;//密码
+			// if(reg.test(password)){
+			// 	// 密码合法
+			// 	passwordSpan.innerHTML = "密码可以使用";
+			// 	passwordSpan.style.color="green";
+			// 	return true;
+			// }else{
+			// 	// 密码不合法
+			// 	passwordSpan.innerHTML = "密码必须是8-12的字母,数字或者特殊符号";
+			// 	passwordSpan.style.color="red";
+			// 	return false;
+			// }
+
+
+			// 方法二:检测密码强度
+			/* 
+				定义一个高强度密码的标准
+					1、8-12
+					2、有数字
+					3、有大写字母
+					4、有小写字母
+					5、有特殊字符
+				定义一个低强度密码的标准
+					密码必须是8-12的字母,数字或者特殊符号
+			*/
+			var password = passwordInp.value;//密码
+			// 检测密码
+			if(/^[\w~!@#]{8,12}$/.test(password)&&/\d+/.test(password)&&/[A-Z]+/.test(password)&&/[a-z]+/.test(password)){
+				// 高强度密码
+				passwordSpan.innerHTML = "密码强度高";
+				passwordSpan.style.color="green";
+				return true;
+			}
+			if(/^[\w~!@#]{8,12}$/.test(password)){
+				// 低强度密码
+				passwordSpan.innerHTML = "密码强度低";
+				passwordSpan.style.color="green";
+				return true;
+			}else{
+				// 密码不合法
+				passwordSpan.innerHTML = "密码必须是8-12的字母,数字或者特殊符号";
+				passwordSpan.style.color="red";
+				return false;
+			}
+
+
+		}
+	</script>
+</body>
+</html>

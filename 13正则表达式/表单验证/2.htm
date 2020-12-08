@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+  
+<body>
+	<form action="./success.html" id="form">
+		用户名:<input type="text" id="username"> 
+		<span>用户名必须是6-8位的字母数字或者下划线</span>
+		<br>
+		密码:<input type="text" id="password"> 
+		<span>密码必须是8-12的字母,数字或者特殊符号</span>
+		<br>
+		<input type="submit" value="注册">
+	</form>
+	<script src="../../JS/public.js"></script>
+	<script>
+		/* 
+			需求分析
+				1 在输入用户名的时候，实时检测输入内容是否合法(oninput方法)
+				2 把检测结果显示在旁边的span里面
+				3 在输入密码的时候，实时检测输入密码是否符合条件(合法，低强度，高强度)
+				4 把检测结果显示在旁边的span里面
+				5 点击注册按钮，再次检测用户名和密码是否合法，如果不合法就不提交，合法才提交
+        */
+
+        //监听元素
+        var username = $id('username')
+        var password = $id('password')
+        var getSpan = document.getElementsByTagName('span')
+
+        // 在输入用户名的时候，实时检测输入内容是否合法
+        username.oninput = checkusername()
+        // 封装函数检测用户名是否合法
+        function checkusername(){
+            var nameTxt = username.value
+            // 用户名必须是6-8位的字母数字或者下划线
+            var reg = /^\w{6,8}$/
+            // 把检测结果显示在旁边的span里面
+            if(reg.test(nameTxt)){
+                getSpan[0].innerHTML = '用户名可以注册'
+                getSpan[0].style.color = 'green'
+                return 1
+            }else{
+                getSpan[0].innerHTML = '用户名必须是6-8位的字母数字或者下划线'
+                getSpan[0].style.color = 'red'
+                return 0
+            }
+        }
+        // 在输入密码的时候，实时检测输入密码是否符合条件
+        password.oninput = checkpassword()
+        // 封装函数检测密码强度，是否合法
+        function checkpassword(){
+            var nameTxt = password.value
+            // 密码必须是8-12的字母,数字或者特殊符号
+            var reg = /^[\w~!@#\$%\^&*\.]{8,12}$/
+            // 把检测结果显示在旁边的span里面
+            if(reg.test(nameTxt)){
+                getSpan[1].innerHTML = '密码合法'
+                var newReg = /[~!@#\$%\^&*\.]{2,4}/
+                if(newReg.test(nameTxt)){
+                    getSpan[1].innerHTML = '密码合法,高强度'
+                }else{
+                    getSpan[1].innerHTML = '密码合法,低强度'
+                }
+                getSpan[1].style.color = 'green'
+                return 1
+            }else{
+                getSpan[1].innerHTML = '密码必须是8-12的字母,数字或者特殊符号'
+                getSpan[1].style.color = 'red'
+                return 0
+            }
+        }
+
+        // 点击注册按钮，再次检测用户名和密码是否合法，如果不合法就不提交，合法才提交
+        //点击submit触发表单onsubmit事件
+        form.onsubmit = function(e){
+            e=e||window.event
+            checkusername()
+            checkpassword()
+            if(checkusername()==0||checkpassword()==0){
+                //阻止函数执行
+                if(e.preventDefault){
+                    e.preventDefault()
+                }else{
+                    returnValue = false
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
