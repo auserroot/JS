@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap飞机跑道进度条动画特效 - 站长素材</title>
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="progress">
+        <div class="progress-bar" style="width: 55%; background:#005394;">
+            <span>55%</span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../public.js"></script>
+<script>
+    // 获取元素
+    var progress = document.getElementsByClassName('progress')[0]
+    var progresBar =progress.children[0]
+    var span = progresBar.children[0]
+    //添加鼠标事件
+    progresBar.onmousedown = function(e){
+        e=e||window.event
+        //记录鼠标移动位置x轴的值
+        var x = e.pageX 
+        //记录progresBar的长度
+        var w 
+        // 判断
+        if(x<progress.offsetLeft+10){
+            // 当span移动到最左边时x的值与progress.offsetLeft+10值相等，span不能继续左移，将w赋值为0
+            w=0
+        }else if(x>span.offsetLeft+span.offsetWidth){
+            // 当span移动到最右边时x的值与span.offsetLeft+span.offsetWidth值相等，span不能继续右移，将w赋值为progress.offsetWidth-20
+            w=progress.offsetWidth-20
+        }else{
+            // 当span移动时progresBar的长度x-progress.offsetLeft-10
+            w=x-progress.offsetLeft-10
+        }
+        progresBar.style.width = parseInt(w/(progress.offsetWidth-20)*100)+'%'
+        span.innerHTML = parseInt(w/(progress.offsetWidth-20)*100)+'%'
+    
+        document.onmousemove = function(e){
+        e=e||window.event
+        var x = e.pageX 
+        var w 
+        if(x<progress.offsetLeft+10){
+            w=0
+        }else if(x>progress.offsetLeft+progress.offsetWidth){
+            w=progress.offsetWidth-20
+        }else{
+            w=x-progress.offsetLeft-10
+        }
+        progresBar.style.width = parseInt(w/(progress.offsetWidth-20)*100)+'%'
+        span.innerHTML = parseInt(w/(progress.offsetWidth-20)*100)+'%'
+    }
+
+    document.onmouseup= function(){
+        document.onmousemove = null
+    }
+}
+
+</script>
+</html>

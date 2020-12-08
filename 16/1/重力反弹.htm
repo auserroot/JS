@@ -48,11 +48,14 @@
                 // 计算速度
                 speedy *= -0.8
                 speedx--
-            if(speedx<=0){
-                speedx=0
-                clearInterval(ball.timer)
+            if (speedx <= 0) {
+                    speedx = 0
+                    if (speedy >= 0) {
+                        speedy = 0
+                        clearInterval(ball.timer)
+                    }
+                }
             }
-        }
             // 定位
             ball.style.left = xleft +'px'
             ball.style.top = ytop +'px'
