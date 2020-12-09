@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*原型链
+                构造函数的prototype是一个对象
+                每个实例化对象都有一个__proto__属性
+                实例化对象.__proto__==构造函数.prototype
+                prototype是一个对象
+                -->构造函数.prototype.__proto__ == Object.prototype
+         对象所属的构造函数
+                每个对象都有自己的构造函数
+                如：
+                    数组：所属的构造函数就是Array
+                    函数：Function
+                    正则：RegExp
+            constructor
+                对象的__proto__中的成员
+                该成员指向的是该对象所属的构造函数
+            链状结构
+                当一个对象不知道由哪个构造函数创建时，就把他看做Object的实例化对象
+                也就是说构造函数的prototype的__proto__指向Object的prototype
+                由于Object.prototype也是对象，那么他的__proto__指向哪？
+                因为Object是js中的顶级构造函数
+                因此Object.prototype就是最终指向（即Object.prototype.__proto__就是null
+            访问原则
+                访问一个对象成员时，若对象本身没有则进入__proto__中寻找
+                若还没有，则进入__proto__.__proto__中寻找
+                若直到找到Object.prototype中仍没有，那么将返回undefined
+            */
+
+            //数组
+            var arr = [1]
+            var arr2 = new Array()
+            console.dir(arr)
+            console.dir(arr2)
+            console.log(arr.__proto__==Array.prototype)
+            console.log(arr2.__proto__==Array.prototype)
+            //链式结构顺序访问toString方法
+            // arr-->Array.prototype
+            console.log(arr.toString())
+
+            //函数
+            var fn = function(){}
+            var fn2 = new Function('console.log(1)')
+            console.dir(fn)
+            console.log(fn.__proto__==Function.prototype)
+            console.log(fn2.__proto__==Function.prototype)
+            // 链式结构的访问顺序:toString
+            // fn--->Function.prototype
+            console.log(fn.toString())
+
+            // 正则
+            var reg = /\d/;
+            var reg2 = new RegExp('\\d');
+            console.log(reg.__proto__==RegExp.prototype)
+            console.log(reg2.__proto__==RegExp.prototype)
+            // 链式结构的访问顺序:join方法
+            // reg--->RegExp.prototype--->Object.prototype-->null
+            // reg.join()  // 报错:reg.join is not a function
+
+            // 对象
+            var obj = {};
+            var obj2 = new Object();
+            console.log(obj.__proto__==Object.prototype)
+            console.log(obj2.__proto__==Object.prototype)
+            // 链式结构的访问顺序:age
+            // obj-->Object.prototype-->null
+            console.log(obj.age)
+
+
+            /*对象赋值
+                    对象赋值直接给对象本身赋值
+                    并非按原型链规则来
+                        如果本身有值就是修改
+                        没有就是添加
+                        与__proto__没有关系
+            */
+    </script>
+</body>
+</html>

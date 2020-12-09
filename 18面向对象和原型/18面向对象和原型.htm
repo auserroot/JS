@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*面向对象
+            面向对象是一种编程模式（非语法）
+        编程的两种模式
+            面向过程
+                关注每一个元素、元素间的关系、事件发生的顺序...
+            面向对象
+                找到对象，调用对象执行目的（找到对象的过程）
+        创建对象
+            系统内置构造函数
+                系统内置有Object构造函数，可以使用new关键字创建对象（var P = new Object())
+                创建好，就可以向P对象中动态添加成员
+            字面量
+                直接用字面量的形式，即{}
+                可以直接在创建时添加成员也可以创建好后动态添加
+            工厂函数
+                先写一个工厂函数
+                该函数可以构造对象，并给对象添加属性，最后返回对象
+                （手动创建对象、手动添加成员、手动返回对象）
+            自定义构造函数
+                自动创建对象
+                手动添加成员
+                自动返回对象
+            */
+           //内置构造函数创建对象
+           var o = new Object()
+           //添加成员
+           o.name = 'xx'/*(创建好的对象.要添加的成员名 = 值)*/
+
+           //字面量创建对象
+           //(直接添加成员)
+           var b = {
+               name :'lucy'
+           }
+           //添加
+           b.age = '18'/*(创建好的对象.要添加的成员名 = 值)*/
+
+           //工厂函数创建对象
+           //先创建一个工厂函数
+           function fun(name,age){
+               //手动创建对象
+               var obj = new Object()
+               //手动添加键值对
+               obj.name=name||'xiaoming'/*设置默认值（若未传参使用默认值xiaoming）*/
+               obj.age=age||18//同上
+               //返回对象
+               return obj
+           }
+           //调用函数创建对象
+           var a = fun()//未传参使用默认值
+           var s = fun('lucy',20)//传入参数使用参数
+
+           //自定义构造函数(构造函数都会自动创建对象并将其返回)
+           function Person(name,age){
+               //自动创建对象：this=new Object()
+               //手动添加成员
+               this.name=name||'xiaoming'
+               this.age=age||18
+               //自动返回对象:return this
+           }
+           //调用 （前面有new关键字则该函数为构造函数
+           var p = new Person()//未传参使用默认值
+           var p2 = new Person('lucy',20)
+           console.log(p,p2)
+
+           /*构造函数基本使用
+                    调用时在函数名前加new关键字（若不加new关键字则调用的是普通函数）
+                    函数名一般首字母大写驼峰命名
+                    调用时不传参时可以不写（）
+                    构造函数内部的this由于与new连用都是指向创建的对象
+                    构造函数会自动return一个对象（故构造函数内不需要return）
+                        如果return一个基本数据类型（毫无意义）
+                        如果return一个引用数据类型（会使构造函数失效）
+            */
+            //自定义构造函数(构造函数都会自动创建对象并将其返回)
+            function Person(name,age){
+               //自动创建对象：this=new Object()
+               //手动添加成员
+               this.name=name||'xiaoming'
+               this.age=age||18
+               //自动返回对象:return this
+               //return 1//return一个基本数据类型
+               //return [1,3,5]//return一个引用数据类型
+           }
+           //调用 （前面有new关键字则该函数为构造函数
+           var bb = new Person()
+           console.log(bb)
+
+           /*使用构造函数创建对象添加方法
+                    如果直接给对象添加方法 多次调用时会出现浪费内存的情况（例如：对象obj中有方法fn()；var a = fn();var b = fn()这样两个相同的函数占据了两个地址）
+                    为了解决这个问题
+                        引入了 原型prototype
+            */
+           //使用构造函数创建一个对象
+           function People(name,age){
+               //自动创建一个对象 this= new Object()
+               this.name = name
+               this.age = age
+               this.sayHi=function(){
+                   console.log('hi'+this.name)
+               }
+               //自动返回对象this
+           }
+           //第一次new时People函数需要执行一次，且会创建一个新的sayHi函数，并将函数地址赋值给this.sayHi
+           var p = new People('lucy',16)
+           //console.log(p)
+           //第二次new时People函数需要执行一次，且会创建一个新的sayHi函数，并将函数地址赋值给this.sayHi
+           var p1 = new People('lucy2',126)
+
+           p.sayHi()
+           p1.sayHi()
+           console.log(p.sayHi==p1.sayHi)//false(说明两次函数执行时的地址不同)
+           /*缺点
+                p与p1中的sayHi函数功能、代码完全相同
+                但他们占用了两个地址空间
+                因此直接给对象添加方法调用时会造成资源浪费*/
+
+             /*原型
+                    原型的出现就是为了解决构造函数的缺点
+                    提供了一个给对象添加函数的方法
+                prototype
+                    是每个函数的自有对象（每个函数都有）
+                    该对象可以使用函数名调用
+                    并且我们可以向里面添加一些东西
+                    *** 重点 在prototype中存储的内容是可以让每个实例化对象调用（不是让函数自身使用）***
+                __proto__
+                    是每个对象的自有成员（也是个对象）
+                    __proto__是给每个对象使用的
+                    当访问一个对象中的成员时
+                        如果该对象本身有该成员，就会直接返回该成员
+                        如果该对象本身没有该成员，就会去__porto__中寻找，找到就返回
+                __proto__指向
+                    该对象由那个构造函数创建
+                    那么该对象的__proto__就指向这个构造函数的prototype
+                    h1和h2中本身没有sayHi方法，就会到各自的__proto__中寻找，h1.__proto__和h2.__proto__都指向Person.prototype
+                    而Person.prototype中有sayh方法，因此h1.sayHi()、h2.sayHi()可以执行
+                    并且他们访问的是同一个sayHi方法，由此解决了构造函数的缺陷
+                总结：
+                    写构造函数时
+                        属性写在函数体里
+                        方法写在原型上
+                ES6新语法类：class ，可以定义构造函数
+            */
+           
+            //prototype
+            function Person(){}
+
+            console.log(Person.prototype)//是一个对象
+
+            //给prototype添加成员
+            Person.prototype.name = 'lucy'
+            Person.prototype.sayHi = function (){
+                console.log('hi')
+            }
+
+            var h1 = new Person()//实例化对象
+            var h2 = new Person()
+
+            console.log(h1.__proto__==Person.prototype)//true（说明实例化对象的__proto__指向其构造函数的prototype）
+
+            h1.sayHi()
+            h2.sayHi()
+
+            console.log(h1.sayHi==h2.sayHi)//true（说明这连个对象访问的方法是同一个）
+
+            console.log('************************************')
+            //__porto__
+            function Human(){
+                this.name = 'jack'
+                this.age = 15
+            }
+            Human.prototype.a ='a'
+            Human.prototype.b=function(){
+                console.log('b')
+            }
+            var v = new Human()
+            console.log(v)
+            
+            
+    </script>
+</body>
+</html>
