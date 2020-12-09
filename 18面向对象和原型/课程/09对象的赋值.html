@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            对象的赋值
+                ==> 到这里，我们就会觉得，如果是赋值的话，也会按照原型链的规则来
+                ==> 但是:并不是！并不是！并不是！
+                ==> 赋值的时候，就是直接给对象自己本身赋值
+                    ==> 如果原先由就修改
+                    ==> 原先没有就是添加
+                    ==> 不会和__proto__有关系
+        */
+
+        function Person(){
+            // 自动创建对象： this = new Obejct()
+            this.name = "lucy";
+            this.age = 12;
+            // 自动返回对象： return this;
+        }
+        Person.prototype.sayHi = function(){
+            console.log('hi')
+        }
+        Person.prototype.sayBye = function(){
+            console.log('goodbye')
+        }
+
+        var p1 = new Person();
+        p1.sayHi = function(){
+            alert(1)
+        }
+        console.log(p1)
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        
+            __proto__
+                ==> 每一个对象天生自带一个成员，叫做__proto__,是一个对象(空间)
+                ==> 既然每一个对象都有，实例化对象也是对象，那么每一个实例对象也有这个成员
+                ==> __proto__对象是给每一个对象使用的
+                ==> 当你访问一个对象中的成员的时候
+                    ==> 如果这个对象自己本身有这个成员，就会直接给你结果
+                    ==> 如果没有，就会去__proto__这个对象里面找，里面有的话就给你结果
+            __proto__有指向哪里
+                ==> 这个对象是有哪个构造函数new出来的
+                ==> 那么这个实例化对象的__proto__就指向这个构造函数的prototype
+                ==> h1本身没有sayHi方法，就会去自己的__proto__里面找，h1.__proto__就是Human.prototype
+                ==> h2本身没有sayHi方法，就会去自己的__proto__里面找，h2.__proto__就是Human.prototype 
+                ==> h1.sayHi()和h2.sayHi()就可以执行了
+                ==> 并且访问的是同一个sayHi函数
+            总结：
+                ==> 当我们写构造函数的时候
+                ==> 属性我们直接构造函数体内
+                ==> 方法我们写在原型上
+                ==> es6有一个新语法叫做类class，可以定义构造函数
+        */
+        function Human(){
+            this.name = "lucy";
+            this.age = 12;
+        }
+        Human.prototype.gender = "男";
+        Human.prototype.sayHi = function(){
+            console.log('hi')
+        }
+        console.log(Human.prototype);//不是给函数Human使用的
+
+        var h1 = new Human();//实例化对象
+        var h2 = new Human();//实例化对象
+
+        // 当你访问一个对象h1中的成员的时候
+        // 如果这个对象自己本身有这个成员，就会直接给你结果
+        console.log(h1.name)
+        console.log(h1.age)
+        // 如果没有，就会去__proto__这个对象里面找
+        console.log(h1.__proto__==Human.prototype)
+        console.log(h1.gender);
+        h1.sayHi()
+
+        // 当你访问一个对象h2中的成员的时候
+        console.log(h2.gender)
+        h2.sayHi()
+
+        console.log(h1.sayHi==h2.sayHi)
+
+        
+
+    </script>
+</body>
+</html>

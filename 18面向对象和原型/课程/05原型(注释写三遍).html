@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            原型
+                ==> 原型的出现，就是为了解决构造函数的缺点
+                ==> 就是给我们提供了一个给对象添加函数的方法
+                ==> 不然构造函数只能给对象添加属性，不能合理的添加函数就太low了
+            prototype
+                ==> 每一个函数天生自带一个成员，叫做prototype，是一个对象(空间)
+                ==> 既然每一个函数都有，构造函数也是函数，构造函数也有这个对象(空间)
+                ==> 这个prototype对象(空间)可以由函数名来访问
+                ==> 既然是对象，我就可以向里面加入一些东西
+                ==> 总结:我们发现了一个叫做prototype的对象是和函数有关联的，并且里面可以存储一些东西
+                ==> 重点:在函数的prototype里面存储的内容，不是给函数使用的，是给函数的每一个实例化对象使用的
+                ==> 那么实例对象怎么使用呢?
+            __proto__
+                ==> 每一个对象天生自带一个成员，叫做__proto__,是一个对象(空间)
+                ==> 既然每一个对象都有，实例化对象也是对象，那么每一个实例对象也有这个成员
+                ==> __proto__对象是给每一个对象使用的
+                ==> 当你访问一个对象中的成员的时候
+                    ==> 如果这个对象自己本身有这个成员，就会直接给你结果
+                    ==> 如果没有，就会去__proto__这个对象里面找，里面有的话就给你结果
+                    ==> 未完待续...
+
+        */
+
+        // prototype
+        function Person(){}
+        
+        console.log(Person.prototype);//是一个对象
+
+        // prototype既然是对象，我就可以向里面加入一些东西
+        Person.prototype.name = "lucy";
+        Person.prototype.sayHi = function(){
+            console.log("hi")
+        }
+      
+        console.log("===================")
+
+        // __proto__
+        function Human(){
+            this.name = "jack";
+            this.age = 12;
+        }
+        Human.prototype.a = "aaaa"
+        Human.prototype.b = function(){
+            console.log('bbb')
+        }
+        
+        var h1 = new Human();
+        console.log(h1)
+    </script>
+</body>
+</html>

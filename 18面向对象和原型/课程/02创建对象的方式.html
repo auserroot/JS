@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            创建对象的方式
+                ==> 面向对象就是一个找到对象的过程
+                ==> 所以我们先了解怎么创建对象
+            + 调用系统内置的构造函数创建对象
+                ==>js给我们内置了一个Object构造函数
+                ==>这个构造函数就是用来创造对象的
+                ==>当构造函数和new关键字连用的时候，就可以为我们创造一个对象
+                ==>因为js是一个动态的语言，我们可以动态的向对象中添加成员了
+            + 字面量的方法创建一个对象
+                ==>直接使用字面量的形式，也就是直接写{}
+                ==>可以在写的时候添加好成员，可以动态的添加
+            + 使用工厂函数的方式创建对象
+                ==>先书写一个工厂函数
+                ==>这个工厂函数可以创造出一个对象，并且给对象添加一些属性，还能把对象返回
+            + 使用自定义构造函数创建对象
+                ==>工厂函数需要经历三个步骤
+                    + 手动创建对象
+                    + 手动添加成员
+                    + 手动返回对象
+                ==>构造函数会比工厂函数简单一些
+                    + 自动创建对象
+                    + 手动添加成员
+                    + 自动返回对象
+        */
+
+
+        // 1 调用系统内置的构造函数创建对象
+        // 调用系统内置的构造函数创建第一个对象
+        var ol = new Object();
+        // 正常操作对象
+        ol.name = "jack"
+        ol.age = 18;
+        ol.gender = "男"
+
+
+        // 调用系统内置的构造函数创建第二个对象
+        var ol2 = new Object();
+        // 正常操作对象
+        ol2.name ="lucy"
+
+        // 2 字面量的方法创建一个对象
+        // 字面量的方法创建第一个对象
+        // 可以在写的时候添加好成员
+        var ul = {
+            name:'rose',
+            age:17
+        }
+        // 可以动态的添加
+        ul.gender = "女"
+        // 字面量的方法创建第二个对象
+        var ul2 = {
+            name:"poly",
+            age:1
+        }
+        ul2.gender = "女"
+
+
+        // 3 使用工厂函数的方式创建对象
+        function factory(name,age,gender){
+            // 手动创造出一个对象
+            var obj = new Object();
+            // 手动给对象添加一些属性
+            obj.name = name||"xiaozhang"
+            obj.age = age||18
+            obj.gender = gender||"男"
+            // 手动把对象返回
+            return obj;
+        }
+        // 创建一个对象
+        var f1 = factory("laozhang",45,"女");//创建的第一个对象
+        var f2 = factory("laowang",55,"男");//创建的第二个对象
+
+        // 4 使用自定义构造函数创建对象
+        // 先书写一个构造函数
+        function Person(name,age,gender){
+            // 自动创建对象: this = new Object();
+            // 手动添加成员
+            this.name = name||"Jack";
+            this.age = age||18;
+            this.gender = gender||"男";
+            // 自动返回对象: return this;
+
+            // 如果Person是一个构造函数，那么都有这两个自动的步骤
+        }
+        // 使用自定义构造函数创建对象
+        // 如果函数调用的时候，前面有个new关键字，那么此时这个函数就是构造函数
+        var p1 = new Person();
+        var p2 = new Person('lucy',12,'女');
+        console.log(p1,p2)
+
+    </script>
+</body>
+</html>

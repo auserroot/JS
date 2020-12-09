@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            使用构造函数创建一个对象
+                ==> 是否可以添加一些方法进去呢？显然是可以
+                ==> 我们得到的两个对象中都有sayHello这个函数
+                ==> 也都可以正常调用
+                ==> 但是这样是不好的，缺点在哪里？一模一样的函数出现了两次，占用了两个空间地址
+                ==> 怎么解决这个问题？
+                    ==> 就需要用到一个东西，叫做原型prototype
+
+        */
+
+        // 使用构造函数创建一个对象
+        function Person(name,age,gender){
+            // 自动创建一个对 this = new Object()
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.family = ['李磊','韩梅梅','Polly']
+            this.sayHello = function(){
+                console.log("hello"+ this.name)
+            }
+            // 自动返回对象 return this;
+        }
+        // 第一次new的时候，Person这个函数要执行一遍
+        // 执行一遍就会创建一个新的sayHello函数，并且把函数地址赋值给this.sayHello 
+        var p1 = new Person('lucy',12,'女')
+
+        // 第二次new的时候，Person这个函数要执行一遍
+        // 执行一遍就会创建一个新的sayHello函数，并且把函数地址赋值给this.sayHello 
+        var p2 = new Person('lily',13,'男')
+        
+        console.log(p1.sayHello==p2.sayHello)
+        // 两个对象的sayHello函数就是一个代码，一模一样，功能一模一样
+        // 但是两个函数，占用了两个内存空间
+        // 也就是说p1.sayHello是一个地址，p2.sayHello又是一个地址
+        // 所以我们执行p1.sayHello==p2.sayHello时false
+        // 缺点:一模一样的函数出现了两次，占用了两个空间地址
+
+        // 调用对象的方法
+        // 对象的方法里面的this是方法的调用者
+        p1.sayHello()
+        p2.sayHello()
+    </script>
+</body>
+</html>

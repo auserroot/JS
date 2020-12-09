@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            构造函数详解
+                ==> 已经学习了对象的创建方式
+                ==> 面向对象就是要得到一个对象                
+            构造函数的基本使用
+                ==> 和普通函数一样，只不过调用的时候要和new连用，不然就是一个普通函数调用
+                ==> 函数名一般首字母大写驼峰命名
+                ==> 当调用的时候如果不需要传递参数可以不写(),建议都写上
+                ==> 构造函数内部的this，由于和new连用的关系，是指向当前实例化对象的
+                ==> 构造函数会自动return一个对象，所以构造函数内部不要return
+                    -->你如果return一个基本数据类型,那么写了没有意义
+                    -->你如果return一个引用数据类型，那么构造函数本身的意义就没有了
+
+        */
+
+        // 1 要和new连用，不然就是一个普通函数调用
+        function Person(){
+            // 自动创建一个对象 this = new Object()
+            this.a = "Jack"
+            // 自动返回这个对象 return this
+        }
+        // 要和new连用就是构造函数
+        var p1 = new Person();
+        console.log(p1);
+        // 不和new连用就是普通函数
+        var p2 = Person();  // 普通函数里面的this是window
+        console.log(p2);
+        console.log(window)
+
+        // 2 构造函数内部的this，由于和new连用的关系，是指向当前实例化对象的
+        function Student(){
+            // 自动创建一个对象 this = new Object()
+            this.name = "班长";
+            this.score = 100;
+            this.gender = "女";
+            // 自动返回这个对象 return this
+        }
+        var s1 = new Student;
+        var s2 = new Student;
+
+        // 3 构造函数会自动return一个对象，所以构造函数内部不要return
+        function Human(){
+            // 自动创建一个对象 this = new Object()
+            this.name = "学生";
+            this.age = 7;
+            // return 1;
+            // return [12,3,4,4,343,5]
+            // 自动返回这个对象 return this
+        }
+        var h1 = new Human();
+        console.log(h1)
+        
+    </script>
+</body>
+</html>

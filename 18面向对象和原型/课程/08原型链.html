@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(){
+            // 自动创建对象： this = new Obejct()
+            this.name = "lucy";
+            this.age = 12;
+            // 自动返回对象： return this;
+        }
+        Person.prototype.sayHi = function(){
+            console.log('hi')
+        }
+        Person.prototype.sayBye = function(){
+            console.log('goodbye')
+        }
+
+        var p1 = new Person();
+        console.log(p1)
+        
+        // 要查找p1的ss方法
+        // 1 先去找p1自身上有属性:name,age,没有ss方法
+        // 2 就去p1.__proto__里面找：sayHi，sayBye
+        // 3 就去Obejct.prototype里面找,没有找到ss方法
+        // 4 返回undefined
+        
+
+        // 只要是定义在Object.prototype上的方法，所有对象都能够使用
+        Object.prototype.sssr = function(){
+            console.log('我是sssr方法')
+        }
+
+        var arr = [1,2,3]
+        arr.sssr()
+
+        var str = "hello";
+        str.sssr()
+
+        var fn = function(){}
+        fn.sssr()
+    </script>
+</body>
+</html>

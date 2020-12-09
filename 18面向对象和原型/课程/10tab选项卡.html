@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0; padding: 0; font-family: "微软雅黑";font-size: 14px;}
+        #container,#two{
+            width: 398px; 
+            margin: 100px auto;}
+        #container a,#two a{
+            display:block ;
+            width: 98px; 
+            height: 42px; 
+            line-height: 42px; 
+            text-align: center; 
+            float: left;
+            border-top: solid 1px #FF4400;
+            border-bottom: solid 1px #FF4400;
+            border-left: solid 1px #FF4400;
+            color: #333333;
+            text-decoration: none;
+        }
+        #container a:hover,#two a:hover{
+            color: #FF4400;
+        }
+        .content{
+            width: 355px;
+            height: 140px;
+            text-align: center;
+            border-right: solid 1px #FF4400;
+            border-bottom: solid 1px #FF4400;
+            border-left: solid 1px #FF4400;
+            padding: 30px 0 0 40px;
+            display: none;
+        }
+        .clear{clear: left;}
+        #container a.on,#two a.on{ background: #FF4400; color: #fff;}
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <a href="#" class="on">充话费</a>
+        <a href="#">充流量</a>
+        <a href="#">充固话</a>
+        <a href="#" style="border-right: solid 1px #FF4400;">充宽带</a>
+
+        <div class="clear"></div>
+        
+        <div class="content" style="display:block;">
+            <img src="images/1.png" />
+        </div>
+        <div class="content">
+            <img src="images/2.png" />
+        </div>
+        <div class="content">
+            <img src="images/3.png" />
+        </div>
+
+        <div class="content">
+            <img src="images/4.png" />
+        </div>
+    </div>
+
+
+
+
+
+    <div id="two">
+        <a href="#" class="on">充话费</a>
+        <a href="#">充流量</a>
+        <a href="#">充固话</a>
+        <a href="#" style="border-right: solid 1px #FF4400;">充宽带</a>
+
+        <div class="clear"></div>
+        
+        <div class="content" style="display:block;">
+            <img src="images/1.png" />
+        </div>
+        <div class="content">
+            <img src="images/2.png" />
+        </div>
+        <div class="content">
+            <img src="images/3.png" />
+        </div>
+
+        <div class="content">
+            <img src="images/4.png" />
+        </div>
+    </div>
+    <script>
+        /* 
+            总结
+                ==> 当我想完成一个功能的时候
+                ==> 先看看内置构造函数能给我提供一个完成功能的对象的能力
+                ==> 如果没有，我们就自己写一个构造函数，能创造出一个完成功能的对象
+                ==> 然后再用我们写的构造函数new一个对象处理啊，帮助我们完成功能就可以了
+            tab选项卡
+                ==>需求分析:
+                    1 点击a标签
+                    2 被点击的a标签高亮(添加on类名),其他没被点击的不能有on类名
+                    3 相应content显示，其他的content要隐藏
+                ==> 要完成这个功能，系统没有内置构造函数可以生产完成功能的对象
+                ==> 自己创建一个构造函数，能new出一个对象，来完事上面的功能
+                ==> tab选项卡
+                    ==> 属性:
+                        + container :tab选项卡的总容器
+                        + aArr:tab选项卡的所有a标签
+                        + contentArr:tab选项卡的所有content
+                    ==> 方法
+                        + init:给a加点击事件
+        */
+        function Tab(id){
+            // 自动创建一个对象 this = new Object()
+            this.container = document.getElementById(id);//tab选项卡的总容器
+            this.aArr = this.container.querySelectorAll('a');//tab选项卡的所有a标签
+            this.contentArr = this.container.querySelectorAll('.content');//tab选项卡的所有content
+            // 自动返回这个对象 return this
+        }
+        Tab.prototype.init = function(){
+            // init里面的this是实例化对象
+            var aaa = this;//变量名不建议使用aaa，建议用that或者_this
+            for(var i=0;i<this.aArr.length;i++){
+                this.aArr[i].index = i;
+                this.aArr[i].onclick = function(){
+                    // 这里是事件函数,this是事件源
+                    // console.log(this)
+                    // 如果在这里向获取实例化对象
+                    // console.log(aaa);
+                    // 被点击的a标签高亮(添加on类名),其他没被点击的不能有on类名
+                    // 相应content显示，其他的content要隐藏
+                    for(var j=0;j<aaa.aArr.length;j++){
+                        // 所有a的类名都去除
+                        aaa.aArr[j].className = ""
+                        // 所有content都隐藏
+                        aaa.contentArr[j].style.display = "none"
+                    }
+                    // 被点击的a标签高亮
+                    this.className="on"
+                    aaa.contentArr[this.index].style.display = "block"
+
+                }
+            }
+        }
+        var t1 = new Tab('container');
+        t1.init()
+
+        var t2 = new Tab('two');
+        t2.init()
+    </script>
+</body>
+</html>

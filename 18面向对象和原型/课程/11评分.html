@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>五星评分</title>
+<style type="text/css">
+.ul1{padding:0; margin:0; list-style:none;  width:300px; height:28px;}
+.ul1 li{float:left; background:url(star.gif) no-repeat 0 0; width:27px; height:28px; }
+</style>
+</head>
+<body>
+<div id="score">
+	<ul class="ul1" >
+		<li class="default"> </li>
+		<li class="default"> </li>
+		<li class="default"> </li>
+		<li class="default"> </li>
+		<li class="default"> </li>
+	</ul>
+	<div></div>
+</div>
+
+<div id="score2">
+	<ul class="ul1" >
+		<li class="default"> </li>
+		<li class="default"> </li>
+		<li class="default"> </li>
+		<li class="default"> </li>
+		<li class="default"> </li>
+	</ul>
+	<div></div>
+</div>
+
+</body>
+<script>
+	/* 
+		评分
+			==> 要创建一个对象帮我完成评分的功能
+			==> 系统内置的构造函数不能创造这个对象
+			==> 自己写一个构造函数，创造能完成评分的对象
+			==> 功能分析
+				1 五星分别代表:差评，不推荐，一般，推荐，强力推荐
+				2 鼠标移入哪个li，哪个li前面的所有都高亮
+				3 鼠标点击哪个li，哪个li前面的所有都高亮
+				4 鼠标移出ul,li恢复上次点击后的效果
+				5 每次在div里面显示星星对应的文字
+			==> 评分的对象
+				==> 属性
+					+ arr: 每个星星代表的含义
+					+ container : 评分容器
+					+ starArr: 所有的星星集合
+					+ ul: 星星的父容器
+					+ div: 显示文字的容器
+					+ flag: 记录上次被点击的li的索引
+				==> 方法
+					+ addMouseoverEvent: 给li添加鼠标移入事件
+					+ addClickEvent：给li添加点击事件 
+					+ addMouseoutEvent：给ul添加鼠标移出事件
+
+	*/
+
+	function Score(id){
+		// 自动创建一个对象 this = new Object()
+		this.arr = ['差评','不推荐','一般','推荐','强力推荐']
+		this.container = document.getElementById(id);// 评分总容器
+		this.starArr = this.container.querySelectorAll('li');//所有的星星集合
+		this.ul = this.container.children[0];//星星的父容器
+		this.div = this.container.children[1];//显示文字的容器
+		// 自动返回这个对象 return this
+	}
+
+	Score.prototype.init = function(){
+		this.addMouseoverEvent();
+		this.addClickEvent();
+		this.addMouseoutEvent();
+	}
+
+
+	Score.prototype.light = function(num){
+		// 传入索引，该索引及其前面的所有li都高亮
+		for(var i=0;i<this.starArr.length;i++){
+			this.starArr[i].style.backgroundPosition = "0px 0px";
+		}
+		for(var i=0;i<=num;i++){
+			this.starArr[i].style.backgroundPosition = "0px -28px";
+		}
+		// 更新div里面索引对应的文字
+		num==undefined?this.div.innerHTML = "":this.div.innerHTML =this.arr[num];
+	}
+	Score.prototype.addMouseoverEvent = function(){
+		// 这里的this就是实例化对象
+		var bbb = this;
+		// 鼠标移入哪个li，哪个li前面的所有都高亮
+		for(var i=0;i<this.starArr.length;i++){
+			this.starArr[i].index = i
+			this.starArr[i].onmouseover = function(){
+				// 这里的this就是事件源，也就那个被移入的li
+				bbb.light(this.index);
+			}
+		}
+	}
+
+	Score.prototype.addClickEvent = function(){
+		// 这里的this就是实例化对象
+		var bbb = this;
+		// 鼠标移入哪个li，哪个li前面的所有都高亮
+		for(var i=0;i<this.starArr.length;i++){
+			this.starArr[i].index = i
+			this.starArr[i].onclick= function(){
+				// 这里的this就是事件源，也就那个被移入的li
+				bbb.light(this.index);
+				// 把索引记录下来
+				bbb.flag = this.index;
+			}
+		}
+
+	}
+	Score.prototype.addMouseoutEvent = function(){
+		// 这里的this就是实例化对象
+		var bbb = this;
+		// 鼠标移出ul，恢复点击li的效果
+		this.ul.onmouseout = function(){
+			// 这里的this就是事件源,就是ul
+			bbb.light(bbb.flag)
+		}
+	}
+
+	var s1 = new Score('score');
+	s1.init();
+
+
+	var s2 = new Score('score2');
+	s2.init()
+</script>
+</html>
