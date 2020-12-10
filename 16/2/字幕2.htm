@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .slider {
+            width: 400px;
+            margin: 300px auto;
+            position: relative;
+            overflow: hidden;
+            border:2px dotted orange;
+            height:78px;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+        }
+        p{
+            padding:10px;
+            font:100 14px "微软雅黑";
+        }
+    </style>
+</head>
+<body>
+    <div class="slider" id="slider">
+        <ul>
+            <li>
+                <p>95公益周阿里、腾讯等六家公司同台联合做公益</p>
+                <p>淘宝造物节之城市秘密聚划算88红包省钱卡</p>
+            </li>
+            <li>
+                <p>新增《淘宝网汽配行业管理规范》公示通知</p>
+                <p>变更公示通知《淘宝网票务行业管理规范》</p>
+            </li>
+            <li>
+                <p>淘宝1212大促 招商在线职业培训</p>
+                <p>招商金秋超值购 招商运营神器年中大促</p>
+            </li>
+            <li>
+                <p>魔豆妈妈公益项目 让母爱永不打烊！</p>
+                <p>卖家注意：风险通报！ 售假获刑又起诉！</p>
+            </li>
+            <li>
+                <p>淘宝公益平台正式更名 益起来商家招募即将截止</p>
+                <p>卖家如何设置公益宝贝 公益机构开店全攻略</p>
+            </li>
+            <li>
+                <p>飞猪旅行集市商品2020年春节发货时间及交易超时调整公告</p>
+                <p>《淘宝网区域零售服务说明》变更公示通知</p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../../JS/public.js"></script>
+<script>
+    //要求:(兼容IE8)
+    //1 公告可以自动轮播,每3秒滚动一屏
+    //2 鼠标在公告中时停止轮播
+    //3 鼠标离开公告继续轮播
+
+    // 获取元素
+    var box = document.getElementById('slider')
+    var liList = document.getElementsByTagName('li')
+    // console.log(liList)
+
+    //获取box高度
+    var h = box.offsetHeight
+    var index =0//记录索引
+    // console.log(h)
+    //初始化li的位置
+    for(var i=0;i<liList.length;i++){
+            liList[i].style.top = h + 'px'
+        }
+        liList[index].style.top = 0
+
+    // 公告可以自动轮播,每3秒滚动一屏
+    box.timer = setInterval(LImove,3000)
+
+
+    // 封装li运动函数
+    function LImove(){
+        for(var i=0;i<liList.length;i++){
+            var target = index+1
+            if(target>liList.length-1){  
+                /* //此处重置li.top值最后一个会出bug（-h-->0-->-h)
+                for(var i=0;i<liList.length;i++){
+                    liList[i].style.top = h + 'px'
+                } */
+                target=0
+            }
+            // console.log(liList.index)
+           /*  if(i==0){
+                liList[0].style.top = -h + 'px'
+            }else{ */
+                // liList[index].style.top = -h + 'px'
+                // liList[target].style.top = 0//无动画
+            // }
+            //重置当前li.top值（使其在box下方
+            liList[target].style.top = h + 'px'
+            // 向上滚动
+            animate(liList[index],{'top':-h})
+            animate(liList[target],{'top':0})
+        }
+        index = target
+        
+        // liList[0].style.top = 0
+        // console.log(liList.index)
+    }
+
+    // 鼠标在公告中时停止轮播
+    box.onmouseover = function(){
+        clearInterval( box.timer)
+    }
+    // 鼠标离开公告继续轮播
+    box.onmouseout = function(){
+        // 先清除定时器
+        clearInterval( box.timer)
+        box.timer = setInterval(LImove,3000)
+    }
+</script>
+</html>
