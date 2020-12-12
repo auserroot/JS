@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟留言板</title>
+    <style>
+        *{
+             margin: 0;
+             padding: 0;
+        }
+        .box{
+            width: 620px;
+            border: 1px solid rgba(0,0,0,.4);
+            margin: 0 auto;
+        }
+        ul{
+            width: 620px;
+            list-style: none;
+            border: 1px solid rgba(0,0,0,.6);
+        }
+        li{
+            width: 600px;
+            margin: 0 10px 20px;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid rgba(0,0,0,.3);
+        }
+        li span{
+            width: 400px;
+        }
+        .btn{
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid rgba(0,0,0,.5);
+            margin: 0 auto 10px;
+            color: #000;
+        }
+
+        #p{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0,0,0,.3);
+            display: none;
+        }
+        .txt_box{
+            width: 400px;
+            height: 300px;
+            border:1px solid rgba(0,0,0,.5) ;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: white;
+            display: none;
+        }
+        .h{
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            height: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            background-color: rgba(0,0,0,.3)
+        }
+        .h span{display: inline-block;}
+        .h a{
+            text-decoration: none;
+            text-align: center;
+            line-height: 40px;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            margin: 5px 15px 0 0;
+        }
+        .f_box{
+            margin: 30px 0  20px 15px;
+            width: 400px;
+            height: 300px;
+        }
+        .f_box textarea{
+            width: 200px;
+            height: 160px;
+            margin-top: 5px;
+        }
+        .f_box a{
+            text-decoration: none;
+            color: #000;
+            border:1px solid rgba(0,0,0,.5);
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 留言板 -->
+    <div class="box">
+        <ul>
+            <li>
+                <a href="#">夜话燕子</a>
+               <span>今晚,我是一个超级大的电灯泡,探照灯级别的。现在我终于消失了，一个人在江边走走也不错误。</span> 
+            </li>
+            <li>
+                <a href="#">夜话燕子</a>
+               <span>今晚,我是一个超级大的电灯泡,探照灯级别的。现在我终于消失了，一个人在江边走走也不错误。</span> 
+            </li>
+            <li>
+                <a href="#">夜话燕子</a>
+               <span>今晚,我是一个超级大的电灯泡,探照灯级别的。现在我终于消失了，一个人在江边走走也不错误。</span> 
+            </li>
+            <li>
+                <a href="#">夜话燕子</a>
+               <span>今晚,我是一个超级大的电灯泡,探照灯级别的。现在我终于消失了，一个人在江边走走也不错误。</span> 
+            </li>
+        </ul>
+        <a href="#" class="btn" id='sendbtn'>发布</a>
+    </div>
+    <!-- 遮罩层 -->
+    <div id="p"></div>
+    <!-- 留言弹窗 -->
+    <div class="txt_box">
+        <div class="h"><span>这是广告框的标题</span><a href="#" id="x">X</a></div>
+        <form action="" class="f_box">
+            昵称：<input type="text" id="username"><br>
+            内容：<textarea name="txt" id='usertext'></textarea><br>
+            <a href="#" id='send'>发送</a>
+            <a href="#" id='close'>关闭</a>
+        </form>
+    </div>
+    <script>
+        // 需求：
+        // 点击按钮sendbtn弹出一个子窗口
+        // 该窗口要有标题栏，鼠标只有按住标题栏可以拖动
+        // 窗口右上角要有关闭按钮，点击关闭窗口
+        // 窗口底部要有半透明的遮罩层，使得主页面暂时无法操作(一定要有！)
+        // 输入内容后点击确定，关闭弹出窗口和遮罩层，将输入框中的内容追加到列表顶部
+        //获取元素
+        var box = document.getElementsByClassName("box")[0]
+        var Tp = document.getElementById('p')
+        var txt_box = document.getElementsByClassName('txt_box')[0]
+        var hTitle = document.getElementsByClassName('h')[0]
+        var username = document.getElementById('username')
+        var usertext = document.getElementById('usertext')
+        //按钮
+        var sendbtn = document.getElementById('sendbtn')
+        var x = document.getElementById('x')
+        var sendBtn = document.getElementById('send')
+        var closeBtn = document.getElementById('close')
+
+        // 点击按钮sendbtn弹出一个子窗口 窗口底部要有半透明的遮罩层，使得主页面暂时无法操作
+        sendbtn.onclick =function(){
+            txt_box.style.display = 'block'
+            Tp.style.display = 'block'
+        }
+
+        // 窗口右上角要有关闭按钮，点击关闭窗口
+        x.onclick = function(){
+            txt_box.style.display = 'none'
+            p.style.display = 'none'
+        }
+
+        // 鼠标按住标题栏可以拖动
+        hTitle.onmousedown = function(e){
+            e=e||window.event
+            var target = e.target||e.srcElement
+            if(target.nodeName=='SPAN'){
+                return;
+            }
+            var startX = e.offsetX||e.layerX;
+			var startY = e.offsetY||e.layerY;
+			txt_box.onmousemove = function(e){
+				e = e||window.event;
+				var left = e.pageX - startX;
+				var top = e.pageY - startY;
+				// 定位元素
+				txt_box.style.left = left+"px";
+				txt_box.style.top = top+"px";
+            }
+            hTitle.onmouseup = function(){
+                 txt_box.onmousemove = null
+            }
+        }
+        
+
+        // 输入内容后点击确定，关闭弹出窗口和遮罩层
+
+        sendBtn.onclick = function(){
+            txt_box.style.display = 'none'
+            p.style.display = 'none'
+            sendMsg()
+        }
+
+        closeBtn.onclick = function(){
+            txt_box.style.display = 'none'
+            p.style.display = 'none'
+        }
+
+        // 将输入框中的内容追加到列表顶部
+        function sendMsg(){
+            var getLi = document.createElement('li')
+            var geta = document.createElement('a')
+            var getSpan = document.createElement('span')
+            geta.href = "#"
+            geta.innerHTML = username.value
+            getSpan.innerHTML = usertext.value
+            getLi.appendChild(geta)
+            getLi.appendChild(getSpan)
+            box.children[0].insertBefore(getLi,box.children[0].children[0])
+        }
+    </script>
+</body>
+</html>

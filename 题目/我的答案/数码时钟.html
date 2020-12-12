@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数码时钟</title>
+    <style>
+        #box img{
+            width: 27px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="img/0.png">
+        <img src="img/0.png">
+        时
+        <img src="img/0.png">
+        <img src="img/0.png">
+        分
+        <img src="img/0.png">
+        <img src="img/0.png">
+        秒
+    </div>
+    <script>
+        //设置定时器（每秒执行一次）
+        setInterval(function(){
+        //获取元素
+        var getImg = document.getElementsByTagName('img')
+        //获取当前时间
+        var now = new Date()
+        //获取小时
+        var h = now.getHours()
+        //获取分钟
+        var m = now.getMinutes()
+        //获取秒
+        var s = now.getSeconds()
+        // console.log(h,m,s)
+        // 判断h,m,s数是否为两位数
+        if(h/10<1){
+            h = '0'+ h
+        }
+        if(m/10<1){
+            m = '0'+ m
+        }
+        if(s/10<1){
+            s='0'+s
+        }
+        var time = h.toString() + m.toString() + s.toString()
+        for(var i=0;i<time.length;i++){
+            getImg[i].src = "img/"+time[i]+".png"
+        }
+    },1000)
+    </script>
+</body>
+</html>
