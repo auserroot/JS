@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle {
+            width: 600px;
+            height: 600px;
+            border-radius: 300px;
+            border: 1px solid skyblue;
+            position: relative;
+            top: 50px;
+            left: 415px;
+        }
+
+        #ball {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 15px;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ball"></div>
+    <div id="circle"></div>
+    <script>
+        //需求:小球沿着圆环运动
+        //具体:每隔一段时间,要求在圆上运动一定的角度,初始在90度位置
+        //获取元素
+        var ball = document.querySelector('#ball')
+        var circle = document.querySelector('#circle')
+        //初始化角度
+        var deg = 90
+        //初始化小球位置
+        ball.style.left = circle.offsetLeft - ball.offsetWidth/2 + circle.offsetWidth/2 + 'px'
+        ball.style.top = circle.offsetTop  - ball.offsetHeight/2 + 'px'
+        //圆心
+        var cy = circle.offsetTop + circle.offsetHeight/2
+        var cx = circle.offsetLeft + circle.offsetWidth/2
+        //运动速度
+        var speed = 5
+        //运动半径
+        var r = circle.scrollWidth/2||circle.scrollHeight/2
+        circle.timer = setInterval(function(){
+            //初始化小球位置（利用三角函数求left、top值）
+            ball.style.left = cx + r*Math.cos(deg*Math.PI/180)-ball.offsetWidth/2 +'px'
+            ball.style.top = cy - r*Math.sin(deg*Math.PI/180)-ball.offsetHeight/2 +'px'
+            deg -= speed
+        },20)
+
+        
+    </script>
+</body>
+
+</html>

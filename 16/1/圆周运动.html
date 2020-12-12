@@ -49,13 +49,20 @@
         ball.style.left = centerPoint.left+r*Math.cos(deg*Math.PI/180)-ball.offsetWidth/2+"px";
         ball.style.top = centerPoint.top-r*Math.sin(deg*Math.PI/180)-ball.offsetWidth/2+"px";
         //开始运动
-        var timer = setInterval(function(){
+        var timer = setInterval(run,1000/60)
+        function run(){
             //每隔一段时间角度增加5
             deg+=5;
             //定位小球
             ball.style.left = centerPoint.left+r*Math.cos(deg*Math.PI/180)-ball.offsetWidth/2+"px";
             ball.style.top = centerPoint.top-r*Math.sin(deg*Math.PI/180)-ball.offsetWidth/2+"px";
-        },1000/60)
+            circle.onmouseover = function(){
+                clearInterval(timer)
+            }
+            circle.onmouseout = function(){
+                timer = setInterval(run,1000/60)
+            }
+        }
     </script>
 </body>
 </html>
